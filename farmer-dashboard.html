@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer & FPO Command Center | KisanSetu (SIH 2026 PS 26033)</title>
+    <link rel="stylesheet" href="css/style.css?v=2.4">
+    <link rel="stylesheet" href="style.css?v=2.4">
+    <!-- Chart.js CDN for AI Demand & Price Forecast Curves -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- TOP GOVERNMENT BAR -->
+    <div class="gov-top-bar">
+        <div class="gov-emblem">
+            <span class="gov-flag"></span>
+            <span>Government of India • Department of Consumer Affairs (DoCA) • <strong>Farmer AI Hub</strong></span>
+        </div>
+        <div class="top-bar-right">
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="hi">हिन्दी</button>
+                <button class="lang-btn" data-lang="mr">मराठी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MANDI TICKER -->
+    <div class="mandi-ticker-bar">
+        <div class="ticker-label">LIVE AGMARKNET FEED</div>
+        <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <a href="index.html" class="brand-logo">
+            <div class="brand-icon-box">🌾</div>
+            <div>
+                <h1 class="brand-title">KisanSetu</h1>
+                <p class="brand-tagline">Farmer / FPO Command Portal</p>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+            <a href="farmer-dashboard.html" class="nav-link active">AI Forecast & Farm</a>
+            <a href="logistics.html" class="nav-link">Logistics Map</a>
+            <a href="admin-escrow.html" class="nav-link">Escrow Ledger</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn btn-primary btn-sm" onclick="openNewListingModal()">
+                ➕ List New Produce
+            </button>
+        </div>
+    </header>
+
+    <!-- DASHBOARD WORKSPACE -->
+    <div class="dashboard-layout">
+        <!-- SIDEBAR -->
+        <aside class="dash-sidebar">
+            <div class="user-profile-badge">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <div style="font-size: 28px;">👨‍🌾</div>
+                    <div>
+                        <h4>Ramesh B. Shinde</h4>
+                        <span style="background: #d1fae5; color: #065f46; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">✓ Aadhaar eKYC Verified</span>
+                    </div>
+                </div>
+                <p>📍 Dindori, Nashik District</p>
+                <p>🌾 Sahyadri FPO Member (#FPO-4412)</p>
+                <div style="margin-top: 8px; font-size: 12px; color: #059669; font-weight: 600;">
+                    UPI: ramesh.shinde@oksbi
+                </div>
+            </div>
+
+            <button class="sidebar-link active" onclick="switchTab('tabForecast', this)">
+                📈 AI Demand & Price Forecast
+            </button>
+            <button class="sidebar-link" onclick="switchTab('tabMandiRates', this)">
+                🏛️ APMC Mandi Rates (Amravati)
+            </button>
+            <button class="sidebar-link" onclick="switchTab('tabOrders', this)">
+                📦 Incoming Orders & Counter-Offers
+            </button>
+            <button class="sidebar-link" onclick="switchTab('tabListings', this)">
+                🌱 Active Produce Inventory
+            </button>
+            <button class="sidebar-link" onclick="switchTab('tabWallet', this)">
+                💳 Escrow Wallet & UPI Payouts
+            </button>
+            <button class="sidebar-link" onclick="switchTab('tabFpo', this)">
+                👥 FPO Aggregator Group
+            </button>
+
+            <!-- Offline Action Sync Simulator Banner (From PDF 2.7) -->
+            <div style="margin-top: auto; background: #f1f5f9; border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 12px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="font-weight: 700; color: #334155;">📶 Network Connectivity</span>
+                    <span style="color: #10b981; font-weight: 800;">ONLINE</span>
+                </div>
+                <p style="color: #64748b; font-size: 11px;">Offline action queue active. Retries sync with idempotency keys on reconnect.</p>
+            </div>
+        </aside>
+
+        <!-- MAIN DASHBOARD CONTENT -->
+        <main class="dash-content">
+
+            <!-- BREADCRUMBS NAVIGATION -->
+            <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 16px;">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">Farmer Command Hub & AI</li>
+                </ol>
+            </nav>
+
+            <!-- VOICE LISTING BANNER (From PDF 2.2 Voice-based listing option for low-literacy users) -->
+            <div class="voice-listing-box">
+                <div>
+                    <span style="background: #ef4444; color: white; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px;">LOW-LITERACY VOICE ASSISTANT</span>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-top: 6px;">बोलून शेतमाल नोंदवा / बोलकर फसल लिस्ट करें</h3>
+                    <p style="font-size: 13px; color: #cbd5e1; max-width: 580px; margin-top: 4px;">
+                        Click the microphone and speak in Marathi, Hindi or English: <em>"५०० किलो टोमॅटो २५ रुपये दराने विकायचे आहेत"</em>. AI will parse the crop, weight, and price automatically!
+                    </p>
+                </div>
+                <button class="mic-pulse-btn" onclick="simulateVoiceListing()" title="Click to Speak">
+                    🎙️
+                </button>
+            </div>
+
+            <!-- TAB 1: AI DEMAND & PRICE FORECAST -->
+            <div id="tabForecast" class="tab-pane">
+                <div class="dash-header-row">
+                    <div>
+                        <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-deep);">AI Price & Demand Forecasting Engine</h2>
+                        <p style="font-size: 14px; color: var(--text-muted);">
+                            Trained on daily Agmarknet mandi data, IMD monsoon radar, and festival calendars to predict the 3-14 day optimal selling window.
+                        </p>
+                    </div>
+
+                    <!-- Crop Selector -->
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <label style="font-size: 13px; font-weight: 700; color: #475569;">Select Crop:</label>
+                        <select id="forecastCropSelect" onchange="updateForecastChart()" style="padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-weight: 700; font-size: 14px; background: white; outline: none;">
+                            <option value="tomato">Tomato (Akola APMC Hybrid)</option>
+                            <option value="onion">Onion (Buldhana APMC Red Kharif)</option>
+                            <option value="potato">Potato (Akola APMC Jyoti)</option>
+                            <option value="wheat">Wheat (Akola APMC Sharbati)</option>
+                            <option value="soybean">Soybean (Akola APMC Yellow Gr. A)</option>
+                            <option value="cauliflower">Cauliflower (Buldhana APMC Snowball)</option>
+                            <option value="chilli">Red Chilli (Buldhana APMC Byadagi Dry)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Headline Forecast Cards -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                    <div style="background: white; border-radius: 12px; padding: 20px; border: 1px solid var(--border); border-top: 4px solid #10b981;">
+                        <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">CURRENT MANDI BENCHMARK</div>
+                        <div style="font-size: 28px; font-weight: 800; color: #064e3b; margin-top: 4px;" id="dispCurrentMandi">₹28.00 / kg</div>
+                        <div style="font-size: 12px; color: #059669; margin-top: 4px;" id="dispMandiSubtitle">Akola APMC Daily Modal Rate</div>
+                    </div>
+
+                    <div style="background: white; border-radius: 12px; padding: 20px; border: 1px solid var(--border); border-top: 4px solid #f59e0b;">
+                        <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">AI SUGGESTED FARMER LISTING PRICE</div>
+                        <div style="font-size: 28px; font-weight: 800; color: #d97706; margin-top: 4px;" id="dispSuggestedPrice">₹24.80 / kg</div>
+                        <div style="font-size: 12px; color: #b45309; margin-top: 4px;" id="dispConfidenceRange">Confidence: ₹23.50 – ₹26.80</div>
+                    </div>
+
+                    <div style="background: white; border-radius: 12px; padding: 20px; border: 1px solid var(--border); border-top: 4px solid #3b82f6;">
+                        <div style="font-size: 12px; color: var(--text-muted); font-weight: 700;">AI OPTIMAL HARVEST SELLING WINDOW</div>
+                        <div style="font-size: 18px; font-weight: 800; color: #1e40af; margin-top: 8px;" id="dispBestWindow">Next 4–7 Days (Ganesh Utsav Spike)</div>
+                        <div style="font-size: 12px; color: #2563eb; margin-top: 4px;">Hold produce 3-4 days for upside</div>
+                    </div>
+                </div>
+
+                <!-- Chart Container -->
+                <div class="chart-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <h3 style="font-size: 16px; font-weight: 700; color: #334155;">Historical Agmarknet Prices + 14-Day AI Forecast Curve</h3>
+                        <span style="font-size: 12px; background: #ecfdf5; color: #059669; font-weight: 700; padding: 4px 10px; border-radius: 20px;">
+                            Model: Facebook Prophet / XGBoost Ensemble
+                        </span>
+                    </div>
+
+                    <div style="height: 340px; position: relative;">
+                        <canvas id="forecastChartCanvas"></canvas>
+                    </div>
+
+                    <!-- AI Explainability Rationale (From PDF Section 6.5) -->
+                    <div class="ai-explain-badge" id="dispRationale" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                        <div style="display:flex; align-items:flex-start; gap:10px; flex:1;">
+                            <span style="font-size: 20px;">🧠</span>
+                            <div>
+                                <strong id="dispRationaleTitle" data-i18n="aiRationaleTitle">AI Rationale & Explainability:</strong>
+                                <span id="dispRationaleText">Akola APMC tomato modal price has risen from ₹14.50/kg (Jul 10) to ₹28.00/kg (Sep 9), a 93% seasonal rally. Ganesh Utsav urban demand spike supports holding produce.</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-sunno" id="btnSunnoRationale" onclick="speakRationale(this)" aria-label="Listen to AI forecast explanation" title="🔊 आवाज़ में सुनें (Listen in audio)" style="padding:6px 14px; font-size:12px; white-space:nowrap;">
+                            🔊 Sunno (आवाज़ में सुनें)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: APMC MANDI RATES (AMRAVATI REGION) -->
+            <div id="tabMandiRates" class="tab-pane" style="display: none;">
+                <div class="dash-header-row">
+                    <div>
+                        <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-deep);">Amravati Division APMC Mandi Rates</h2>
+                        <p style="font-size: 14px; color: var(--text-muted);">
+                            Real-time wholesale modal arrivals for Akola APMC & Buldhana APMC (July 10 – September 9, 2026) verified via Agmarknet / data.gov.in.
+                        </p>
+                    </div>
+                    <a href="marketplace.html?mode=mandi" class="btn btn-outline btn-sm">
+                        🌐 View Full Market Terminal →
+                    </a>
+                </div>
+
+                <!-- Mandi Rates Table in Farmer Dashboard -->
+                <div style="background: white; border-radius: 12px; border: 1px solid var(--border); padding: 16px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <label style="font-size: 13px; font-weight: 700; color: #334155;">📍 Filter APMC:</label>
+                        <select id="dashMandiFilterMandi" onchange="renderDashboardMandiTable()" style="padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-weight: 700; font-size: 13px; background: white; outline: none;">
+                            <option value="all">All Mandis (Akola & Buldhana)</option>
+                            <option value="Akola APMC">Akola APMC</option>
+                            <option value="Buldhana APMC">Buldhana APMC</option>
+                        </select>
+
+                        <label style="font-size: 13px; font-weight: 700; color: #334155;">🌾 Commodity:</label>
+                        <select id="dashMandiFilterCrop" onchange="renderDashboardMandiTable()" style="padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-weight: 700; font-size: 13px; background: white; outline: none;">
+                            <option value="all">All Commodities (7 Crops)</option>
+                            <option value="Tomato">Tomato (Hybrid)</option>
+                            <option value="Onion">Onion (Red Kharif)</option>
+                            <option value="Potato">Potato (Jyoti)</option>
+                            <option value="Wheat">Wheat (Sharbati)</option>
+                            <option value="Soybean">Soybean (Yellow Gr. A)</option>
+                            <option value="Cauliflower">Cauliflower (Snowball)</option>
+                            <option value="Red Chilli">Red Chilli (Byadagi Dry)</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <input type="text" id="dashMandiSearchInput" placeholder="Search date, crop..." oninput="renderDashboardMandiTable()" style="padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; width: 200px;">
+                    </div>
+                </div>
+
+                <div class="custom-table-wrap" style="background: white; border-radius: 12px; border: 1px solid var(--border); max-height: 520px; overflow-y: auto;">
+                    <table class="custom-table" style="margin: 0;">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Mandi Yard</th>
+                                <th>Commodity</th>
+                                <th>Min (₹/kg)</th>
+                                <th>Max (₹/kg)</th>
+                                <th style="background: #f0fdf4; color: #065f46;">Modal Price</th>
+                                <th>Modal (₹/Qtl)</th>
+                                <th>Arrivals</th>
+                                <th>24h Trend</th>
+                                <th>Forecast</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashMandiRatesTableBody">
+                            <!-- Populated dynamically via renderDashboardMandiTable() -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 2: INCOMING ORDERS & NEGOTIATION -->
+            <div id="tabOrders" class="tab-pane" style="display: none;">
+                <div class="dash-header-row">
+                    <div>
+                        <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-deep);">Order & Buyer Management</h2>
+                        <p style="font-size: 14px; color: var(--text-muted);">
+                            Real-time order requests, counter-offers, and delivery tracking state machine.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="custom-table-wrap">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID & Date</th>
+                                <th>Buyer & Location</th>
+                                <th>Crop & Quantity</th>
+                                <th>Farmer Payout</th>
+                                <th>Escrow Status</th>
+                                <th>Logistics & Tracking</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="farmerOrdersTable">
+                            <!-- Populated dynamically via renderFarmerOrders() -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 3: ACTIVE PRODUCE INVENTORY -->
+            <div id="tabListings" class="tab-pane" style="display: none;">
+                <div class="dash-header-row">
+                    <div>
+                        <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-deep);">My Listed Farm Produce</h2>
+                        <p style="font-size: 14px; color: var(--text-muted);">
+                            Manage stock quantities, harvest batch dates, and wholesale tier pricing.
+                        </p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openNewListingModal()">
+                        ➕ Add New Produce Listing
+                    </button>
+                </div>
+
+                <div class="products-grid" id="farmerListingsGrid">
+                    <!-- Populated dynamically via renderFarmerListings() -->
+                </div>
+            </div>
+
+            <!-- TAB 4: ESCROW WALLET & UPI PAYOUTS -->
+            <div id="tabWallet" class="tab-pane" style="display: none;">
+                <div class="dash-header-row">
+                    <div>
+                        <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-deep);">Escrow Wallet & Payout Settlement</h2>
+                        <p style="font-size: 14px; color: var(--text-muted);">
+                            Zero middleman commission leakage. 100% of proceeds settled straight to your bank account / UPI.
+                        </p>
+                    </div>
+                    <button class="btn btn-primary" onclick="simulateUpiWithdrawal()">
+                        ⚡ Instant UPI Penny-Drop Payout
+                    </button>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 24px;">
+                    <div style="background: white; border-radius: 12px; padding: 22px; border: 1px solid var(--border);">
+                        <div style="font-size: 12px; color: #64748b; font-weight: 700;">HELD IN SECURE ESCROW</div>
+                        <div style="font-size: 32px; font-weight: 800; color: #d97706; margin-top: 4px;" id="walletHeld">₹240.00</div>
+                        <p style="font-size: 12px; color: #b45309; margin-top: 4px;">Releases upon customer delivery OTP confirmation</p>
+                    </div>
+
+                    <div style="background: white; border-radius: 12px; padding: 22px; border: 1px solid var(--border);">
+                        <div style="font-size: 12px; color: #64748b; font-weight: 700;">SETTLED & DISBURSED TO UPI</div>
+                        <div style="font-size: 32px; font-weight: 800; color: #059669; margin-top: 4px;" id="walletSettled">₹7,120.00</div>
+                        <p style="font-size: 12px; color: #065f46; margin-top: 4px;">Transferred to ramesh.shinde@oksbi</p>
+                    </div>
+
+                    <div style="background: white; border-radius: 12px; padding: 22px; border: 1px solid var(--border);">
+                        <div style="font-size: 12px; color: #64748b; font-weight: 700;">MIDDLEMAN CUT ELIMINATED</div>
+                        <div style="font-size: 32px; font-weight: 800; color: #2563eb; margin-top: 4px;">₹3,450.00</div>
+                        <p style="font-size: 12px; color: #1d4ed8; margin-top: 4px;">Extra net profit retained on KisanSetu</p>
+                    </div>
+                </div>
+
+                <div class="custom-table-wrap">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Escrow Txn Ref</th>
+                                <th>Order Ref</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Gross Order</th>
+                                <th>Direct Farmer Payout</th>
+                                <th>Escrow Status</th>
+                                <th>Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="walletEscrowTable">
+                            <!-- Populated dynamically via renderWalletTable() -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 5: FPO AGGREGATOR GROUP -->
+            <div id="tabFpo" class="tab-pane" style="display: none;">
+                <div class="dash-header-row">
+                    <div>
+                        <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-deep);">FPO Aggregator Administration</h2>
+                        <p style="font-size: 14px; color: var(--text-muted);">
+                            Sahyadri Farmers Producer Co. • Aggregating 12 member-farmers' harvest into high-volume commercial lots.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 16px; border: 1px solid var(--border); padding: 24px;">
+                    <h3 style="font-size: 18px; margin-bottom: 12px;">Active FPO Aggregated Lots</h3>
+                    <div class="custom-table-wrap">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>FPO Batch ID</th>
+                                    <th>Crop</th>
+                                    <th>Aggregated Volume</th>
+                                    <th>Participating Farmers</th>
+                                    <th>Average Realized Price</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>FPO-BAT-901</strong></td>
+                                    <td>Tomato (Export Hybrid)</td>
+                                    <td>12,500 kg</td>
+                                    <td>8 Member Farmers</td>
+                                    <td><strong style="color:#059669;">₹24.80 / kg</strong></td>
+                                    <td><span class="status-badge status-released">Sold to FreshKart</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FPO-BAT-904</strong></td>
+                                    <td>Onion (Lasalgaon Red)</td>
+                                    <td>25,000 kg</td>
+                                    <td>14 Member Farmers</td>
+                                    <td><strong style="color:#059669;">₹21.50 / kg</strong></td>
+                                    <td><span class="status-badge status-transit">In Logistics Transit</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- NEW PRODUCE LISTING MODAL -->
+    <div class="modal-overlay" id="newListingModal">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeNewListingModal()">✕</button>
+            <h3 class="modal-title">List Farm Produce</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Instant listing with AI-suggested fair pricing from Agmarknet.
+            </p>
+
+            <form onsubmit="handleNewListingSubmit(event)" novalidate style="display: flex; flex-direction: column; gap: 12px;">
+                <div class="form-group">
+                    <label for="listCrop" class="form-label">Crop & Variety <span class="required-indicator" aria-hidden="true">*</span></label>
+                    <input type="text" id="listCrop" class="form-input" required placeholder="e.g. Tomato (Nashik Hybrid)" onblur="validateField('listCrop', { required: true, minLength: 3, requiredMsg: 'Please enter crop name and variety' })" aria-required="true">
+                    <div class="form-error" id="listCrop-error" role="alert" style="display:none;"></div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                        <label for="listCat" class="form-label">Category</label>
+                        <select id="listCat" class="form-select" style="width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 6px; background: white;">
+                            <option value="veg">Vegetables</option>
+                            <option value="fruits">Fruits</option>
+                            <option value="grains">Grains & Pulses</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="listQty" class="form-label">Total Quantity (kg) <span class="required-indicator" aria-hidden="true">*</span></label>
+                        <input type="number" id="listQty" class="form-input" required value="500" min="5" onblur="validateField('listQty', { required: true, min: 5, minMsg: 'Minimum quantity is 5 kg' })" aria-required="true">
+                        <div class="form-error" id="listQty-error" role="alert" style="display:none;"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                        <label for="listPrice" class="form-label">Farmer Price (₹/kg) <span class="required-indicator" aria-hidden="true">*</span></label>
+                        <input type="number" step="0.5" id="listPrice" class="form-input" required value="24.00" min="1" style="border: 1.5px solid var(--primary); font-weight: 700; color: var(--primary-deep);" onblur="validateField('listPrice', { required: true, min: 1, minMsg: 'Price must be at least ₹1/kg' })" aria-required="true">
+                        <div class="form-error" id="listPrice-error" role="alert" style="display:none;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="listHarvest" class="form-label">Harvest Timing <span class="required-indicator" aria-hidden="true">*</span></label>
+                        <input type="text" id="listHarvest" class="form-input" required value="Harvested Today Morning" onblur="validateField('listHarvest', { required: true, minLength: 3 })" aria-required="true">
+                        <div class="form-error" id="listHarvest-error" role="alert" style="display:none;"></div>
+                    </div>
+                </div>
+
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #065f46;">
+                    💡 <strong>AI Pricing Advisory:</strong> Recommended price range for today: <strong>₹23.00 - ₹26.50/kg</strong> based on Nashik arrivals.
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <input type="checkbox" id="listOrganic" checked>
+                    <label for="listOrganic" style="font-size: 13px; font-weight: 600;">100% Pesticide Residue Free / Organic</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; margin-top: 6px;">
+                    🌱 Publish to Live Direct Marketplace →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/data-store.js?v=2.2"></script>
+    <script src="js/script.js?v=2.4"></script>
+    <script>
+        let myForecastChart = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const cropParam = params.get('crop');
+            if (cropParam && document.getElementById('forecastCropSelect')) {
+                document.getElementById('forecastCropSelect').value = cropParam;
+            }
+
+            updateFarmerSidebar();
+            initForecastChart();
+            renderFarmerOrders();
+            renderFarmerListings();
+            renderWalletTable();
+            renderDashboardMandiTable();
+
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
+            if (typeof applyLanguage === 'function') {
+                applyLanguage(curLang);
+            }
+
+            if (params.get('action') === 'new') {
+                openNewListingModal();
+            }
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const links = document.querySelectorAll('.sidebar-link');
+                if (hash === 'mandi' || hash === 'tabMandiRates') switchTab('tabMandiRates', links[1]);
+                if (hash === 'orders') switchTab('tabOrders', links[2]);
+                if (hash === 'listings') switchTab('tabListings', links[3]);
+                if (hash === 'wallet') switchTab('tabWallet', links[4]);
+            }
+        });
+
+        function handleDashboardLanguageChange(e) {
+            const lang = (e && e.detail && (e.detail.lang || e.detail.language)) || (window.kisanStore ? window.kisanStore.getLanguage() : 'en');
+            if (typeof translateDom === 'function') {
+                translateDom(document.querySelector('.dash-sidebar'), lang);
+                translateDom(document.querySelector('.dash-content'), lang);
+                const modal = document.getElementById('newListingModal');
+                if (modal) translateDom(modal, lang);
+            }
+            if (typeof initForecastChart === 'function') {
+                initForecastChart();
+            }
+        }
+        document.addEventListener('kisanLanguageApplied', handleDashboardLanguageChange);
+        document.addEventListener('kisanLanguageChanged', handleDashboardLanguageChange);
+
+        function updateFarmerSidebar() {
+            if (!window.kisanStore) return;
+            const user = window.kisanStore.getCurrentUser();
+            const badge = document.querySelector('.user-profile-badge');
+            if (badge && user) {
+                badge.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <div style="font-size: 28px;">${user.roleIcon || '👨‍🌾'}</div>
+                        <div>
+                            <h4>${user.name}</h4>
+                            <span style="background: #d1fae5; color: #065f46; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">✓ ${user.kycVerified ? 'Aadhaar eKYC Verified' : 'Registered Stakeholder'}</span>
+                        </div>
+                    </div>
+                    <p>📍 ${user.location}</p>
+                    ${user.fpo ? `<p>🌾 ${user.fpo}</p>` : `<p>Role: ${user.roleTitle || user.role}</p>`}
+                    <div style="margin-top: 8px; font-size: 12px; color: #059669; font-weight: 600;">
+                        UPI: ${user.upiId || 'farmer@oksbi'}
+                    </div>
+                `;
+            }
+        }
+
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+
+            document.querySelectorAll('.sidebar-link').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (tabId === 'tabForecast' && myForecastChart) {
+                myForecastChart.resize();
+            }
+            if (tabId === 'tabMandiRates') {
+                renderDashboardMandiTable();
+            }
+        }
+
+        // ==========================================
+        // AI Forecast Chart (Chart.js)
+        // ==========================================
+        /**
+         * initForecastChart — Synchronously renders curated Amravati APMC data
+         * immediately on page load so there is no blank chart.
+         * The "Refresh" button (updateForecastChart) then fires the live API.
+         */
+        function initForecastChart() {
+            const cropKey = document.getElementById('forecastCropSelect').value;
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
+            const data    = window.kisanStore.getForecast(cropKey, curLang);
+
+            document.getElementById('dispCurrentMandi').innerText    = `₹${data.currentAvgMandi.toFixed(2)} / kg`;
+            const subTitle = document.getElementById('dispMandiSubtitle');
+            if (subTitle) {
+                const subText = curLang === 'hi' ? 'दैनिक मॉडल भाव' : (curLang === 'mr' ? 'दैनंदिन सरासरी दर' : 'Daily Modal Rate');
+                subTitle.innerText = `${data.mandiName} ${subText}`;
+            }
+            document.getElementById('dispSuggestedPrice').innerText  = `₹${data.suggestedFarmerPrice.toFixed(2)} / kg`;
+            const confLabel = curLang === 'hi' ? 'विश्वास सीमा' : (curLang === 'mr' ? 'अंदाजित मर्यादा' : 'Confidence');
+            document.getElementById('dispConfidenceRange').innerText = `${confLabel}: ₹${data.confidenceRange[0].toFixed(2)} – ₹${data.confidenceRange[1].toFixed(2)}`;
+            document.getElementById('dispBestWindow').innerText      = data.bestSellingWindow;
+            const ratSpan = document.getElementById('dispRationaleText');
+            if (ratSpan) {
+                ratSpan.innerText = data.rationale;
+            } else {
+                const s = document.getElementById('dispRationale').querySelector('div > span') || document.getElementById('dispRationale').querySelector('span');
+                if (s) s.innerText = data.rationale;
+            }
+            const ratTitle = document.getElementById('dispRationaleTitle');
+            if (ratTitle) {
+                if (window.kisanStore && window.kisanStore.t) {
+                    ratTitle.innerText = window.kisanStore.t('aiRationaleTitle');
+                } else {
+                    ratTitle.innerText = curLang === 'hi' ? 'एआई भाव विश्लेषण और स्पष्टीकरण:' : (curLang === 'mr' ? 'एआय भाव विश्लेषण आणि स्पष्टीकरण:' : 'AI Rationale & Explainability:');
+                }
+            }
+            const sunnoBtn = document.getElementById('btnSunnoRationale');
+            if (sunnoBtn && !sunnoBtn.classList.contains('speaking')) {
+                sunnoBtn.innerHTML = curLang === 'hi' ? '🔊 सुनो (आवाज़ में सुनें)' : (curLang === 'mr' ? '🔊 ऐका (आवाजात ऐका)' : '🔊 Sunno (Audio)');
+            }
+
+            const pivot            = data.historicalPrices.length - 1;
+            const labels           = [...data.historicalDays, ...data.forecastDays];
+            const historicalData   = [...data.historicalPrices, ...Array(data.forecastDays.length).fill(null)];
+            const forecastData     = [...Array(pivot).fill(null), data.historicalPrices[pivot], ...data.forecastPrices];
+            const upperConfidence  = [...Array(pivot).fill(null), data.historicalPrices[pivot], ...data.confidenceUpper];
+            const lowerConfidence  = [...Array(pivot).fill(null), data.historicalPrices[pivot], ...data.confidenceLower];
+
+            const ctx = document.getElementById('forecastChartCanvas').getContext('2d');
+            if (myForecastChart) myForecastChart.destroy();
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+            const histLabel = curLang === 'hi' ? 'एगमार्कनेट ऐतिहासिक भाव (अमरावती एपीएमसी)' : (curLang === 'mr' ? 'एगमार्कनेट ऐतिहासिक दर (अमरावती एपीएमसी)' : 'Agmarknet Historical (Curated Amravati APMC)');
+            const fcLabel = curLang === 'hi' ? 'एआई 14-दिवसीय भाव पूर्वानुमान (WLR)' : (curLang === 'mr' ? 'एआय १४-दिवसीय भाव अंदाज (WLR)' : 'AI 14-Day Price Forecast (WLR)');
+            const confHighLabel = curLang === 'hi' ? 'विश्वास सीमा (उच्चतम)' : (curLang === 'mr' ? 'विश्वास मर्यादा (उच्च)' : 'Confidence Interval (High)');
+            const confLowLabel = curLang === 'hi' ? 'विश्वास सीमा (न्यूनतम)' : (curLang === 'mr' ? 'विश्वास मर्यादा (कमी)' : 'Confidence Interval (Low)');
+            const yAxisTitle = curLang === 'hi' ? 'भाव (₹ प्रति किग्रा)' : (curLang === 'mr' ? 'दर (₹ प्रति किलो)' : 'Price (₹ per kg)');
+
+            const histColor = '#059669';
+            const fcColor = '#d97706';
+            const labelColor = '#0f172a';
+            const tickColor = '#334155';
+            const gridColor = '#f1f5f9';
+            const confColor = 'rgba(217, 119, 6, 0.14)';
+
+            myForecastChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: histLabel,
+                            data: historicalData,
+                            borderColor: histColor,
+                            backgroundColor: isDark ? 'rgba(52, 211, 153, 0.12)' : 'rgba(5, 150, 105, 0.08)',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: false,
+                            pointRadius: 2
+                        },
+                        {
+                            label: fcLabel,
+                            data: forecastData,
+                            borderColor: fcColor,
+                            borderDash: [5, 5],
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: false,
+                            pointRadius: 3
+                        },
+                        {
+                            label: confHighLabel,
+                            data: upperConfidence,
+                            borderColor: 'transparent',
+                            backgroundColor: confColor,
+                            pointRadius: 0,
+                            fill: '+1'
+                        },
+                        {
+                            label: confLowLabel,
+                            data: lowerConfidence,
+                            borderColor: 'transparent',
+                            backgroundColor: confColor,
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: labelColor,
+                                boxWidth: 14,
+                                font: { family: 'Outfit', size: 12, weight: '600' }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: isDark ? '#1e293b' : '#0f172a',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff',
+                            borderColor: isDark ? '#334155' : '#475569',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ₹${context.parsed.y ? context.parsed.y.toFixed(2) : '--'} / kg`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: yAxisTitle,
+                                color: labelColor,
+                                font: { weight: 'bold' }
+                            },
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { maxTicksLimit: 12, color: tickColor }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function updateForecastChart() {
+            const cropKey = document.getElementById('forecastCropSelect').value;
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
+            showToast('🔄 Fetching live Agmarknet prices from data.gov.in…', 'info');
+
+            let data = null;
+            try {
+                data = await window.kisanStore.fetchLiveMandiForecast(cropKey, curLang);
+            } catch (e) { /* swallow — fallback below */ }
+
+            const isLive = !!data;
+            if (!isLive) {
+                data = window.kisanStore.getForecast(cropKey, curLang);
+                showToast('📊 Using curated Amravati APMC data (API unavailable)', 'info');
+            } else {
+                showToast('✅ Live Agmarknet data loaded from data.gov.in!', 'success');
+            }
+
+            /* Update KPI cards */
+            document.getElementById('dispCurrentMandi').innerText    = `₹${data.currentAvgMandi.toFixed(2)} / kg`;
+            const subTitle = document.getElementById('dispMandiSubtitle');
+            if (subTitle) {
+                const subText = curLang === 'hi' ? 'दैनिक मॉडल भाव' : (curLang === 'mr' ? 'दैनंदिन सरासरी दर' : 'Daily Modal Rate');
+                subTitle.innerText = `${data.mandiName} ${subText}`;
+            }
+            document.getElementById('dispSuggestedPrice').innerText  = `₹${data.suggestedFarmerPrice.toFixed(2)} / kg`;
+            const confLabel = curLang === 'hi' ? 'विश्वास सीमा' : (curLang === 'mr' ? 'अंदाजित मर्यादा' : 'Confidence');
+            document.getElementById('dispConfidenceRange').innerText = `${confLabel}: ₹${data.confidenceRange[0].toFixed(2)} – ₹${data.confidenceRange[1].toFixed(2)}`;
+            document.getElementById('dispBestWindow').innerText      = data.bestSellingWindow;
+            const ratSpan = document.getElementById('dispRationaleText');
+            if (ratSpan) {
+                ratSpan.innerText = data.rationale;
+            } else {
+                const s = document.getElementById('dispRationale').querySelector('div > span') || document.getElementById('dispRationale').querySelector('span');
+                if (s) s.innerText = data.rationale;
+            }
+            const ratTitle = document.getElementById('dispRationaleTitle');
+            if (ratTitle) {
+                if (window.kisanStore && window.kisanStore.t) {
+                    ratTitle.innerText = window.kisanStore.t('aiRationaleTitle');
+                } else {
+                    ratTitle.innerText = curLang === 'hi' ? 'एआई भाव विश्लेषण और स्पष्टीकरण:' : (curLang === 'mr' ? 'एआय भाव विश्लेषण आणि स्पष्टीकरण:' : 'AI Rationale & Explainability:');
+                }
+            }
+            const sunnoBtn = document.getElementById('btnSunnoRationale');
+            if (sunnoBtn && !sunnoBtn.classList.contains('speaking')) {
+                sunnoBtn.innerHTML = curLang === 'hi' ? '🔊 सुनो (आवाज़ में सुनें)' : (curLang === 'mr' ? '🔊 ऐका (आवाजात ऐका)' : '🔊 Sunno (Audio)');
+            }
+
+            /* Data-source badge (inject or update) */
+            let srcBadge = document.getElementById('liveDataBadge');
+            if (!srcBadge) {
+                srcBadge = document.createElement('span');
+                srcBadge.id = 'liveDataBadge';
+                srcBadge.style.cssText = 'font-size:11px;padding:3px 9px;border-radius:20px;font-weight:700;margin-left:8px;';
+                document.querySelector('#forecastChartCanvas').closest('.chart-card')
+                    .querySelector('h3').appendChild(srcBadge);
+            }
+            if (isLive) {
+                srcBadge.textContent  = '🌐 LIVE — data.gov.in';
+                srcBadge.style.background = '#dcfce7';
+                srcBadge.style.color      = '#166534';
+            } else {
+                srcBadge.textContent  = '📂 Curated — Akola/Buldhana APMC';
+                srcBadge.style.background = '#fef9c3';
+                srcBadge.style.color      = '#854d0e';
+            }
+
+            /* Rebuild chart */
+            const labels           = [...data.historicalDays, ...data.forecastDays];
+            const historicalData   = [...data.historicalPrices, ...Array(data.forecastDays.length).fill(null)];
+            const pivot            = data.historicalPrices.length - 1;
+            const forecastData     = [...Array(pivot).fill(null), data.historicalPrices[pivot], ...data.forecastPrices];
+            const upperConfidence  = [...Array(pivot).fill(null), data.historicalPrices[pivot], ...data.confidenceUpper];
+            const lowerConfidence  = [...Array(pivot).fill(null), data.historicalPrices[pivot], ...data.confidenceLower];
+
+            const ctx = document.getElementById('forecastChartCanvas').getContext('2d');
+            if (myForecastChart) myForecastChart.destroy();
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+            const histLabel = isLive
+                ? (curLang === 'hi' ? 'एगमार्कनेट ऐतिहासिक भाव (रियल-टाइम एपीआई)' : (curLang === 'mr' ? 'एगमार्कनेट ऐतिहासिक दर (रिअल-टाइम एपीआय)' : 'Agmarknet Historical (Real-Time API)'))
+                : (curLang === 'hi' ? 'एगमार्कनेट ऐतिहासिक भाव (अमरावती एपीएमसी)' : (curLang === 'mr' ? 'एगमार्कनेट ऐतिहासिक दर (अमरावती एपीएमसी)' : 'Agmarknet Historical (Curated Amravati)'));
+            const fcLabel = curLang === 'hi' ? 'एआई 14-दिवसीय भाव पूर्वानुमान (WLR)' : (curLang === 'mr' ? 'एआय १४-दिवसीय भाव अंदाज (WLR)' : 'AI 14-Day Price Forecast (WLR)');
+            const confHighLabel = curLang === 'hi' ? 'विश्वास सीमा (उच्चतम)' : (curLang === 'mr' ? 'विश्वास मर्यादा (उच्च)' : 'Confidence Interval (High)');
+            const confLowLabel = curLang === 'hi' ? 'विश्वास सीमा (न्यूनतम)' : (curLang === 'mr' ? 'विश्वास मर्यादा (कमी)' : 'Confidence Interval (Low)');
+            const yAxisTitle = curLang === 'hi' ? 'भाव (₹ प्रति किग्रा)' : (curLang === 'mr' ? 'दर (₹ प्रति किलो)' : 'Price (₹ per kg)');
+
+            const histColor = '#059669';
+            const fcColor = '#d97706';
+            const labelColor = '#0f172a';
+            const tickColor = '#334155';
+            const gridColor = '#f1f5f9';
+            const confColor = 'rgba(217, 119, 6, 0.14)';
+
+            myForecastChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: histLabel,
+                            data: historicalData,
+                            borderColor: histColor,
+                            backgroundColor: isDark ? 'rgba(52, 211, 153, 0.12)' : 'rgba(5, 150, 105, 0.08)',
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: false,
+                            pointRadius: 2
+                        },
+                        {
+                            label: fcLabel,
+                            data: forecastData,
+                            borderColor: fcColor,
+                            borderDash: [5, 5],
+                            borderWidth: 3,
+                            tension: 0.3,
+                            fill: false,
+                            pointRadius: 3
+                        },
+                        {
+                            label: confHighLabel,
+                            data: upperConfidence,
+                            borderColor: 'transparent',
+                            backgroundColor: confColor,
+                            pointRadius: 0,
+                            fill: '+1'
+                        },
+                        {
+                            label: confLowLabel,
+                            data: lowerConfidence,
+                            borderColor: 'transparent',
+                            backgroundColor: confColor,
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: labelColor,
+                                boxWidth: 14,
+                                font: { family: 'Outfit', size: 12, weight: '600' }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: isDark ? '#1e293b' : '#0f172a',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff',
+                            borderColor: isDark ? '#334155' : '#475569',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ₹${context.parsed.y ? context.parsed.y.toFixed(2) : '--'} / kg`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: yAxisTitle,
+                                color: labelColor,
+                                font: { weight: 'bold' }
+                            },
+                            ticks: { color: tickColor },
+                            grid: { color: gridColor }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { maxTicksLimit: 12, color: tickColor }
+                        }
+                    }
+                }
+            });
+        }
+
+        // ==========================================
+        // Voice Listing Simulation (PDF 2.2)
+        // ==========================================
+        function simulateVoiceListing() {
+            showToast('🎙️ Listening... (Speak now in Marathi, Hindi or English)', 'info');
+
+            setTimeout(() => {
+                const sampleTranscripts = [
+                    "५०० किलो टोमॅटो २५ रुपये दराने विकायचे आहेत",
+                    "List 500 kg Hybrid Tomatoes at 24 rupees per kg",
+                    "३०० किलो लाल कांदा २२ रुपये भाव"
+                ];
+                const selected = sampleTranscripts[0];
+
+                alert(`🎙️ VOICE AUDIO RECOGNIZED!\n\nTranscript: "${selected}"\n\nAI Entity Extraction:\n- Crop: Tomato (Nashik Hybrid)\n- Quantity: 500 kg\n- Expected Price: ₹24.00/kg\n- Quality: Grade A (Table Fresh)`);
+
+                openNewListingModal();
+                document.getElementById('listCrop').value = 'Tomato (Nashik Hybrid)';
+                document.getElementById('listQty').value = '500';
+                document.getElementById('listPrice').value = '24.00';
+                showToast('Form autofilled from Voice Input!', 'success');
+            }, 1200);
+        }
+
+        // ==========================================
+        // Produce Listing Modal & Grid
+        // ==========================================
+        function openNewListingModal() {
+            document.getElementById('newListingModal').classList.add('active');
+        }
+
+        function closeNewListingModal() {
+            document.getElementById('newListingModal').classList.remove('active');
+        }
+
+        function handleNewListingSubmit(e) {
+            e.preventDefault();
+            const isCropValid = validateField('listCrop', { required: true, minLength: 3, requiredMsg: 'Please enter crop name and variety' });
+            const isQtyValid = validateField('listQty', { required: true, min: 5, minMsg: 'Minimum quantity is 5 kg' });
+            const isPriceValid = validateField('listPrice', { required: true, min: 1, minMsg: 'Price must be at least ₹1/kg' });
+
+            if (!isCropValid || !isQtyValid || !isPriceValid) {
+                showToast('Please fix errors in the produce listing form', 'error');
+                return;
+            }
+
+            const crop = document.getElementById('listCrop').value;
+            const category = document.getElementById('listCat').value;
+            const quantityKg = parseFloat(document.getElementById('listQty').value);
+            const farmerPrice = parseFloat(document.getElementById('listPrice').value);
+            const harvestDate = document.getElementById('listHarvest').value;
+            const organic = document.getElementById('listOrganic').checked;
+
+            if (window.kisanStore) {
+                window.kisanStore.addListing({
+                    crop,
+                    category,
+                    quantityKg,
+                    farmerPrice,
+                    harvestDate,
+                    organic,
+                    description: `Direct farm lot listed by Ramesh Shinde. Harvested fresh: ${harvestDate}.`
+                });
+
+                closeNewListingModal();
+                renderFarmerListings();
+                showToast(`Produce "${crop}" successfully published!`, 'success');
+            }
+        }
+
+        function renderFarmerListings() {
+            if (!window.kisanStore) return;
+            const grid = document.getElementById('farmerListingsGrid');
+            const user = window.kisanStore.getCurrentUser();
+            const all = window.kisanStore.getListings();
+            let listings = all.filter(l => l.farmerId === (user ? user.id : 'usr_farmer_01'));
+            if (!listings.length) {
+                listings = all.filter(l => l.farmerId === 'usr_farmer_01' || l.farmerId === 'usr_farmer_02');
+            }
+
+            let html = '';
+            listings.forEach(item => {
+                html += `
+                    <div class="product-card">
+                        <div class="product-image-wrap">
+                            <img src="${item.photo}">
+                            <div class="freshness-tag">🌱 ${item.freshnessScore}</div>
+                        </div>
+                        <div class="product-body">
+                            <h4 style="font-size:16px; font-weight:700;">${item.crop}</h4>
+                            <div style="font-size:13px; color:#64748b;">Quantity Available: <strong>${item.quantityKg} kg</strong></div>
+                            
+                            <div style="background:#f8fafc; padding:8px 12px; border-radius:6px; border:1px solid var(--border); margin:6px 0;">
+                                <div style="font-size:12px; color:#64748b;">Farmer Realized Price:</div>
+                                <div style="font-size:20px; font-weight:800; color:#059669;">₹${item.farmerPrice.toFixed(2)}/kg</div>
+                            </div>
+
+                            <div style="font-size:11px; color:#475569;">
+                                Consumer Price on Portal: ₹${item.retailPrice.toFixed(2)}/kg (includes logistics & 3% fee)
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(grid);
+        }
+
+        // ==========================================
+        // Orders & Negotiation Table
+        // ==========================================
+        function renderFarmerOrders() {
+            if (!window.kisanStore) return;
+            const orders = window.kisanStore.getOrders();
+            const tbody = document.getElementById('farmerOrdersTable');
+
+            let html = '';
+            orders.forEach(ord => {
+                const statusBadge = ord.status === 'delivered' || ord.status === 'escrow_released'
+                    ? `<span class="status-badge status-released">Delivered • Escrow Released</span>`
+                    : ord.status === 'disputed'
+                    ? `<span class="status-badge status-disputed">Disputed</span>`
+                    : `<span class="status-badge status-held">${ord.status.toUpperCase()}</span>`;
+
+                html += `
+                    <tr>
+                        <td>
+                            <strong>${ord.id}</strong><br>
+                            <span style="font-size:12px; color:#64748b;">${ord.date}</span>
+                        </td>
+                        <td>
+                            <strong>${ord.buyerName}</strong><br>
+                            <span style="font-size:12px; color:#64748b;">${ord.deliveryAddress}</span>
+                        </td>
+                        <td>
+                            <strong>${ord.crop}</strong><br>
+                            <span>${ord.quantityKg} kg</span>
+                        </td>
+                        <td>
+                            <strong style="font-size:15px; color:#059669;">₹${ord.farmerPayout.toFixed(2)}</strong><br>
+                            <span style="font-size:11px; color:#64748b;">Total: ₹${ord.totalAmount.toFixed(2)}</span>
+                        </td>
+                        <td>${statusBadge}</td>
+                        <td>
+                            <span style="font-size:12px;">Ref: ${ord.trackingRef}</span><br>
+                            <span style="font-size:11px; color:#059669;">${ord.eta}</span>
+                        </td>
+                        <td>
+                            ${ord.status === 'escrow_held' ? `
+                                <button class="btn btn-sm btn-primary" onclick="acceptOrder('${ord.id}')">Accept Order</button>
+                                <button class="btn btn-sm btn-outline" style="margin-top:4px;" onclick="counterOffer('${ord.id}')">Counter</button>
+                            ` : `
+                                <span style="font-size:12px; color:#64748b;">Confirmed ✓</span>
+                            `}
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(tbody);
+        }
+
+        function acceptOrder(orderId) {
+            if (window.kisanStore) {
+                window.kisanStore.updateOrderStatus(orderId, 'pickup_scheduled');
+                renderFarmerOrders();
+                showToast(`Order ${orderId} accepted! Transporter assigned for pickup.`, 'success');
+            }
+        }
+
+        function counterOffer(orderId) {
+            const newPrice = prompt("Enter your counter-offer price (₹/kg):", "26.00");
+            if (newPrice) {
+                showToast(`Counter-offer of ₹${newPrice}/kg submitted to buyer!`, 'info');
+            }
+        }
+
+        // ==========================================
+        // Wallet & Escrow Table
+        // ==========================================
+        function renderWalletTable() {
+            if (!window.kisanStore) return;
+            const ledger = window.kisanStore.getEscrowLedger();
+            const tbody = document.getElementById('walletEscrowTable');
+
+            let heldTotal = 0;
+            let releasedTotal = 0;
+
+            let html = '';
+            ledger.forEach(item => {
+                if (item.status === 'held') heldTotal += item.farmerPayout;
+                if (item.status === 'released') releasedTotal += item.farmerPayout;
+
+                const badge = item.status === 'released'
+                    ? `<span class="status-badge status-released">Released to UPI</span>`
+                    : item.status === 'disputed'
+                    ? `<span class="status-badge status-disputed">Held in Dispute</span>`
+                    : `<span class="status-badge status-held">Held in Escrow (${item.slaHoursRemaining}h SLA)</span>`;
+
+                html += `
+                    <tr>
+                        <td><strong>${item.txnId}</strong></td>
+                        <td>${item.orderId}</td>
+                        <td>${item.date}</td>
+                        <td>${item.buyerName}</td>
+                        <td>₹${item.grossAmount.toFixed(2)}</td>
+                        <td><strong style="color:#059669;">₹${item.farmerPayout.toFixed(2)}</strong></td>
+                        <td>${badge}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline" onclick="downloadReceipt('${item.txnId}')">Receipt</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(tbody);
+            document.getElementById('walletHeld').innerText = `₹${heldTotal.toFixed(2)}`;
+            document.getElementById('walletSettled').innerText = `₹${releasedTotal.toFixed(2)}`;
+        }
+
+        function simulateUpiWithdrawal() {
+            alert("⚡ NPCI UPI PENNY-DROP VERIFICATION\n\nVPA: ramesh.shinde@oksbi\nAccount Name: Ramesh Balasaheb Shinde\nStatus: Active & Verified\n\nAll delivered escrow funds are auto-disbursed within 120 seconds of delivery OTP verification.");
+            showToast("UPI Payout channel verified and active!", "success");
+        }
+
+        function downloadReceipt(txnId) {
+            alert(`📄 KISANSETU TAX INVOICE & ESCROW RECEIPT\n\nTransaction ID: ${txnId}\nGovernment of India • DoCA SIH 2026 Compliant\nBeneficiary: Ramesh B. Shinde\nZero Middleman Deductions.\nStatus: Authenticated & Legally Binding.`);
+        }
+
+        // ==========================================
+        // APMC Mandi Rates Table (Amravati Division)
+        // ==========================================
+        function renderDashboardMandiTable() {
+            if (!window.kisanStore) return;
+            const mandiSel = document.getElementById('dashMandiFilterMandi');
+            const cropSel = document.getElementById('dashMandiFilterCrop');
+            const searchInput = document.getElementById('dashMandiSearchInput');
+            const tbody = document.getElementById('dashMandiRatesTableBody');
+            if (!tbody) return;
+
+            const mandiFilter = mandiSel ? mandiSel.value : 'all';
+            const cropFilter = cropSel ? cropSel.value : 'all';
+            const searchVal = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+            let records = window.kisanStore.getMandiPrices({ mandi: mandiFilter, commodity: cropFilter });
+
+            if (searchVal) {
+                records = records.filter(r => 
+                    r.commodity.toLowerCase().includes(searchVal) ||
+                    r.variety.toLowerCase().includes(searchVal) ||
+                    r.mandi.toLowerCase().includes(searchVal) ||
+                    r.displayDate.toLowerCase().includes(searchVal) ||
+                    r.date.includes(searchVal)
+                );
+            }
+
+            records.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            if (!records.length) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="10" style="text-align:center; padding:30px; color:#64748b;">
+                            No mandi records match your filter criteria.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            const cropKeyMap = {
+                'Tomato': 'tomato',
+                'Onion': 'onion',
+                'Potato': 'potato',
+                'Wheat': 'wheat',
+                'Soybean': 'soybean',
+                'Cauliflower': 'cauliflower',
+                'Red Chilli': 'chilli'
+            };
+
+            let html = '';
+            records.forEach(r => {
+                const trendIcon = r.trend === 'up' ? '▲' : (r.trend === 'down' ? '▼' : '▬');
+                const trendBg = r.trend === 'up' ? '#ecfdf5' : (r.trend === 'down' ? '#fef2f2' : '#f8fafc');
+                const trendColor = r.trend === 'up' ? '#059669' : (r.trend === 'down' ? '#dc2626' : '#64748b');
+                const cKey = cropKeyMap[r.commodity] || 'tomato';
+
+                html += `
+                    <tr>
+                        <td style="font-weight:700; white-space:nowrap;">${r.displayDate}</td>
+                        <td>
+                            <strong style="color:var(--primary-deep);">${r.mandi}</strong>
+                        </td>
+                        <td>
+                            <strong>${r.commodity}</strong>
+                            <span style="font-size:11px; color:#475569; display:block;">${r.variety}</span>
+                        </td>
+                        <td style="color:#64748b;">₹${r.minPrice.toFixed(2)}</td>
+                        <td style="color:#64748b;">₹${r.maxPrice.toFixed(2)}</td>
+                        <td class="mandi-modal-cell" style="font-weight:800; font-size:15px;">
+                            ₹${r.modalPrice.toFixed(2)}
+                        </td>
+                        <td style="font-weight:600;">₹${r.modalPriceQtl.toLocaleString()}</td>
+                        <td>${r.arrivalQtyQtl} qtl</td>
+                        <td>
+                            <span class="mandi-trend-pill trend-${r.trend}" style="font-weight:700; font-size:11px; padding:3px 8px; border-radius:10px; display:inline-flex; align-items:center; gap:4px;">
+                                ${trendIcon} ${r.change}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline btn-sm" onclick="viewCropForecast('${cKey}')" style="font-size:11px; padding:3px 8px; white-space:nowrap;">
+                                📈 AI Curve
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function viewCropForecast(cropKey) {
+            const sel = document.getElementById('forecastCropSelect');
+            if (sel) {
+                sel.value = cropKey;
+            }
+            const forecastBtn = document.querySelectorAll('.sidebar-link')[0];
+            switchTab('tabForecast', forecastBtn);
+            initForecastChart();
+        }
+
+        // Live theme change handler for charts and tables
+        window.addEventListener('kisansetuThemeChanged', () => {
+            if (typeof updateForecastChart === 'function') updateForecastChart();
+            if (typeof renderDashboardMandiTable === 'function') renderDashboardMandiTable();
+            if (typeof renderFarmerListings === 'function') renderFarmerListings();
+        });
+    </script>
+</body>
+</html>

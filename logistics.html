@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Logistics & CVRPTW Route Optimization | KisanSetu (SIH 2026 PS 26033)</title>
+    <link rel="stylesheet" href="css/style.css?v=2.4">
+    <link rel="stylesheet" href="style.css?v=2.4">
+    <!-- Leaflet.js CDN for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <!-- TOP GOVERNMENT BAR -->
+    <div class="gov-top-bar">
+        <div class="gov-emblem">
+            <span class="gov-flag"></span>
+            <span>Government of India • Ministry of Consumer Affairs (DoCA) • <strong>SIH 2026 Smart Logistics Hub</strong></span>
+        </div>
+        <div class="top-bar-right">
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="hi">हिन्दी</button>
+                <button class="lang-btn" data-lang="mr">मराठी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <a href="index.html" class="brand-logo">
+            <div class="brand-icon-box">🌾</div>
+            <div>
+                <h1 class="brand-title">KisanSetu</h1>
+                <p class="brand-tagline">CVRPTW Route Optimization Hub</p>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+            <a href="farmer-dashboard.html" class="nav-link">AI Forecast</a>
+            <a href="logistics.html" class="nav-link active">Smart Logistics</a>
+            <a href="admin-escrow.html" class="nav-link">Escrow Ledger</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn btn-primary btn-sm" onclick="runOptimization()">
+                ⚡ Consolidate & Optimize
+            </button>
+        </div>
+    </header>
+
+    <!-- LOGISTICS WORKSPACE -->
+    <main style="padding: 24px 6% 40px; max-width: 1440px; margin: 0 auto; width: 100%;">
+        
+        <!-- BREADCRUMBS NAVIGATION -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 16px;">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Smart Logistics & CVRPTW</li>
+            </ol>
+        </nav>
+
+        <div style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+                <div>
+                    <span class="section-badge">SIH 2026 PROBLEM STATEMENT 26033 • SECTIONS 8 & 9</span>
+                    <h2 style="font-size: 28px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">
+                        Capacitated Vehicle Routing Problem (CVRPTW) Engine
+                    </h2>
+                    <p style="font-size: 14px; color: var(--text-muted); max-width: 800px;">
+                        Batching farm pickups across the Nashik-Pune agricultural corridor into consolidated multi-drop delivery runs, cutting transport cost by 61% and carbon footprint by 68%.
+                    </p>
+                </div>
+
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn btn-outline" id="btnShowUnoptimized" onclick="showUnoptimizedRoutes()">
+                        ⚠️ View Unoptimized (6 Trips)
+                    </button>
+                    <button class="btn btn-primary" id="btnShowOptimized" onclick="runOptimization()">
+                        ✨ Optimize Route (1 Consolidated)
+                    </button>
+                    <button class="btn btn-accent" id="btnSimulateGps" onclick="startVehicleSimulation()">
+                        🚚 Track Live Vehicle GPS
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="logistics-grid">
+            <!-- LEAFLET MAP -->
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div id="logisticsMap"></div>
+                
+                <!-- Live Vehicle Status HUD -->
+                <div style="background: white; border-radius: 12px; border: 1px solid var(--border); padding: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 44px; height: 44px; border-radius: 10px; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 22px;">
+                            🚚
+                        </div>
+                        <div>
+                            <h4 style="font-size: 15px; font-weight: 700;">Vehicle: Tata Ace EV (MH-15-EG-4921)</h4>
+                            <div style="font-size: 12px; color: #64748b;">
+                                Driver: <strong>Santosh Jadhav</strong> • Chilled EV Payload: <strong>780 kg / 1,200 kg (65% capacity)</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <div style="text-align: right;">
+                            <div style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Current Live Status</div>
+                            <div id="liveRouteStatus" style="font-size: 14px; font-weight: 800; color: #059669;">
+                                In-Transit: Heading to Drop 1 (Baner)
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-primary" onclick="simulateDeliveryConfirmation()">
+                            ✓ Confirm Delivery & Release Escrow
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CVRPTW STATS & ROUTE TIMELINE PANEL -->
+            <div class="optimization-panel">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: var(--primary-deep);">Route Economics Audit</h3>
+                    <span id="optimizationBadge" style="background: #d1fae5; color: #065f46; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 10px;">
+                        OPTIMIZED CVRPTW
+                    </span>
+                </div>
+
+                <!-- Headline Comparison Stat Card (PDF Section 8.9 & 9.8) -->
+                <div class="cvrptw-stat-card" style="background: linear-gradient(135deg, #ecfdf5, #f0fdf4); border-color: #a7f3d0;">
+                    <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase;">
+                        HEADLINE SIH DEMO COMPARISON
+                    </div>
+                    <div style="font-size: 26px; font-weight: 800; color: #059669; margin: 4px 0;">
+                        61% Transport Savings
+                    </div>
+                    <p style="font-size: 12px; color: #047857;">
+                        Comparing 6 individual farmer trips vs. 1 consolidated multi-node milk-run corridor.
+                    </p>
+
+                    <div style="border-top: 1px dashed #a7f3d0; margin-top: 12px; padding-top: 10px;">
+                        <div class="cvrptw-compare-row">
+                            <span>Total Distance:</span>
+                            <span><s style="color:#ef4444;">184 km</s> → <strong style="color:#059669;">64 km (-65%)</strong></span>
+                        </div>
+                        <div class="cvrptw-compare-row">
+                            <span>Corridor Transport Cost:</span>
+                            <span><s style="color:#ef4444;">₹4,250</s> → <strong style="color:#059669;">₹1,680 (-61%)</strong></span>
+                        </div>
+                        <div class="cvrptw-compare-row">
+                            <span>Carbon Emissions:</span>
+                            <span><s style="color:#ef4444;">38.6 kg</s> → <strong style="color:#059669;">12.2 kg CO₂</strong></span>
+                        </div>
+                        <div class="cvrptw-compare-row">
+                            <span>Transit Fleet Required:</span>
+                            <span><s style="color:#ef4444;">6 Vehicles</s> → <strong style="color:#059669;">1 EV Chiller</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stop Sequence Timeline -->
+                <div>
+                    <h4 style="font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 12px;">
+                        Ordered Stop Sequence & ETAs
+                    </h4>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;" id="stopsTimeline">
+                        <!-- Populated dynamically via renderTimeline() -->
+                    </div>
+                </div>
+
+                <div style="background: #f8fafc; border-radius: 10px; padding: 12px; font-size: 12px; color: #64748b; border: 1px solid var(--border);">
+                    📍 <strong>Turn-by-Turn GPS API Integration:</strong> Deep-links directly to Google Maps / Mapbox mobile navigation for rural gig drivers.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer" style="padding: 30px 6%; margin-top: 40px;">
+        <div class="footer-bottom" style="border: none; padding: 0;">
+            <p>© 2026 KisanSetu Platform • SIH 2026 Problem Statement 26033</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/data-store.js?v=2.2"></script>
+    <script src="js/script.js?v=2.4"></script>
+    <script>
+        let map;
+        let markers = [];
+        let routePolyline = null;
+        let vehicleMarker = null;
+        let animInterval = null;
+        let isOptimized = true;
+
+        const NODES = [
+            { id: 'N0', name: 'Nashik Consolidation Hub (Depot)', lat: 20.0050, lon: 73.7900, type: 'depot', info: 'Departure Hub (6:00 AM)' },
+            { id: 'N1', name: 'Farm 1: Ramesh Shinde (Dindori)', lat: 20.1200, lon: 73.8400, type: 'pickup', info: '+250 kg Tomatoes (Fresh Cut)' },
+            { id: 'N2', name: 'Farm 2: Balwantrao Patil (Lasalgaon)', lat: 20.1480, lon: 74.0200, type: 'pickup', info: '+350 kg Red Onions' },
+            { id: 'N3', name: 'Farm 3: Kailash Deshmukh (Khed)', lat: 19.8200, lon: 73.9100, type: 'pickup', info: '+180 kg Jyoti Potatoes' },
+            { id: 'N4', name: 'Drop 1: Retail Cluster (Baner & Aundh)', lat: 18.5600, lon: 73.7800, type: 'drop', info: '-280 kg Fresh Packs' },
+            { id: 'N5', name: 'Drop 2: GreenGrocer Bulk DC (Pune)', lat: 18.5200, lon: 73.8567, type: 'drop', info: '-350 kg Bulk Onion Bags' },
+            { id: 'N6', name: 'Drop 3: Kalyani Nagar Society Cluster', lat: 18.5500, lon: 73.9000, type: 'drop', info: '-150 kg Mixed Produce' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            renderTimeline();
+            drawOptimizedRoute();
+            updateLogisticsHud();
+
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
+            if (typeof applyLanguage === 'function') {
+                applyLanguage(curLang);
+            }
+        });
+
+        document.addEventListener('kisanLanguageApplied', (e) => {
+            const lang = (e && e.detail && e.detail.lang) || (window.kisanStore ? window.kisanStore.getLanguage() : 'en');
+            renderTimeline();
+            updateLogisticsHud();
+            if (typeof translateDom === 'function') {
+                translateDom(document.querySelector('main'), lang);
+            }
+        });
+
+        function updateLogisticsHud() {
+            if (!window.kisanStore) return;
+            const user = window.kisanStore.getCurrentUser();
+            if (user && user.role === 'logistics') {
+                const titleEl = document.querySelector('.main-header .brand-tagline');
+                if (titleEl) titleEl.innerText = `Fleet Cockpit • Driver: ${user.name} (${user.vehicleType || 'Tata Ace EV'})`;
+            }
+        }
+
+        function initMap() {
+            // Center map around Maharashtra Agri Corridor
+            map = L.map('logisticsMap').setView([19.35, 73.85], 8);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors | KisanSetu CVRPTW'
+            }).addTo(map);
+
+            // Add Markers
+            NODES.forEach((node, index) => {
+                const isDepot = node.type === 'depot';
+                const isPickup = node.type === 'pickup';
+                
+                const iconColor = isDepot ? '#2563eb' : isPickup ? '#059669' : '#d97706';
+                const iconSymbol = isDepot ? '🏢' : isPickup ? '🌾' : '🛒';
+
+                const customIcon = L.divIcon({
+                    className: 'custom-map-pin',
+                    html: `
+                        <div style="background:${iconColor}; color:white; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; box-shadow:0 3px 8px rgba(0,0,0,0.3); border:2px solid white;">
+                            ${iconSymbol}
+                        </div>
+                    `,
+                    iconSize: [34, 34],
+                    iconAnchor: [17, 17]
+                });
+
+                const marker = L.marker([node.lat, node.lon], { icon: customIcon }).addTo(map);
+                marker.bindPopup(`
+                    <div style="font-family:Outfit,sans-serif; padding:4px;">
+                        <h4 style="margin:0; color:#0f172a; font-size:14px;">${node.name}</h4>
+                        <div style="font-size:12px; color:#059669; font-weight:700; margin-top:2px;">${node.info}</div>
+                        <div style="font-size:11px; color:#64748b; margin-top:2px;">Type: ${node.type.toUpperCase()}</div>
+                    </div>
+                `);
+                markers.push(marker);
+            });
+        }
+
+        function drawOptimizedRoute() {
+            if (routePolyline) map.removeLayer(routePolyline);
+
+            // Optimized CVRPTW stop order
+            const latlngs = NODES.map(n => [n.lat, n.lon]);
+            // loop back or return to hub
+            latlngs.push([NODES[0].lat, NODES[0].lon]);
+
+            routePolyline = L.polyline(latlngs, {
+                color: '#059669',
+                weight: 5,
+                opacity: 0.85,
+                dashArray: null
+            }).addTo(map);
+
+            map.fitBounds(routePolyline.getBounds(), { padding: [40, 40] });
+        }
+
+        function runOptimization() {
+            isOptimized = true;
+            document.getElementById('optimizationBadge').innerText = 'OPTIMIZED CVRPTW';
+            document.getElementById('optimizationBadge').style.background = '#d1fae5';
+            document.getElementById('optimizationBadge').style.color = '#065f46';
+
+            drawOptimizedRoute();
+            renderTimeline();
+            showToast('CVRPTW Algorithm computed single consolidated delivery corridor (-61% cost)', 'success');
+        }
+
+        function showUnoptimizedRoutes() {
+            isOptimized = false;
+            document.getElementById('optimizationBadge').innerText = 'UNOPTIMIZED (6 TRIPS)';
+            document.getElementById('optimizationBadge').style.background = '#fee2e2';
+            document.getElementById('optimizationBadge').style.color = '#991b1b';
+
+            if (routePolyline) map.removeLayer(routePolyline);
+
+            // Draw individual separate lines from pickups to drops
+            const group = [];
+            for (let i = 1; i <= 3; i++) {
+                const drop = NODES[i + 3];
+                const pickup = NODES[i];
+                const line = L.polyline([[pickup.lat, pickup.lon], [drop.lat, drop.lon]], {
+                    color: '#ef4444',
+                    weight: 3,
+                    dashArray: '5, 8'
+                }).addTo(map);
+                group.push(line);
+            }
+            routePolyline = L.featureGroup(group).addTo(map);
+            showToast('Displaying 6 independent uncoordinated trips (High fuel waste)', 'warning');
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('stopsTimeline');
+            let html = '';
+
+            NODES.forEach((n, idx) => {
+                const isDepot = n.type === 'depot';
+                const isPickup = n.type === 'pickup';
+                const dotColor = isDepot ? '#2563eb' : isPickup ? '#059669' : '#d97706';
+
+                html += `
+                    <div style="display:flex; align-items:flex-start; gap:12px; background:white; padding:10px 12px; border-radius:8px; border:1px solid var(--border);">
+                        <div style="width:10px; height:10px; border-radius:50%; background:${dotColor}; margin-top:5px; flex-shrink:0;"></div>
+                        <div style="flex:1;">
+                            <div style="font-weight:700; color:#1e293b;">Stop ${idx + 1}: ${n.name}</div>
+                            <div style="font-size:12px; color:#64748b;">${n.info}</div>
+                        </div>
+                        <span style="font-size:11px; font-weight:700; color:${dotColor};">${n.type.toUpperCase()}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(container);
+        }
+
+        function startVehicleSimulation() {
+            if (!isOptimized) {
+                runOptimization();
+            }
+
+            if (vehicleMarker) map.removeLayer(vehicleMarker);
+            if (animInterval) clearInterval(animInterval);
+
+            let step = 0;
+            const points = NODES.map(n => [n.lat, n.lon]);
+
+            const vehicleIcon = L.divIcon({
+                className: 'vehicle-marker',
+                html: `
+                    <div style="background:#ef4444; color:white; width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; box-shadow:0 0 15px rgba(239,68,68,0.8); border:2px solid white; animation:micPulse 1.5s infinite;">
+                        🚚
+                    </div>
+                `,
+                iconSize: [38, 38],
+                iconAnchor: [19, 19]
+            });
+
+            vehicleMarker = L.marker(points[0], { icon: vehicleIcon }).addTo(map);
+            showToast('Live Vehicle GPS simulation started! Following CVRPTW path.', 'info');
+
+            animInterval = setInterval(() => {
+                step = (step + 1) % points.length;
+                vehicleMarker.setLatLng(points[step]);
+                const currNode = NODES[step];
+                document.getElementById('liveRouteStatus').innerText = `Arrived at Stop ${step + 1}: ${currNode.name}`;
+                vehicleMarker.bindPopup(`<strong>🚚 Current GPS Ping</strong><br>${currNode.name}`).openPopup();
+
+                if (step === points.length - 1) {
+                    clearInterval(animInterval);
+                    document.getElementById('liveRouteStatus').innerText = 'Route Completed • All Deliveries Done';
+                    showToast('Vehicle completed corridor route! Ready for delivery verification.', 'success');
+                }
+            }, 2500);
+        }
+
+        function simulateDeliveryConfirmation() {
+            alert(`📦 DELIVERY CONFIRMATION OTP VERIFIED!\n\nBuyer: Sneha Kulkarni\nOTP Entered: 8941 (Valid)\nDelivered by: Santosh Jadhav\n\n🛡️ ESCROW RELEASE WEBHOOK TRIGGERED:\nFunds (₹240.00) released from Nodal Escrow directly to Farmer Ramesh Shinde's UPI account.`);
+            
+            if (window.kisanStore) {
+                window.kisanStore.releaseEscrow('ORD-8821');
+            }
+
+            document.getElementById('liveRouteStatus').innerText = 'Delivered & Escrow Funds Released ✓';
+            showToast('Escrow Funds auto-released to Farmer UPI!', 'success');
+        }
+    </script>
+</body>
+</html>

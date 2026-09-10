@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | KisanSetu (SIH 2026 PS 26033)</title>
+    <link rel="stylesheet" href="css/style.css?v=2.4">
+    <link rel="stylesheet" href="style.css?v=2.4">
+</head>
+<body>
+
+    <!-- TOP GOVERNMENT BAR -->
+    <div class="gov-top-bar">
+        <div class="gov-emblem">
+            <span class="gov-flag"></span>
+            <span>Government of India • Ministry of Consumer Affairs, Food & Public Distribution (DoCA)</span>
+        </div>
+        <div class="top-bar-right">
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="hi">हिन्दी</button>
+                <button class="lang-btn" data-lang="mr">मराठी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <a href="index.html" class="brand-logo">
+            <div class="brand-icon-box">🌾</div>
+            <div>
+                <h1 class="brand-title">KisanSetu</h1>
+                <p class="brand-tagline">Direct Farm-to-Fork Digital Bridge</p>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+            <a href="farmer-dashboard.html" class="nav-link">AI Forecast</a>
+            <a href="logistics.html" class="nav-link">Logistics Map</a>
+            <a href="admin-escrow.html" class="nav-link">Escrow Ledger</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="register.html" class="btn btn-primary btn-sm">Register New Account</a>
+        </div>
+    </header>
+
+    <!-- LOGIN SECTION -->
+    <section class="login-section" style="padding: 30px 20px 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 75vh;">
+        <!-- BREADCRUMBS NAVIGATION -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 20px; width: 100%; max-width: 480px;">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Login</li>
+            </ol>
+        </nav>
+
+        <div class="login-container" style="background: white; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-lg); width: 100%; max-width: 480px; padding: 36px;">
+            
+            <div class="login-heading" style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 42px; margin-bottom: 8px;">🔐</div>
+                <h2 style="font-size: 26px; font-weight: 800; color: var(--primary-deep);">Login to KisanSetu</h2>
+                <p style="font-size: 14px; color: var(--text-muted);">Choose your account role to continue</p>
+            </div>
+
+            <!-- 1-Click Quick Demo Login Box for Hackathon Evaluators -->
+            <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 20px;">
+                <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                    <span>⚡ 1-CLICK QUICK DEMO LOGIN (SIH 2026)</span>
+                    <span style="color: #059669; font-size: 10px;">Instant Auth</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 6px;">
+                    <button type="button" class="btn btn-sm btn-outline" style="font-size: 11px; padding: 6px; text-align: left;" onclick="quickDemoLogin('farmer')">
+                        👨‍🌾 Farmer (Ramesh)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline" style="font-size: 11px; padding: 6px; text-align: left;" onclick="quickDemoLogin('consumer')">
+                        🛒 Consumer (Sneha)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline" style="font-size: 11px; padding: 6px; text-align: left;" onclick="quickDemoLogin('bulk')">
+                        🏢 Bulk (GreenGrocer)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline" style="font-size: 11px; padding: 6px; text-align: left;" onclick="quickDemoLogin('logistics')">
+                        🚚 Transporter (Santosh)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline" style="font-size: 11px; padding: 6px; text-align: left;" onclick="quickDemoLogin('admin')">
+                        ⚖️ Admin (DoCA Officer)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Role Selector Tabs -->
+            <div style="margin-bottom: 20px;">
+                <label style="font-size: 12px; font-weight: 700; color: #475569; display: block; margin-bottom: 8px;">SELECT ACCOUNT TYPE</label>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(85px, 1fr)); gap: 6px;" id="roleSelector">
+                    <button type="button" class="pill-btn active" data-role="farmer" style="text-align:center; padding:8px 4px; font-size:12px;" onclick="setLoginRole('farmer', this)">
+                        👨‍🌾 Farmer
+                    </button>
+                    <button type="button" class="pill-btn" data-role="consumer" style="text-align:center; padding:8px 4px; font-size:12px;" onclick="setLoginRole('consumer', this)">
+                        🛒 Consumer
+                    </button>
+                    <button type="button" class="pill-btn" data-role="bulk" style="text-align:center; padding:8px 4px; font-size:12px;" onclick="setLoginRole('bulk', this)">
+                        🏢 Bulk
+                    </button>
+                    <button type="button" class="pill-btn" data-role="logistics" style="text-align:center; padding:8px 4px; font-size:12px;" onclick="setLoginRole('logistics', this)">
+                        🚚 Logistics
+                    </button>
+                    <button type="button" class="pill-btn" data-role="admin" style="text-align:center; padding:8px 4px; font-size:12px;" onclick="setLoginRole('admin', this)">
+                        ⚖️ Admin
+                    </button>
+                </div>
+            </div>
+
+            <!-- Auth Mode Switcher (Password vs Instant OTP) -->
+            <div style="display: flex; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
+                <button type="button" id="tabOtp" onclick="setAuthMethod('otp')" style="flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid var(--primary); font-weight: 700; color: var(--primary); cursor: pointer;">
+                    📲 Mobile OTP (Fast)
+                </button>
+                <button type="button" id="tabPass" onclick="setAuthMethod('password')" style="flex: 1; padding: 10px; background: none; border: none; border-bottom: 2px solid transparent; font-weight: 600; color: var(--text-muted); cursor: pointer;">
+                    🔑 Password
+                </button>
+            </div>
+
+            <form id="loginForm" onsubmit="handleLoginSubmit(event)" novalidate style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="form-group">
+                    <label for="mobileInput" class="form-label">
+                        Registered Mobile Number <span class="required-indicator" aria-hidden="true">*</span>
+                    </label>
+                    <div style="display: flex; gap: 8px;">
+                        <span style="background: #f1f5f9; border: 1px solid var(--border); padding: 10px 12px; border-radius: 8px; font-weight: 600; font-size: 14px; display: flex; align-items: center;">+91</span>
+                        <input type="tel" id="mobileInput" class="form-input" value="9822014523" maxlength="10" required placeholder="Enter 10-digit mobile number" style="flex: 1;" onblur="validateField('mobileInput', { required: true, pattern: /^[6-9]\d{9}$/, patternMsg: 'Please enter a valid 10-digit Indian mobile number' })" aria-required="true">
+                    </div>
+                    <div class="form-error" id="mobileInput-error" role="alert" style="display:none;"></div>
+                </div>
+
+                <!-- OTP Field Section -->
+                <div id="otpSection" class="form-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <label for="otpInput" class="form-label" style="margin-bottom:0;">
+                            6-Digit OTP <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <button type="button" id="sendOtpBtn" onclick="simulateSendOtp()" style="background: none; border: none; color: var(--primary); font-size: 12px; font-weight: 700; cursor: pointer;">
+                            Send OTP 📩
+                        </button>
+                    </div>
+                    <input type="text" id="otpInput" class="form-input" maxlength="6" value="123456" placeholder="Enter 6-digit OTP (demo: 123456)" style="width: 100%; letter-spacing: 2px;" onblur="if(authMethod==='otp') validateField('otpInput', { required: true, pattern: /^\d{6}$/, patternMsg: 'Please enter the 6-digit OTP' })">
+                    <div class="form-error" id="otpInput-error" role="alert" style="display:none;"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 6px; font-size: 12px;">
+                        <span id="otpTimer" style="color: var(--text-muted);">Demo OTP prefilled (123456)</span>
+                        <a href="javascript:void(0)" onclick="autofillDemoOtp()" style="color: #2563eb; font-weight: 600; text-decoration: none;">⚡ Autofill Demo OTP</a>
+                    </div>
+                </div>
+
+                <!-- Password Field Section (Initially Hidden) -->
+                <div id="passwordSection" class="form-group" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <label for="passwordInput" class="form-label" style="margin-bottom:0;">
+                            Password <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <a href="#" style="font-size: 12px; color: var(--primary); text-decoration: none;">Forgot?</a>
+                    </div>
+                    <input type="password" id="passwordInput" class="form-input" placeholder="Enter password (any demo password)" value="password123" style="width: 100%;" onblur="if(authMethod==='password') validateField('passwordInput', { required: true, minLength: 6, minLengthMsg: 'Password must be at least 6 characters' })">
+                    <div class="form-error" id="passwordInput-error" role="alert" style="display:none;"></div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #475569;">
+                    <input type="checkbox" id="rememberMe" checked>
+                    <label for="rememberMe">Remember this browser session</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 13px; font-size: 16px;">
+                    Verify & Login Securely →
+                </button>
+            </form>
+
+            <div style="text-align: center; margin-top: 20px; font-size: 14px; color: var(--text-muted);">
+                New to KisanSetu? <a href="register.html" style="color: var(--primary); font-weight: 700; text-decoration: none;">Create Verified Account</a>
+            </div>
+
+            <div style="background: #f8fafc; border-radius: 10px; padding: 12px; margin-top: 20px; font-size: 12px; color: #64748b; text-align: center; border: 1px solid var(--border);">
+                🔒 SIH 2026 Secured • Protected by DoCA Escrow Protocols
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer" style="padding: 30px 6%;">
+        <div class="footer-bottom" style="border: none; padding: 0;">
+            <p>© 2026 KisanSetu Platform • SIH 2026 Problem Statement 26033</p>
+        </div>
+    </footer>
+
+    <script src="js/data-store.js"></script>
+    <script src="js/script.js?v=2.4"></script>
+    <script>
+        let currentRole = 'farmer';
+        let authMethod = 'otp';
+
+        const ROLE_PHONES = {
+            farmer: '9822014523',
+            consumer: '9823419082',
+            bulk: '9890123456',
+            logistics: '9823671234',
+            admin: '9800012345'
+        };
+
+        function setLoginRole(role, btn) {
+            currentRole = role;
+            document.querySelectorAll('#roleSelector .pill-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            if (ROLE_PHONES[role]) {
+                document.getElementById('mobileInput').value = ROLE_PHONES[role];
+            }
+        }
+
+        function quickDemoLogin(roleKey) {
+            if (window.kisanStore) {
+                window.kisanStore.switchUserRole(roleKey);
+                const user = window.kisanStore.getCurrentUser();
+                showToast(`Authenticated as ${user.roleBadge}! Redirecting...`, 'success');
+                setTimeout(() => {
+                    window.location.href = user.primaryUrl || 'index.html';
+                }, 400);
+            }
+        }
+
+        function setAuthMethod(method) {
+            authMethod = method;
+            const tabOtp = document.getElementById('tabOtp');
+            const tabPass = document.getElementById('tabPass');
+            const otpSec = document.getElementById('otpSection');
+            const passSec = document.getElementById('passwordSection');
+
+            if (method === 'otp') {
+                tabOtp.style.borderBottom = '2px solid var(--primary)';
+                tabOtp.style.color = 'var(--primary)';
+                tabPass.style.borderBottom = '2px solid transparent';
+                tabPass.style.color = 'var(--text-muted)';
+                otpSec.style.display = 'block';
+                passSec.style.display = 'none';
+            } else {
+                tabPass.style.borderBottom = '2px solid var(--primary)';
+                tabPass.style.color = 'var(--primary)';
+                tabOtp.style.borderBottom = '2px solid transparent';
+                tabOtp.style.color = 'var(--text-muted)';
+                otpSec.style.display = 'none';
+                passSec.style.display = 'block';
+            }
+        }
+
+        function simulateSendOtp() {
+            const mobile = document.getElementById('mobileInput').value;
+            if (mobile.length !== 10) {
+                showToast('Please enter a valid 10-digit mobile number', 'error');
+                return;
+            }
+            showToast('OTP sent successfully to +91 ' + mobile + '! (Demo: 123456)', 'success');
+            document.getElementById('otpTimer').innerText = 'OTP active (valid for 5 mins)';
+        }
+
+        function autofillDemoOtp() {
+            document.getElementById('otpInput').value = '123456';
+            showToast('Demo OTP 123456 autofilled!', 'success');
+        }
+
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const isMobileValid = validateField('mobileInput', { required: true, pattern: /^[6-9]\d{9}$/, patternMsg: 'Please enter a valid 10-digit Indian mobile number' });
+            if (!isMobileValid) {
+                showToast('Please enter a valid 10-digit mobile number', 'error');
+                return;
+            }
+
+            if (authMethod === 'otp') {
+                const isOtpValid = validateField('otpInput', { required: true, pattern: /^\d{6}$/, patternMsg: 'Please enter the 6-digit OTP' });
+                if (!isOtpValid) {
+                    showToast('Please enter the 6-digit OTP (demo: 123456)', 'error');
+                    return;
+                }
+            } else {
+                const isPassValid = validateField('passwordInput', { required: true, minLength: 6, minLengthMsg: 'Password must be at least 6 characters' });
+                if (!isPassValid) {
+                    showToast('Please enter your account password', 'error');
+                    return;
+                }
+            }
+
+            const mobile = document.getElementById('mobileInput').value;
+            if (window.kisanStore) {
+                window.kisanStore.switchUserRole(currentRole);
+                const user = window.kisanStore.getCurrentUser();
+                user.phone = mobile;
+                window.kisanStore.setCurrentUser(user);
+
+                showToast(`Welcome back! Logged in as ${user.roleBadge}`, 'success');
+
+                setTimeout(() => {
+                    window.location.href = user.primaryUrl || 'index.html';
+                }, 600);
+            }
+        }
+    </script>
+</body>
+</html>

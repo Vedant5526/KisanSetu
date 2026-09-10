@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Marketplace | KisanSetu (SIH 2026 PS 26033)</title>
+    <link rel="stylesheet" href="css/style.css?v=2.4">
+    <link rel="stylesheet" href="style.css?v=2.4">
+</head>
+<body>
+
+    <!-- TOP GOVERNMENT EMBLEM BAR -->
+    <div class="gov-top-bar">
+        <div class="gov-emblem">
+            <span class="gov-flag"></span>
+            <span>Government of India • Ministry of Consumer Affairs, Food & Public Distribution (DoCA)</span>
+        </div>
+        <div class="top-bar-right">
+            <span style="font-size: 11px; opacity: 0.85;">Escrow Protection SLA Active</span>
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="hi">हिन्दी</button>
+                <button class="lang-btn" data-lang="mr">मराठी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MANDI TICKER -->
+    <div class="mandi-ticker-bar">
+        <div class="ticker-label">LIVE AGMARKNET FEED</div>
+        <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <a href="index.html" class="brand-logo">
+            <div class="brand-icon-box">🌾</div>
+            <div>
+                <h1 class="brand-title">KisanSetu</h1>
+                <p class="brand-tagline">Direct Farm-to-Fork Digital Bridge</p>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="marketplace.html" class="nav-link active">Marketplace</a>
+            <a href="farmer-dashboard.html" class="nav-link">AI Forecast</a>
+            <a href="logistics.html" class="nav-link">Smart Logistics</a>
+            <a href="admin-escrow.html" class="nav-link">Escrow Ledger</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="cart-indicator" onclick="openCartDrawer()">
+                🛒 <span>Cart</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+            <a href="farmer-dashboard.html" class="btn btn-secondary btn-sm">👨‍🌾 Farmer Dashboard</a>
+        </div>
+    </header>
+
+    <!-- MARKETPLACE HERO BANNER -->
+    <main class="marketplace-container">
+        <!-- BREADCRUMBS NAVIGATION -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 16px;">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Fresh Marketplace</li>
+            </ol>
+        </nav>
+
+        <div class="market-header-banner">
+            <div>
+                <span style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">
+                    Verified Direct Sourcing • SIH 2026
+                </span>
+                <h2 style="font-size: 28px; font-weight: 800; margin: 8px 0 4px;">Fresh Agricultural Produce</h2>
+                <p style="font-size: 14px; opacity: 0.9;">100% of produce delivered directly from verified farm gates within 24-48 hours of harvest.</p>
+            </div>
+
+            <!-- Mode Switcher: Retail vs Wholesale Bulk vs APMC Mandi Market Prices -->
+            <div class="market-mode-toggle">
+                <button class="mode-btn active" id="btnModeRetail" onclick="switchMarketMode('retail')">
+                    🥗 Retail Consumers
+                </button>
+                <button class="mode-btn" id="btnModeBulk" onclick="switchMarketMode('bulk')">
+                    🏢 Bulk Wholesale & RFQ
+                </button>
+                <button class="mode-btn" id="btnModeMandi" onclick="switchMarketMode('mandi')">
+                    🏛️ APMC Mandi Market Prices (Akola & Buldhana)
+                </button>
+            </div>
+        </div>
+
+        <!-- FILTERS & SEARCH TOOLBAR -->
+        <div class="filters-bar">
+            <div class="search-input-wrap" style="position: relative;">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search crops, farmers, districts (e.g. Tomato, Nashik, Organic)..." oninput="applyFilters()" aria-label="Search crops, farmers, districts" autocomplete="off">
+            </div>
+
+            <div class="filter-pills">
+                <button class="pill-btn active" data-cat="all" onclick="filterCategory('all', this)">All Crops</button>
+                <button class="pill-btn" data-cat="veg" onclick="filterCategory('veg', this)">Vegetables</button>
+                <button class="pill-btn" data-cat="fruits" onclick="filterCategory('fruits', this)">Fruits</button>
+                <button class="pill-btn" data-cat="grains" onclick="filterCategory('grains', this)">Grains & Pulses</button>
+                <button class="pill-btn" data-cat="organic" onclick="filterCategory('organic', this)">🌿 100% Organic</button>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: center; margin-left: auto; flex-wrap: wrap;">
+                <select id="proximityFilter" onchange="applyFilters()" style="padding: 8px 12px; border-radius: 8px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; outline: none; background: white;">
+                    <option value="all">📍 Radius: All Distances</option>
+                    <option value="25">📍 Within 25 km (Local Hub)</option>
+                    <option value="50">📍 Within 50 km (Regional)</option>
+                </select>
+
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #334155; cursor: pointer;">
+                    <input type="checkbox" id="verifiedOnly" onchange="applyFilters()" checked>
+                    <span>eKYC Verified Only</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- BULK RFQ ACTION BAR (Visible in Bulk Mode) -->
+        <div id="bulkRfqBar" style="display: none; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; margin-bottom: 26px; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div>
+                <span style="background: #2563eb; color: white; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px;">COMMERCIAL BUYER SPECIAL</span>
+                <h3 style="font-size: 18px; color: #1e40af; margin-top: 4px;">Need Large Volumes? Post a Request for Quote (RFQ)</h3>
+                <p style="font-size: 13px; color: #3b82f6;">Farmers & FPOs will directly bid competitive rates to fulfill your commercial requirement.</p>
+            </div>
+            <button class="btn btn-accent" onclick="openNewRfqModal()">
+                📝 Post New RFQ Requirement
+            </button>
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Populated dynamically via renderProducts() -->
+        </div>
+
+        <!-- APMC MANDI MARKET PRICES SECTION (Visible in Mandi Mode) -->
+        <div id="mandiRatesSection" style="display: none; margin-top: 10px;">
+            <!-- Mandi Stats Banner -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                <div style="background: white; border-radius: 12px; padding: 18px; border: 1px solid var(--border); border-top: 4px solid #059669;">
+                    <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">MONITORED TERMINALS</div>
+                    <div style="font-size: 24px; font-weight: 800; color: #064e3b; margin-top: 4px;">Akola & Buldhana APMCs</div>
+                    <div style="font-size: 12px; color: #059669; margin-top: 2px;">Amravati Division, Maharashtra</div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 18px; border: 1px solid var(--border); border-top: 4px solid #d97706;">
+                    <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">HISTORICAL DATASET</div>
+                    <div style="font-size: 24px; font-weight: 800; color: #b45309; margin-top: 4px;">60 Days (217 Records)</div>
+                    <div style="font-size: 12px; color: #d97706; margin-top: 2px;">10 Jul 2026 – 09 Sep 2026 Daily Rates</div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 18px; border: 1px solid var(--border); border-top: 4px solid #2563eb;">
+                    <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">DATA SOURCE & INTEGRATION</div>
+                    <div style="font-size: 24px; font-weight: 800; color: #1e40af; margin-top: 4px;">Agmarknet Live API</div>
+                    <div style="font-size: 12px; color: #2563eb; margin-top: 2px;">data.gov.in (Resource 9ef84268)</div>
+                </div>
+                <div style="background: white; border-radius: 12px; padding: 18px; border: 1px solid var(--border); border-top: 4px solid #7c3aed;">
+                    <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase;">TOP GAINERS (60D)</div>
+                    <div style="font-size: 24px; font-weight: 800; color: #5b21b6; margin-top: 4px;">Tomato (+93%) • Onion (+94%)</div>
+                    <div style="font-size: 12px; color: #7c3aed; margin-top: 2px;">Festival & Kharif Season Spike</div>
+                </div>
+            </div>
+
+            <!-- Mandi Filter Toolbar -->
+            <div style="background: white; border-radius: 12px; border: 1px solid var(--border); padding: 16px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;">
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <label style="font-size: 13px; font-weight: 700; color: #334155;">📍 Select APMC Mandi:</label>
+                    <select id="mandiFilterMandi" onchange="renderMandiTable()" style="padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-weight: 700; font-size: 13px; background: white; outline: none;">
+                        <option value="all">All Mandis (Akola & Buldhana)</option>
+                        <option value="Akola APMC">Akola APMC (Amravati)</option>
+                        <option value="Buldhana APMC">Buldhana APMC (Amravati)</option>
+                    </select>
+
+                    <label style="font-size: 13px; font-weight: 700; color: #334155; margin-left: 6px;">🌾 Commodity:</label>
+                    <select id="mandiFilterCrop" onchange="renderMandiTable()" style="padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-weight: 700; font-size: 13px; background: white; outline: none;">
+                        <option value="all">All Commodities (7 Crops)</option>
+                        <option value="Tomato">Tomato (Hybrid)</option>
+                        <option value="Onion">Onion (Red Pungent Kharif)</option>
+                        <option value="Potato">Potato (Jyoti)</option>
+                        <option value="Wheat">Wheat (Sharbati)</option>
+                        <option value="Soybean">Soybean (Yellow Gr. A)</option>
+                        <option value="Cauliflower">Cauliflower (Snowball)</option>
+                        <option value="Red Chilli">Red Chilli (Byadagi Dry)</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <input type="text" id="mandiSearchInput" placeholder="Filter by date, crop..." oninput="renderMandiTable()" style="padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; width: 220px;">
+                    <button class="btn btn-outline btn-sm" onclick="resetMandiFilters()" style="padding: 8px 12px; font-size: 12px;">Reset</button>
+                </div>
+            </div>
+
+            <!-- Mandi Rates Table -->
+            <div class="custom-table-wrap" style="background: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+                <table class="custom-table" style="margin: 0;">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>APMC Mandi & District</th>
+                            <th>Commodity & Variety</th>
+                            <th>Min (₹/kg)</th>
+                            <th>Max (₹/kg)</th>
+                            <th style="background: #f0fdf4; color: #065f46;">Modal Price (₹/kg)</th>
+                            <th>Modal (₹/Quintal)</th>
+                            <th>Arrivals (Qtl)</th>
+                            <th>24h Trend</th>
+                            <th>AI Forecast</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mandiRatesTableBody">
+                        <!-- Populated dynamically via renderMandiTable() -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- OPEN RFQ LIST (Visible in Bulk Mode) -->
+        <div id="bulkRfqSection" style="display: none; margin-top: 40px;">
+            <div class="section-head" style="text-align: left; margin-bottom: 20px;">
+                <span class="section-badge">REVERSE AUCTION SYSTEM</span>
+                <h2>Active Bulk Buyer RFQs & Farmer Quotes</h2>
+                <p>Commercial requirements currently receiving competitive farm bids.</p>
+            </div>
+            <div class="custom-table-wrap">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>RFQ ID</th>
+                            <th>Buyer Organization</th>
+                            <th>Crop Required</th>
+                            <th>Quantity</th>
+                            <th>Price Ceiling</th>
+                            <th>Farmer Bids Received</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rfqTableBody">
+                        <!-- Populated via renderRFQs() -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- CART & ESCROW CHECKOUT DRAWER -->
+    <div class="modal-overlay" id="cartDrawerOverlay">
+        <div class="modal-box" style="max-width: 580px;">
+            <button class="modal-close-btn" onclick="closeCartDrawer()">✕</button>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="background: #d1fae5; color: #065f46; font-weight: 700; font-size: 11px; padding: 3px 8px; border-radius: 12px;">ESCROW PROTECTED CART</span>
+            </div>
+            <h3 class="modal-title">Your Order Summary</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Funds are held in secure escrow nodal account and only released to farmers after successful delivery confirmation.
+            </p>
+
+            <div id="cartItemsList" style="display: flex; flex-direction: column; gap: 12px; max-height: 220px; overflow-y: auto; margin-bottom: 16px;">
+                <!-- Cart items rendered here -->
+            </div>
+
+            <!-- Itemized Escrow Summary -->
+            <div class="itemized-card" id="cartSummaryBox">
+                <div class="itemized-row">
+                    <span>Direct Farmer Payout (Gross):</span>
+                    <strong id="cartFarmerTotal">₹0.00</strong>
+                </div>
+                <div class="itemized-row">
+                    <span>Consolidated Route Logistics:</span>
+                    <strong id="cartLogisticsTotal">₹0.00</strong>
+                </div>
+                <div class="itemized-row">
+                    <span>Platform Fee (3.5%):</span>
+                    <strong id="cartPlatformTotal">₹0.00</strong>
+                </div>
+                <div class="itemized-row highlight">
+                    <span>Total Payable (Held in Escrow):</span>
+                    <span id="cartGrandTotal">₹0.00</span>
+                </div>
+            </div>
+
+            <!-- Checkout Form -->
+            <form id="checkoutForm" onsubmit="handleCheckout(event)" novalidate style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                        <label for="chkName" class="form-label">Delivery Name <span class="required-indicator" aria-hidden="true">*</span></label>
+                        <input type="text" id="chkName" class="form-input" required value="Sneha Kulkarni" onblur="validateField('chkName', { required: true, minLength: 3, requiredMsg: 'Please enter delivery recipient name' })" aria-required="true">
+                        <div class="form-error" id="chkName-error" role="alert" style="display:none;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="chkPhone" class="form-label">Phone (for OTP) <span class="required-indicator" aria-hidden="true">*</span></label>
+                        <input type="tel" id="chkPhone" class="form-input" required value="9823419082" maxlength="10" onblur="validateField('chkPhone', { required: true, pattern: /^[6-9]\d{9}$/, patternMsg: 'Please enter a valid 10-digit mobile number' })" aria-required="true">
+                        <div class="form-error" id="chkPhone-error" role="alert" style="display:none;"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="chkAddress" class="form-label">Delivery Address <span class="required-indicator" aria-hidden="true">*</span></label>
+                    <input type="text" id="chkAddress" class="form-input" required value="Flat 402, Green Meadows, Baner, Pune - 411045" onblur="validateField('chkAddress', { required: true, minLength: 8, requiredMsg: 'Please enter a complete delivery address' })" aria-required="true">
+                    <div class="form-error" id="chkAddress-error" role="alert" style="display:none;"></div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div class="form-group">
+                        <label for="chkSlot" class="form-label">Preferred Slot</label>
+                        <select id="chkSlot" class="form-select" style="width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; background: white;">
+                            <option>Early Morning (7 AM - 10 AM)</option>
+                            <option>Afternoon (1 PM - 4 PM)</option>
+                            <option>Evening (5 PM - 8 PM)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="chkMethod" class="form-label">Payment Mode</label>
+                        <select id="chkMethod" class="form-select" style="width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; background: white;">
+                            <option value="UPI">UPI (Instant Escrow Hold)</option>
+                            <option value="NetBanking">Net Banking / Cards</option>
+                            <option value="COD">Cash on Delivery Reconciliation</option>
+                            <option value="Invoicing">Commercial Net-30 Invoicing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 13px; font-size: 15px; margin-top: 6px;">
+                    🔐 Authorize & Lock Payment in Escrow →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- POST RFQ MODAL -->
+    <div class="modal-overlay" id="newRfqModal">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeNewRfqModal()">✕</button>
+            <h3 class="modal-title">Post Bulk Requirement (RFQ)</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Direct reverse auction with verified farmers & FPOs for commercial quantities.
+            </p>
+            <form onsubmit="handlePostRfq(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                    <label style="font-size: 13px; font-weight: 600;">Crop Type</label>
+                    <select id="rfqCrop" style="width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 6px;">
+                        <option>Tomato (Hybrid Table)</option>
+                        <option>Onion (Lasalgaon Red)</option>
+                        <option>Potato (Jyoti Fresh)</option>
+                        <option>Sharbati Wheat</option>
+                        <option>Nagpur Mandarin Oranges</option>
+                    </select>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label style="font-size: 13px; font-weight: 600;">Quantity (kg)</label>
+                        <input type="number" id="rfqQty" min="100" value="1500" required style="width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                    <div>
+                        <label style="font-size: 13px; font-weight: 600;">Max Ceiling Price (₹/kg)</label>
+                        <input type="number" id="rfqCeiling" step="0.5" value="23.50" required style="width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 6px;">
+                    </div>
+                </div>
+                <div>
+                    <label style="font-size: 13px; font-weight: 600;">Delivery Destination Hub</label>
+                    <input type="text" id="rfqDest" value="Central DC, Viman Nagar, Pune" required style="width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 6px;">
+                </div>
+                <div>
+                    <label style="font-size: 13px; font-weight: 600;">Delivery Schedule</label>
+                    <select id="rfqRecur" style="width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 6px;">
+                        <option>One-time purchase</option>
+                        <option>Weekly recurring standing contract</option>
+                        <option>Bi-weekly recurring standing contract</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-accent" style="width: 100%; padding: 12px; margin-top: 8px;">
+                    Publish RFQ to Registered FPOs & Farmers →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                    <span style="font-size:28px;">🌾</span>
+                    <h3 style="color:white; font-size:22px; font-weight:800;">KisanSetu</h3>
+                </div>
+                <p style="font-size:14px; color:#cbd5e1; line-height:1.6;">
+                    Empowering farmers with direct access, fair prices, and escrow security under SIH 2026 PS 26033.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="farmer-dashboard.html">Farmer AI Hub</a></li>
+                    <li><a href="logistics.html">Route Optimization</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Audits & Security</h4>
+                <ul>
+                    <li><a href="admin-escrow.html">Escrow Ledger Audit</a></li>
+                    <li><a href="#">DoCA Grievance Cell</a></li>
+                    <li><a href="#">Agmarknet Verification</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Languages</h4>
+                <div style="display:flex; gap:8px;">
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="hi">हिन्दी</button>
+                    <button class="lang-btn" data-lang="mr">मराठी</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 KisanSetu Platform • SIH 2026 Problem Statement 26033</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/data-store.js?v=2.2"></script>
+    <script src="js/script.js?v=2.4"></script>
+    <script>
+        let currentMode = 'retail';
+        let currentCategory = 'all';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const user = window.kisanStore ? window.kisanStore.getCurrentUser() : null;
+
+            if (params.get('mode') === 'mandi' || params.get('tab') === 'mandi') {
+                switchMarketMode('mandi');
+            } else if (params.get('mode') === 'bulk' || (user && user.role === 'bulk' && !params.get('mode'))) {
+                switchMarketMode('bulk');
+            } else {
+                renderProducts();
+            }
+
+            if (params.get('action') === 'rfq' && typeof openNewRfqModal === 'function') {
+                openNewRfqModal();
+            }
+
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
+            if (typeof applyLanguage === 'function') {
+                applyLanguage(curLang);
+            }
+        });
+
+        function switchMarketMode(mode) {
+            currentMode = mode;
+            const btnRetail = document.getElementById('btnModeRetail');
+            const btnBulk = document.getElementById('btnModeBulk');
+            const btnMandi = document.getElementById('btnModeMandi');
+            const bulkBar = document.getElementById('bulkRfqBar');
+            const bulkSection = document.getElementById('bulkRfqSection');
+            const filtersBar = document.querySelector('.filters-bar');
+            const productsGrid = document.getElementById('productsGrid');
+            const mandiSection = document.getElementById('mandiRatesSection');
+
+            [btnRetail, btnBulk, btnMandi].forEach(b => { if (b) b.classList.remove('active'); });
+
+            if (mode === 'bulk') {
+                if (btnBulk) btnBulk.classList.add('active');
+                if (bulkBar) bulkBar.style.display = 'flex';
+                if (bulkSection) bulkSection.style.display = 'block';
+                if (filtersBar) filtersBar.style.display = 'flex';
+                if (productsGrid) productsGrid.style.display = 'grid';
+                if (mandiSection) mandiSection.style.display = 'none';
+                renderRFQs();
+                renderProducts();
+            } else if (mode === 'mandi') {
+                if (btnMandi) btnMandi.classList.add('active');
+                if (bulkBar) bulkBar.style.display = 'none';
+                if (bulkSection) bulkSection.style.display = 'none';
+                if (filtersBar) filtersBar.style.display = 'none';
+                if (productsGrid) productsGrid.style.display = 'none';
+                if (mandiSection) mandiSection.style.display = 'block';
+                renderMandiTable();
+            } else {
+                if (btnRetail) btnRetail.classList.add('active');
+                if (bulkBar) bulkBar.style.display = 'none';
+                if (bulkSection) bulkSection.style.display = 'none';
+                if (filtersBar) filtersBar.style.display = 'flex';
+                if (productsGrid) productsGrid.style.display = 'grid';
+                if (mandiSection) mandiSection.style.display = 'none';
+                renderProducts();
+            }
+        }
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-pills .pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts();
+        }
+
+        function applyFilters() {
+            renderProducts();
+        }
+
+        function renderProducts() {
+            if (!window.kisanStore) return;
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+
+            let listings = window.kisanStore.getListings();
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            const proxVal = document.getElementById('proximityFilter').value;
+            const verifiedOnly = document.getElementById('verifiedOnly').checked;
+
+            // Filter logic
+            listings = listings.filter(item => {
+                if (currentCategory === 'organic' && !item.organic) return false;
+                if (currentCategory !== 'all' && currentCategory !== 'organic' && item.category !== currentCategory) return false;
+                if (verifiedOnly && !item.kycVerified) return false;
+
+                if (searchVal) {
+                    const matchText = (item.crop + ' ' + item.farmerName + ' ' + item.region + ' ' + (item.fpo || '')).toLowerCase();
+                    if (!matchText.includes(searchVal)) return false;
+                }
+
+                if (proxVal === '25' && !item.region.includes('22 km') && !item.region.includes('18 km')) {
+                    return false;
+                }
+
+                return true;
+            });
+
+            if (!listings.length) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: white; border-radius: 16px; border: 1px dashed var(--border);">
+                        <div style="font-size: 40px; margin-bottom: 10px;">🌾</div>
+                        <h3>No produce matches your current filter</h3>
+                        <p style="color: var(--text-muted); font-size: 14px;">Try expanding your proximity radius or selecting "All Crops".</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
+            const trAddToCart = typeof translateText === 'function' ? translateText('Add to Cart', curLang) : 'Add to Cart';
+            const trBreakdown = typeof translateText === 'function' ? translateText('📊 View Transparent Fee Breakdown (Zero Middlemen) →', curLang) : '📊 View Transparent Fee Breakdown (Zero Middlemen) →';
+
+            listings.forEach(item => {
+                const diff = (item.traditionalMandiPrice - item.retailPrice).toFixed(2);
+                const pctSaved = Math.round((diff / item.traditionalMandiPrice) * 100);
+
+                const isBulk = currentMode === 'bulk';
+                const minKg = isBulk ? (item.minOrderBulkKg || 100) : (item.minOrderRetailKg || 2);
+                const user = window.kisanStore ? window.kisanStore.getCurrentUser() : null;
+                const isFarmer = user && user.role === 'farmer';
+                const isMyLot = isFarmer && (item.farmerId === user.id || (user.name && item.farmerName.includes(user.name.split(' ')[0])));
+
+                html += `
+                    <div class="product-card" style="${isMyLot ? 'border: 2px solid #10b981; box-shadow: 0 4px 14px rgba(16,185,129,0.15);' : ''}">
+                        <div class="product-image-wrap">
+                            <img src="${item.photo}" alt="${item.crop}">
+                            <div class="freshness-tag">🌱 ${item.freshnessScore}</div>
+                            ${isMyLot ? `<div style="position:absolute; bottom:10px; left:10px; background:#065f46; color:#ffffff; font-size:11px; font-weight:700; padding:4px 10px; border-radius:12px; z-index:2; box-shadow:0 2px 6px rgba(0,0,0,0.3);">🌾 YOUR FARM LISTING</div>` : ''}
+                            ${item.kycVerified ? `<div class="verified-farmer-tag">✓ eKYC Verified</div>` : ''}
+                        </div>
+
+                        <div class="product-body">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                                <h3 class="product-crop-name">${item.crop}</h3>
+                                <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+                                    ${item.organic ? `<span style="font-size:10px; font-weight:700; background:#dcfce7; color:#15803d; padding:2px 6px; border-radius:4px;">ORGANIC</span>` : ''}
+                                    <button type="button" class="btn-sunno" onclick="speakProductInfo('${item.id}', this)" aria-label="Listen to price and farm details for ${item.crop}" title="🔊 आवाज़ में सुनें (Listen in audio)">
+                                        🔊 Sunno
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="product-farmer-sub">
+                                <span>👨‍🌾 ${item.farmerName}</span> • <span>${item.region}</span>
+                            </div>
+
+                            <div class="price-box-main">
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <span class="price-comparison-line">Retail/Mandi: ₹${item.traditionalMandiPrice.toFixed(2)}/kg</span>
+                                    <span class="savings-chip">Save ${pctSaved}%</span>
+                                </div>
+                                <div class="price-direct-line">
+                                    ₹${displayPrice.toFixed(2)} <span>/ kg ${isBulk ? `(MOQ: ${minKg}kg)` : ''}</span>
+                                </div>
+                            </div>
+
+                            <button class="transparency-trigger" onclick="openTransparencyModal('${item.id}')">
+                                ${trBreakdown}
+                            </button>
+
+                            <div style="font-size: 12px; color: #64748b; line-height: 1.4; margin-top: 4px;">
+                                ${item.description}
+                            </div>
+
+                            <div class="product-footer">
+                                ${isMyLot ? `
+                                    <a href="farmer-dashboard.html" class="btn btn-sm btn-outline" style="width:100%; border-color:#059669; color:#059669; font-weight:700; text-align:center; padding:10px;">
+                                        ⚙️ Manage Lot in Farmer Command Hub
+                                    </a>
+                                ` : `
+                                    <div style="display:flex; align-items:center; border:1.5px solid var(--border); border-radius:8px; overflow:hidden;">
+                                        <button type="button" style="background:#f8fafc; border:none; padding:8px 12px; font-weight:bold; cursor:pointer;" onclick="adjustCardQty('qty_${item.id}', -1, ${minKg})">-</button>
+                                        <input type="number" id="qty_${item.id}" value="${minKg}" min="${minKg}" style="width:50px; text-align:center; border:none; outline:none; font-weight:600; font-size:13px;">
+                                        <button type="button" style="background:#f8fafc; border:none; padding:8px 12px; font-weight:bold; cursor:pointer;" onclick="adjustCardQty('qty_${item.id}', 1, ${minKg})">+</button>
+                                    </div>
+
+                                    <button class="btn btn-primary" style="flex:1; padding:9px 12px; font-size:13px;" onclick="addCardToCart('${item.id}')">
+                                        🛒 ${trAddToCart}
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(grid);
+        }
+
+        document.addEventListener('kisanLanguageApplied', (e) => {
+            const lang = (e && e.detail && e.detail.lang) || (window.kisanStore ? window.kisanStore.getLanguage() : 'en');
+            if (typeof renderProducts === 'function') renderProducts();
+            if (typeof renderRFQs === 'function') renderRFQs();
+            if (typeof translateDom === 'function') {
+                translateDom(document.querySelector('.marketplace-container'), lang);
+                const cart = document.getElementById('cartDrawerOverlay');
+                if (cart) translateDom(cart, lang);
+            }
+        });
+
+        function adjustCardQty(id, delta, min) {
+            const input = document.getElementById(id);
+            if (!input) return;
+            let val = parseInt(input.value) || min;
+            val = Math.max(min, val + delta);
+            input.value = val;
+        }
+
+        function addCardToCart(listingId) {
+            const input = document.getElementById(`qty_${listingId}`);
+            const qty = input ? parseInt(input.value) : 2;
+            if (window.kisanStore) {
+                window.kisanStore.addToCart(listingId, qty);
+                updateCartBadge();
+                showToast(`Added ${qty} kg to cart with Escrow Protection!`, 'success');
+            }
+        }
+
+        // ==========================================
+        // Cart Drawer Operations
+        // ==========================================
+        function openCartDrawer() {
+            if (!window.kisanStore) return;
+            const cart = window.kisanStore.getCart();
+            const overlay = document.getElementById('cartDrawerOverlay');
+            const itemsList = document.getElementById('cartItemsList');
+
+            // Auto-fill checkout fields from active user
+            const user = window.kisanStore.getCurrentUser();
+            if (user) {
+                const nameInput = document.getElementById('chkName');
+                const phoneInput = document.getElementById('chkPhone');
+                const addrInput = document.getElementById('chkAddress');
+                if (nameInput) nameInput.value = user.name;
+                if (phoneInput) phoneInput.value = user.phone;
+                if (addrInput) addrInput.value = user.location;
+            }
+
+            if (!cart.length) {
+                itemsList.innerHTML = `
+                    <div style="text-align:center; padding:30px 10px; color:#64748b;">
+                        <div style="font-size:36px;">🛒</div>
+                        <p style="font-weight:600; margin-top:8px;">Your cart is empty.</p>
+                        <p style="font-size:12px;">Add fresh farm produce directly from verified farmers above!</p>
+                    </div>
+                `;
+                document.getElementById('cartFarmerTotal').innerText = '₹0.00';
+                document.getElementById('cartLogisticsTotal').innerText = '₹0.00';
+                document.getElementById('cartPlatformTotal').innerText = '₹0.00';
+                document.getElementById('cartGrandTotal').innerText = '₹0.00';
+                overlay.classList.add('active');
+                return;
+            }
+
+            let farmerSum = 0;
+            let logSum = 0;
+            let platSum = 0;
+            let grandSum = 0;
+
+            let html = '';
+            cart.forEach(item => {
+                const itemTotal = item.pricePerKg * item.qtyKg;
+                farmerSum += item.farmerPrice * item.qtyKg;
+                logSum += item.logisticsFee * item.qtyKg;
+                platSum += item.platformFee * item.qtyKg;
+                grandSum += itemTotal;
+
+                html += `
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:#f8fafc; padding:10px 14px; border-radius:8px; border:1px solid var(--border);">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <img src="${item.photo}" style="width:40px; height:40px; border-radius:6px; object-fit:cover;">
+                            <div>
+                                <h4 style="font-size:14px; font-weight:700;">${item.crop}</h4>
+                                <div style="font-size:12px; color:#64748b;">₹${item.pricePerKg.toFixed(2)}/kg • ${item.farmerName}</div>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <span style="font-weight:700; font-size:14px;">${item.qtyKg} kg</span>
+                            <span style="font-weight:800; color:var(--primary-deep); font-size:15px;">₹${itemTotal.toFixed(2)}</span>
+                            <button type="button" style="background:none; border:none; color:#ef4444; font-weight:bold; cursor:pointer;" onclick="removeCartItem('${item.listingId}')">✕</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            itemsList.innerHTML = html;
+            document.getElementById('cartFarmerTotal').innerText = `₹${farmerSum.toFixed(2)}`;
+            document.getElementById('cartLogisticsTotal').innerText = `₹${logSum.toFixed(2)}`;
+            document.getElementById('cartPlatformTotal').innerText = `₹${platSum.toFixed(2)}`;
+            document.getElementById('cartGrandTotal').innerText = `₹${grandSum.toFixed(2)}`;
+
+            overlay.classList.add('active');
+            if (typeof translateDom === 'function') translateDom(overlay);
+        }
+
+        function closeCartDrawer() {
+            document.getElementById('cartDrawerOverlay').classList.remove('active');
+        }
+
+        function removeCartItem(id) {
+            if (window.kisanStore) {
+                window.kisanStore.removeFromCart(id);
+                updateCartBadge();
+                openCartDrawer();
+            }
+        }
+
+        function handleCheckout(e) {
+            e.preventDefault();
+            if (!window.kisanStore) return;
+
+            const isNameValid = validateField('chkName', { required: true, minLength: 3, requiredMsg: 'Please enter delivery recipient name' });
+            const isPhoneValid = validateField('chkPhone', { required: true, pattern: /^[6-9]\d{9}$/, patternMsg: 'Please enter a valid 10-digit mobile number' });
+            const isAddressValid = validateField('chkAddress', { required: true, minLength: 8, requiredMsg: 'Please enter a complete delivery address' });
+
+            if (!isNameValid || !isPhoneValid || !isAddressValid) {
+                showToast('Please fix the errors in the delivery form', 'error');
+                return;
+            }
+
+            const name = document.getElementById('chkName').value;
+            const phone = document.getElementById('chkPhone').value;
+            const address = document.getElementById('chkAddress').value;
+            const method = document.getElementById('chkMethod').value;
+
+            const result = window.kisanStore.checkoutCart({ name, phone, address }, method);
+            if (result) {
+                closeCartDrawer();
+                updateCartBadge();
+                showToast(`Order ${result.order.id} placed! ₹${result.order.totalAmount} held in Escrow.`, 'success');
+
+                setTimeout(() => {
+                    alert(`✅ ORDER CONFIRMED!\n\nOrder ID: ${result.order.id}\nEscrow Transaction: ${result.escrow.txnId}\nGross Amount: ₹${result.order.totalAmount}\n\n🛡️ ESCROW PROTOCOL:\nFunds are locked in KisanSetu nodal escrow. Payout will be released to the farmer once you confirm delivery or after the 24-hr grace window.`);
+                    window.location.href = 'logistics.html';
+                }, 600);
+            }
+        }
+
+        // ==========================================
+        // Bulk RFQ Functions
+        // ==========================================
+        function renderRFQs() {
+            if (!window.kisanStore) return;
+            const rfqs = window.kisanStore.getRFQs();
+            const tbody = document.getElementById('rfqTableBody');
+            if (!tbody) return;
+
+            let html = '';
+            rfqs.forEach(r => {
+                html += `
+                    <tr>
+                        <td><strong>${r.id}</strong></td>
+                        <td>${r.buyerName} <br><span style="font-size:11px; color:#64748b;">GST: ${r.buyerGst}</span></td>
+                        <td><strong>${r.crop}</strong></td>
+                        <td>${r.quantityKg.toLocaleString()} kg</td>
+                        <td><strong style="color:#059669;">₹${r.priceCeilingPerKg.toFixed(2)}/kg</strong></td>
+                        <td>
+                            <span class="status-badge status-released">${r.bids.length} Farmer Quotes</span>
+                            <div style="font-size:11px; color:#475569; margin-top:2px;">Lowest bid: ₹${r.bids.length ? Math.min(...r.bids.map(b => b.bidPricePerKg)).toFixed(2) : r.priceCeilingPerKg}/kg</div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-held">Open Reverse Auction</span>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(tbody);
+        }
+
+        function openNewRfqModal() {
+            document.getElementById('newRfqModal').classList.add('active');
+        }
+
+        function closeNewRfqModal() {
+            document.getElementById('newRfqModal').classList.remove('active');
+        }
+
+        function handlePostRfq(e) {
+            e.preventDefault();
+            const crop = document.getElementById('rfqCrop').value;
+            const quantityKg = document.getElementById('rfqQty').value;
+            const priceCeilingPerKg = document.getElementById('rfqCeiling').value;
+            const deliveryLocation = document.getElementById('rfqDest').value;
+            const recurring = document.getElementById('rfqRecur').value;
+
+            if (window.kisanStore) {
+                const newRfq = window.kisanStore.addRFQ({
+                    crop,
+                    quantityKg,
+                    priceCeilingPerKg,
+                    deliveryLocation,
+                    recurring
+                });
+                closeNewRfqModal();
+                renderRFQs();
+                showToast(`RFQ ${newRfq.id} published to registered farmers!`, 'success');
+            }
+        }
+
+        // ==========================================
+        // APMC Mandi Market Prices Table Renderer
+        // ==========================================
+        function renderMandiTable() {
+            if (!window.kisanStore) return;
+            const mandiSel = document.getElementById('mandiFilterMandi');
+            const cropSel = document.getElementById('mandiFilterCrop');
+            const searchInput = document.getElementById('mandiSearchInput');
+            const tbody = document.getElementById('mandiRatesTableBody');
+            if (!tbody) return;
+
+            const mandiFilter = mandiSel ? mandiSel.value : 'all';
+            const cropFilter = cropSel ? cropSel.value : 'all';
+            const searchVal = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+            let records = window.kisanStore.getMandiPrices({ mandi: mandiFilter, commodity: cropFilter });
+
+            if (searchVal) {
+                records = records.filter(r => 
+                    r.commodity.toLowerCase().includes(searchVal) ||
+                    r.variety.toLowerCase().includes(searchVal) ||
+                    r.mandi.toLowerCase().includes(searchVal) ||
+                    r.displayDate.toLowerCase().includes(searchVal) ||
+                    r.date.includes(searchVal)
+                );
+            }
+
+            // Sort newest first
+            records.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            if (!records.length) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="10" style="text-align:center; padding:30px; color:#64748b;">
+                            No mandi records match your filter criteria.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            const cropKeyMap = {
+                'Tomato': 'tomato',
+                'Onion': 'onion',
+                'Potato': 'potato',
+                'Wheat': 'wheat',
+                'Soybean': 'soybean',
+                'Cauliflower': 'cauliflower',
+                'Red Chilli': 'chilli'
+            };
+
+            let html = '';
+            records.forEach(r => {
+                const trendClass = r.trend === 'up' ? 'ticker-up' : (r.trend === 'down' ? 'ticker-down' : '');
+                const trendIcon = r.trend === 'up' ? '▲' : (r.trend === 'down' ? '▼' : '▬');
+                const trendBg = r.trend === 'up' ? '#ecfdf5' : (r.trend === 'down' ? '#fef2f2' : '#f8fafc');
+                const trendColor = r.trend === 'up' ? '#059669' : (r.trend === 'down' ? '#dc2626' : '#64748b');
+                const cKey = cropKeyMap[r.commodity] || 'tomato';
+
+                html += `
+                    <tr>
+                        <td style="font-weight:700; white-space:nowrap;">${r.displayDate}</td>
+                        <td>
+                            <strong style="color:var(--primary-deep);">${r.mandi}</strong>
+                            <div style="font-size:11px; color:#64748b;">${r.division} (${r.district})</div>
+                        </td>
+                        <td>
+                            <strong>${r.commodity}</strong>
+                            <span style="font-size:12px; color:#475569; display:block;">${r.variety}</span>
+                        </td>
+                        <td style="color:#64748b;">₹${r.minPrice.toFixed(2)}</td>
+                        <td style="color:#64748b;">₹${r.maxPrice.toFixed(2)}</td>
+                        <td class="mandi-modal-cell" style="font-weight:800; font-size:15px;">
+                            ₹${r.modalPrice.toFixed(2)}
+                        </td>
+                        <td style="font-weight:600;">₹${r.modalPriceQtl.toLocaleString()}</td>
+                        <td>${r.arrivalQtyQtl} qtl</td>
+                        <td>
+                            <span class="mandi-trend-pill trend-${r.trend}" style="font-weight:700; font-size:11px; padding:3px 8px; border-radius:12px; display:inline-flex; align-items:center; gap:4px;">
+                                ${trendIcon} ${r.change}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="farmer-dashboard.html?crop=${cKey}" class="btn btn-outline btn-sm" style="font-size:11px; padding:4px 8px; white-space:nowrap;">
+                                📈 AI Forecast →
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        function resetMandiFilters() {
+            const m = document.getElementById('mandiFilterMandi');
+            const c = document.getElementById('mandiFilterCrop');
+            const s = document.getElementById('mandiSearchInput');
+            if (m) m.value = 'all';
+            if (c) c.value = 'all';
+            if (s) s.value = '';
+            renderMandiTable();
+        }
+
+        window.addEventListener('kisansetuThemeChanged', () => {
+            if (typeof renderProducts === 'function') renderProducts();
+            if (typeof renderMandiTable === 'function') renderMandiTable();
+        });
+    </script>
+</body>
+</html>

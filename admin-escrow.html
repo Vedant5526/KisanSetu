@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escrow Ledger & Platform Governance | KisanSetu (SIH 2026 PS 26033)</title>
+    <link rel="stylesheet" href="css/style.css?v=2.4">
+    <link rel="stylesheet" href="style.css?v=2.4">
+</head>
+<body>
+
+    <!-- TOP GOVERNMENT BAR -->
+    <div class="gov-top-bar">
+        <div class="gov-emblem">
+            <span class="gov-flag"></span>
+            <span>Government of India • Ministry of Consumer Affairs (DoCA) • <strong>SIH 2026 Escrow Audit</strong></span>
+        </div>
+        <div class="top-bar-right">
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="hi">हिन्दी</button>
+                <button class="lang-btn" data-lang="mr">मराठी</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <a href="index.html" class="brand-logo">
+            <div class="brand-icon-box">🌾</div>
+            <div>
+                <h1 class="brand-title">KisanSetu</h1>
+                <p class="brand-tagline">Escrow Governance & Economics Ledger</p>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="marketplace.html" class="nav-link">Marketplace</a>
+            <a href="farmer-dashboard.html" class="nav-link">AI Forecast</a>
+            <a href="logistics.html" class="nav-link">Logistics Map</a>
+            <a href="admin-escrow.html" class="nav-link active">Escrow Ledger</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn btn-outline btn-sm" onclick="resetDatabase()">
+                🔄 Reset Demo Data
+            </button>
+        </div>
+    </header>
+
+    <main style="padding: 24px 6% 40px; max-width: 1400px; margin: 0 auto; width: 100%;">
+        
+        <!-- BREADCRUMBS NAVIGATION -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="margin-bottom: 16px;">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Escrow Ledger & Governance</li>
+            </ol>
+        </nav>
+
+        <!-- HEADER ROW -->
+        <div style="margin-bottom: 28px;">
+            <span class="section-badge">SIH 2026 PROBLEM STATEMENT 26033 • SECTION 11 PAYMENTS & ESCROW</span>
+            <h2 style="font-size: 28px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">
+                Transparent Escrow Ledger & Dispute Resolution Console
+            </h2>
+            <p style="font-size: 14px; color: var(--text-muted); max-width: 850px;">
+                Demonstrating the exact hold-and-release state machine that protects both the farmer and consumer. Funds remain locked in the gateway nodal account until delivery OTP confirmation or dispute grace window closure.
+            </p>
+        </div>
+
+        <!-- KPI STATS CARDS -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 28px;">
+            <div style="background: white; border-radius: 14px; padding: 22px; border: 1px solid var(--border); border-top: 4px solid #2563eb;">
+                <div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Gross Merchandise Value (GMV)</div>
+                <div style="font-size: 32px; font-weight: 800; color: #1e3a8a; margin-top: 4px;" id="kpiGmv">₹8,531.00</div>
+                <div style="font-size: 12px; color: #2563eb; margin-top: 4px;">Total transparent transactions logged</div>
+            </div>
+
+            <div style="background: white; border-radius: 14px; padding: 22px; border: 1px solid var(--border); border-top: 4px solid #059669;">
+                <div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Farmer Direct Payouts (UPI)</div>
+                <div style="font-size: 32px; font-weight: 800; color: #064e3b; margin-top: 4px;" id="kpiFarmerPayout">₹7,360.00</div>
+                <div style="font-size: 12px; color: #059669; margin-top: 4px;">86.3% net share to agricultural producers</div>
+            </div>
+
+            <div style="background: white; border-radius: 14px; padding: 22px; border: 1px solid var(--border); border-top: 4px solid #f59e0b;">
+                <div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Held in Nodal Escrow</div>
+                <div style="font-size: 32px; font-weight: 800; color: #d97706; margin-top: 4px;" id="kpiEscrowHeld">₹285.00</div>
+                <div style="font-size: 12px; color: #b45309; margin-top: 4px;">Protected by 24h SLA Auto-Release</div>
+            </div>
+
+            <div style="background: white; border-radius: 14px; padding: 22px; border: 1px solid var(--border); border-top: 4px solid #10b981;">
+                <div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">KisanSetu Platform Reserve (3.5%)</div>
+                <div style="font-size: 32px; font-weight: 800; color: #047857; margin-top: 4px;" id="kpiPlatform">₹286.00</div>
+                <div style="font-size: 12px; color: #059669; margin-top: 4px;">Sustains open AI & logistics tech infrastructure</div>
+            </div>
+        </div>
+
+        <!-- ESCROW STATE MACHINE PIPELINE VISUALIZER -->
+        <div style="background: white; border-radius: 16px; border: 1px solid var(--border); padding: 26px; margin-bottom: 30px;">
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1e293b;">
+                Escrow Lifecycle State Machine Flow
+            </h3>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; position: relative;">
+                <div style="background: #ecfdf5; border: 1.5px solid #a7f3d0; padding: 14px 18px; border-radius: 10px; text-align: center; flex: 1; min-width: 140px;">
+                    <div style="font-size: 20px;">💳</div>
+                    <strong style="font-size: 13px; color: #065f46; display: block; margin-top: 4px;">1. Payment Collected</strong>
+                    <span style="font-size: 11px; color: #047857;">UPI / Cards / COD</span>
+                </div>
+                <div style="color: #94a3b8; font-weight: bold;">→</div>
+
+                <div style="background: #fef3c7; border: 1.5px solid #fde68a; padding: 14px 18px; border-radius: 10px; text-align: center; flex: 1; min-width: 140px;">
+                    <div style="font-size: 20px;">🛡️</div>
+                    <strong style="font-size: 13px; color: #92400e; display: block; margin-top: 4px;">2. Held in Escrow</strong>
+                    <span style="font-size: 11px; color: #b45309;">Nodal Account Locked</span>
+                </div>
+                <div style="color: #94a3b8; font-weight: bold;">→</div>
+
+                <div style="background: #eff6ff; border: 1.5px solid #bfdbfe; padding: 14px 18px; border-radius: 10px; text-align: center; flex: 1; min-width: 140px;">
+                    <div style="font-size: 20px;">🚚</div>
+                    <strong style="font-size: 13px; color: #1e40af; display: block; margin-top: 4px;">3. CVRPTW Transit</strong>
+                    <span style="font-size: 11px; color: #2563eb;">Live GPS Tracking</span>
+                </div>
+                <div style="color: #94a3b8; font-weight: bold;">→</div>
+
+                <div style="background: #ecfdf5; border: 1.5px solid #a7f3d0; padding: 14px 18px; border-radius: 10px; text-align: center; flex: 1; min-width: 140px;">
+                    <div style="font-size: 20px;">📲</div>
+                    <strong style="font-size: 13px; color: #065f46; display: block; margin-top: 4px;">4. Delivery OTP</strong>
+                    <span style="font-size: 11px; color: #047857;">Buyer Verifies Goods</span>
+                </div>
+                <div style="color: #94a3b8; font-weight: bold;">→</div>
+
+                <div style="background: #f0fdf4; border: 2px solid #10b981; padding: 14px 18px; border-radius: 10px; text-align: center; flex: 1; min-width: 140px;">
+                    <div style="font-size: 20px;">💰</div>
+                    <strong style="font-size: 13px; color: #064e3b; display: block; margin-top: 4px;">5. Escrow Released</strong>
+                    <span style="font-size: 11px; color: #059669;">Direct to Farmer UPI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESCROW TRANSACTION AUDIT TABLE -->
+        <div style="background: white; border-radius: 16px; border: 1px solid var(--border); padding: 26px; margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 14px;">
+                <div>
+                    <h3 style="font-size: 18px; font-weight: 800; color: #0f172a;">Live Escrow Transactions Ledger</h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">Real-time audit log with interactive state simulation buttons for SIH evaluation.</p>
+                </div>
+
+                <div style="display: flex; gap: 8px;">
+                    <button class="pill-btn active" data-filter="all" onclick="filterEscrow('all', this)">All Records</button>
+                    <button class="pill-btn" data-filter="held" onclick="filterEscrow('held', this)">Held in Escrow</button>
+                    <button class="pill-btn" data-filter="released" onclick="filterEscrow('released', this)">Released</button>
+                    <button class="pill-btn" data-filter="disputed" onclick="filterEscrow('disputed', this)">Disputed</button>
+                </div>
+            </div>
+
+            <div class="custom-table-wrap">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Txn ID</th>
+                            <th>Order ID & Date</th>
+                            <th>Buyer & Farmer</th>
+                            <th>Gross Order</th>
+                            <th>Farmer Net Payout</th>
+                            <th>Logistics / Platform</th>
+                            <th>Escrow Status</th>
+                            <th>Interactive Simulation Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="escrowTableBody">
+                        <!-- Populated dynamically via renderEscrowTable() -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE MIDDLEMAN REBUTTAL CALCULATOR -->
+        <div style="background: linear-gradient(135deg, #064e3b, #047857); color: white; border-radius: 16px; padding: 32px;">
+            <div style="max-width: 800px;">
+                <span style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;">
+                    DIRECT REBUTTAL TO PS OPENING CLAIM
+                </span>
+                <h3 style="font-size: 24px; font-weight: 800; margin: 10px 0 6px;">
+                    "How KisanSetu Guarantees Fair Farmer Earnings"
+                </h3>
+                <p style="font-size: 14px; opacity: 0.9; margin-bottom: 20px;">
+                    Test any custom basket size to inspect the exact fee reconciliation algorithm.
+                </p>
+
+                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
+                    <label style="font-size: 14px; font-weight: 600;">Test Basket Gross Amount:</label>
+                    <input type="number" id="calcGross" value="1000" step="50" oninput="updateRebuttalCalc()" style="padding: 10px 14px; border-radius: 8px; border: none; font-size: 16px; font-weight: 700; width: 140px;">
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                    <div style="background: rgba(255,255,255,0.12); padding: 18px; border-radius: 12px; backdrop-filter: blur(4px);">
+                        <div style="font-size: 12px; opacity: 0.85;">DIRECT TO FARMER (85%)</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #6ee7b7;" id="rebFarmer">₹850.00</div>
+                        <div style="font-size: 11px; opacity: 0.8; margin-top: 4px;">Zero unlisted mandi broker cuts</div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.12); padding: 18px; border-radius: 12px; backdrop-filter: blur(4px);">
+                        <div style="font-size: 12px; opacity: 0.85;">COLD LOGISTICS (11.5%)</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #93c5fd;" id="rebLogistics">₹115.00</div>
+                        <div style="font-size: 11px; opacity: 0.8; margin-top: 4px;">Consolidated CVRPTW corridor</div>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.12); padding: 18px; border-radius: 12px; backdrop-filter: blur(4px);">
+                        <div style="font-size: 12px; opacity: 0.85;">PLATFORM FEE (3.5%)</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #fde047;" id="rebPlatform">₹35.00</div>
+                        <div style="font-size: 11px; opacity: 0.8; margin-top: 4px;">Sustains cloud AI & escrow APIs</div>
+                    </div>
+
+                    <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); padding: 18px; border-radius: 12px;">
+                        <div style="font-size: 12px; color: #fca5a5; font-weight: 700;">MIDDLEMAN CUT ON KISANSETU</div>
+                        <div style="font-size: 24px; font-weight: 800; color: #fca5a5;">₹0.00 (0%)</div>
+                        <div style="font-size: 11px; color: #fecaca; margin-top: 4px;">vs ₹450-₹550 in traditional APMC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- DISPUTE SIMULATION MODAL -->
+    <div class="modal-overlay" id="disputeModal">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="closeDisputeModal()">✕</button>
+            <h3 class="modal-title" style="color:#ef4444;">Raise Escrow Quality Dispute</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                Simulates a consumer finding damaged produce upon delivery. Escrow auto-release is paused immediately.
+            </p>
+
+            <form onsubmit="handleDisputeSubmit(event)" style="display: flex; flex-direction: column; gap: 12px;">
+                <input type="hidden" id="disputeOrderId">
+                <div>
+                    <label style="font-size: 13px; font-weight: 600;">Dispute Reason / Category</label>
+                    <select id="disputeCategory" style="width: 100%; padding: 9px; border: 1px solid var(--border); border-radius: 6px; background: white;">
+                        <option>Transit Bruising / Crushed in Delivery (30% weight damaged)</option>
+                        <option>Underweight Delivery (Received 8kg instead of 10kg)</option>
+                        <option>Wrong Produce Grade Delivered</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label style="font-size: 13px; font-weight: 600;">Photo Proof of Damaged Goods</label>
+                    <div style="background: #f8fafc; border: 1.5px dashed var(--border); border-radius: 8px; padding: 16px; text-align: center; color: var(--text-muted); font-size: 13px;">
+                        📸 Simulated Photo Proof Uploaded (tomato_damage_proof.jpg)
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="background:#ef4444; color:white; width: 100%; padding: 12px; margin-top: 6px;">
+                    ⚠️ Lock Escrow & Halt Farmer Payout
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer" style="padding: 30px 6%; margin-top: 40px;">
+        <div class="footer-bottom" style="border: none; padding: 0;">
+            <p>© 2026 KisanSetu Platform • SIH 2026 Problem Statement 26033</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/data-store.js?v=2.2"></script>
+    <script src="js/script.js?v=2.4"></script>
+    <script>
+        let currentFilter = 'all';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderEscrowTable();
+            updateRebuttalCalc();
+            updateKpis();
+            updateAdminHeader();
+
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
+            if (typeof applyLanguage === 'function') {
+                applyLanguage(curLang);
+            }
+        });
+
+        document.addEventListener('kisanLanguageApplied', (e) => {
+            const lang = (e && e.detail && e.detail.lang) || (window.kisanStore ? window.kisanStore.getLanguage() : 'en');
+            renderEscrowTable();
+            updateRebuttalCalc();
+            updateKpis();
+            updateAdminHeader();
+            if (typeof translateDom === 'function') {
+                translateDom(document.querySelector('main'), lang);
+                const modal = document.getElementById('disputeModal');
+                if (modal) translateDom(modal, lang);
+            }
+        });
+
+        function updateAdminHeader() {
+            if (!window.kisanStore) return;
+            const user = window.kisanStore.getCurrentUser();
+            if (user && user.role === 'admin') {
+                const titleEl = document.querySelector('.main-header .brand-tagline');
+                if (titleEl) titleEl.innerText = `Escrow Governance • Nodal Officer: ${user.name}`;
+            }
+        }
+
+        function filterEscrow(status, btn) {
+            currentFilter = status;
+            document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderEscrowTable();
+        }
+
+        function updateKpis() {
+            if (!window.kisanStore) return;
+            const ledger = window.kisanStore.getEscrowLedger();
+
+            let gmv = 0;
+            let farmer = 0;
+            let held = 0;
+            let platform = 0;
+
+            ledger.forEach(item => {
+                gmv += item.grossAmount;
+                platform += item.platformFee;
+                if (item.status === 'released') {
+                    farmer += item.farmerPayout;
+                } else if (item.status === 'held') {
+                    held += item.grossAmount;
+                }
+            });
+
+            document.getElementById('kpiGmv').innerText = `₹${gmv.toFixed(2)}`;
+            document.getElementById('kpiFarmerPayout').innerText = `₹${farmer.toFixed(2)}`;
+            document.getElementById('kpiEscrowHeld').innerText = `₹${held.toFixed(2)}`;
+            document.getElementById('kpiPlatform').innerText = `₹${platform.toFixed(2)}`;
+        }
+
+        function renderEscrowTable() {
+            if (!window.kisanStore) return;
+            const ledger = window.kisanStore.getEscrowLedger();
+            const tbody = document.getElementById('escrowTableBody');
+
+            let filtered = ledger;
+            if (currentFilter !== 'all') {
+                filtered = ledger.filter(item => item.status === currentFilter);
+            }
+
+            let html = '';
+            filtered.forEach(item => {
+                const badge = item.status === 'released'
+                    ? `<span class="status-badge status-released">Released to Farmer UPI</span>`
+                    : item.status === 'disputed'
+                    ? `<span class="status-badge status-disputed">⚠️ Dispute Paused</span>`
+                    : `<span class="status-badge status-held">🛡️ Held in Escrow</span>`;
+
+                html += `
+                    <tr>
+                        <td><strong>${item.txnId}</strong></td>
+                        <td>
+                            <strong>${item.orderId}</strong><br>
+                            <span style="font-size:12px; color:#64748b;">${item.date}</span>
+                        </td>
+                        <td>
+                            <strong>Buyer:</strong> ${item.buyerName}<br>
+                            <span style="font-size:12px; color:#059669;"><strong>Farmer:</strong> ${item.farmerName}</span>
+                        </td>
+                        <td><strong style="font-size:15px;">₹${item.grossAmount.toFixed(2)}</strong></td>
+                        <td><strong style="font-size:15px; color:#059669;">₹${item.farmerPayout.toFixed(2)}</strong></td>
+                        <td>
+                            <span style="font-size:12px;">Logistics: ₹${item.logisticsFee.toFixed(2)}</span><br>
+                            <span style="font-size:11px; color:#64748b;">Platform: ₹${item.platformFee.toFixed(2)}</span>
+                        </td>
+                        <td>
+                            ${badge}
+                            <div style="font-size:11px; color:#64748b; margin-top:2px;">${item.notes}</div>
+                        </td>
+                        <td>
+                            ${item.status === 'held' ? `
+                                <button class="btn btn-sm btn-primary" onclick="triggerRelease('${item.orderId}')">
+                                    ✓ Confirm & Release
+                                </button>
+                                <button class="btn btn-sm btn-outline" style="margin-top:4px; border-color:#ef4444; color:#ef4444;" onclick="openDisputeModal('${item.orderId}')">
+                                    ⚠️ Simulate Dispute
+                                </button>
+                            ` : item.status === 'disputed' ? `
+                                <button class="btn btn-sm btn-primary" onclick="resolveAdminDispute('${item.orderId}', 'release_farmer')">
+                                    Release to Farmer
+                                </button>
+                                <button class="btn btn-sm btn-outline" style="margin-top:4px;" onclick="resolveAdminDispute('${item.orderId}', 'refund_buyer')">
+                                    Refund Buyer
+                                </button>
+                            ` : `
+                                <span style="font-size:12px; color:#059669; font-weight:bold;">Settled to UPI ✓</span>
+                            `}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(tbody);
+            updateKpis();
+        }
+
+        function triggerRelease(orderId) {
+            if (window.kisanStore) {
+                window.kisanStore.releaseEscrow(orderId);
+                renderEscrowTable();
+                showToast(`Escrow released for Order ${orderId}! Transferred to farmer UPI.`, 'success');
+            }
+        }
+
+        function openDisputeModal(orderId) {
+            document.getElementById('disputeOrderId').value = orderId;
+            document.getElementById('disputeModal').classList.add('active');
+        }
+
+        function closeDisputeModal() {
+            document.getElementById('disputeModal').classList.remove('active');
+        }
+
+        function handleDisputeSubmit(e) {
+            e.preventDefault();
+            const orderId = document.getElementById('disputeOrderId').value;
+            const reason = document.getElementById('disputeCategory').value;
+
+            if (window.kisanStore) {
+                window.kisanStore.raiseDispute(orderId, reason);
+                closeDisputeModal();
+                renderEscrowTable();
+                showToast(`Dispute raised for Order ${orderId}! Escrow paused.`, 'warning');
+            }
+        }
+
+        function resolveAdminDispute(orderId, resolutionType) {
+            if (window.kisanStore) {
+                window.kisanStore.resolveDispute(orderId, resolutionType);
+                renderEscrowTable();
+                showToast(`Dispute resolved via admin override (${resolutionType})!`, 'info');
+            }
+        }
+
+        function updateRebuttalCalc() {
+            const gross = parseFloat(document.getElementById('calcGross').value) || 1000;
+            const farmer = gross * 0.85;
+            const logistics = gross * 0.115;
+            const platform = gross * 0.035;
+
+            document.getElementById('rebFarmer').innerText = `₹${farmer.toFixed(2)}`;
+            document.getElementById('rebLogistics').innerText = `₹${logistics.toFixed(2)}`;
+            document.getElementById('rebPlatform').innerText = `₹${platform.toFixed(2)}`;
+        }
+
+        function resetDatabase() {
+            if (confirm("Reset local demo data back to default SIH 2026 seed values?")) {
+                if (window.kisanStore) {
+                    window.kisanStore.reset();
+                    renderEscrowTable();
+                    showToast('Demo dataset refreshed!', 'success');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
