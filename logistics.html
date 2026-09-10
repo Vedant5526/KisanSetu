@@ -85,6 +85,9 @@
                     <button class="btn btn-accent" id="btnSimulateGps" onclick="startVehicleSimulation()">
                         🚚 Track Live Vehicle GPS
                     </button>
+                    <button class="btn btn-outline" id="btnInspectAlgorithm" onclick="openCvrptwExplainerModal()" style="font-weight: 700; border-color: #0284c7; color: #0369a1;">
+                        ℹ️ Inspect CVRPTW Algorithm
+                    </button>
                 </div>
             </div>
         </div>
@@ -95,29 +98,54 @@
                 <div id="logisticsMap"></div>
                 
                 <!-- Live Vehicle Status HUD -->
-                <div style="background: white; border-radius: 12px; border: 1px solid var(--border); padding: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 44px; height: 44px; border-radius: 10px; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 22px;">
-                            🚚
-                        </div>
-                        <div>
-                            <h4 style="font-size: 15px; font-weight: 700;">Vehicle: Tata Ace EV (MH-15-EG-4921)</h4>
-                            <div style="font-size: 12px; color: #64748b;">
-                                Driver: <strong>Santosh Jadhav</strong> • Chilled EV Payload: <strong>780 kg / 1,200 kg (65% capacity)</strong>
+                <div style="background: white; border-radius: 14px; border: 1px solid var(--border); padding: 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.04);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <div style="width: 48px; height: 48px; border-radius: 12px; background: #ecfdf5; border: 1px solid #a7f3d0; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                                🚚
                             </div>
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <h4 style="font-size: 16px; font-weight: 800; color: #0f172a; margin: 0;">Vehicle: Tata Ace EV (MH-15-EG-4921)</h4>
+                                    <span style="background: #dbeafe; color: #1e40af; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px;">CHILLED REEFER</span>
+                                </div>
+                                <div style="font-size: 12px; color: #64748b; margin-top: 3px;">
+                                    Driver: <strong>Santosh Jadhav</strong> (Lic: MH-15/2019/9041) • Contact: <strong>+91 98230 11942</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <div style="text-align: right;">
+                                <div style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Current Live Status</div>
+                                <div id="liveRouteStatus" style="font-size: 14px; font-weight: 800; color: #059669; display: flex; align-items: center; gap: 6px; justify-content: flex-end;">
+                                    <span class="pulse-beacon"></span> In-Transit: Heading to Drop 1 (Baner)
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="btnOpenVerification" onclick="openDeliveryVerificationModal()" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700; background: #059669; padding: 10px 18px; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);">
+                                🔐 Verify Delivery & Release Escrow →
+                            </button>
                         </div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 14px;">
-                        <div style="text-align: right;">
-                            <div style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase;">Current Live Status</div>
-                            <div id="liveRouteStatus" style="font-size: 14px; font-weight: 800; color: #059669;">
-                                In-Transit: Heading to Drop 1 (Baner)
-                            </div>
-                        </div>
-                        <button class="btn btn-sm btn-primary" onclick="simulateDeliveryConfirmation()">
-                            ✓ Confirm Delivery & Release Escrow
-                        </button>
+                    <!-- IoT Cold-Chain & Telematics Real-time Telemetry Strip -->
+                    <div class="telematics-strip">
+                        <span class="telematics-pill active" title="Real-time IoT temperature sensor reading in cargo compartment">
+                            <span class="pulse-beacon"></span>
+                            ❄️ Reefer: <strong id="telemetryTemp">+4.2°C</strong> (Optimal: 2°C – 6°C)
+                        </span>
+                        <span class="telematics-pill" title="Battery state of charge & estimated operating range">
+                            ⚡ Battery: <strong id="telemetryBattery">78% (110 km range)</strong>
+                        </span>
+                        <span class="telematics-pill" title="Current consolidated cargo weight against payload capacity">
+                            📦 Active Payload: <strong>780 kg / 1,200 kg (65%)</strong>
+                        </span>
+                        <span class="telematics-pill" title="Differential RTK GPS positioning accuracy">
+                            📡 Telematics: <strong>10 Hz RTK (Accuracy ±0.4m)</strong>
+                        </span>
+                        <span class="telematics-pill" title="Real-time vehicle speed against geofenced corridor speed limit">
+                            🛡️ Speed: <strong id="telemetrySpeed">42 km/h</strong> (Limit: 60 km/h)
+                        </span>
                     </div>
                 </div>
             </div>
@@ -180,6 +208,324 @@
             </div>
         </div>
     </main>
+
+    <!-- INTERACTIVE TRANSPORT & DELIVERY VERIFICATION COCKPIT MODAL -->
+    <div class="modal-overlay" id="deliveryVerificationModal" style="display: none; z-index: 10000;">
+        <div class="modal-box" style="max-width: 620px; max-height: 90vh; overflow-y: auto;">
+            <button class="modal-close-btn" onclick="closeDeliveryVerificationModal()">✕</button>
+
+            <!-- VIEW 1: DRIVER & RECIPIENT HANDSHAKE FORM -->
+            <div id="verifyStepForm">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                    <span style="font-size: 26px;">🔐</span>
+                    <div>
+                        <h3 class="modal-title" style="margin: 0; font-size: 20px; color: var(--primary-deep);">
+                            Transport Verification & Escrow Release
+                        </h3>
+                        <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0 0 0;">
+                            Multi-Factor Handshake: Spatial Geofence + Physical Inspection + Buyer OTP Non-Repudiation
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Geofence Radar Simulator Banner -->
+                <div class="geofence-radar-wrap">
+                    <div class="radar-scope">
+                        <div class="radar-ring"></div>
+                        <div class="radar-blip"></div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                            <span style="font-size: 11px; font-weight: 800; background: rgba(52, 211, 153, 0.2); color: #a7f3d0; padding: 2px 8px; border-radius: 12px; letter-spacing: 0.5px;">
+                                📍 HAVERSINE GEOFENCE VALIDATED
+                            </span>
+                            <span style="font-size: 11px; color: #d1fae5; font-weight: 700;">Radius: &lt; 100m</span>
+                        </div>
+                        <div style="font-size: 14px; font-weight: 800; color: #ffffff;">
+                            Drop Node 1: Retail Cluster (Baner & Aundh)
+                        </div>
+                        <div style="font-size: 12px; color: #a7f3d0; margin-top: 2px;">
+                            Vehicle GPS: 18.5600° N, 73.7800° E • Distance to Customer Doorstep: <strong>18 meters [IN GEOFENCE ✓]</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consignment Summary Details -->
+                <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 14px; font-size: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <div><strong>Order ID:</strong> #ORD-8821</div>
+                    <div><strong>Customer:</strong> Sneha Kulkarni</div>
+                    <div><strong>Produce Lot:</strong> 250 kg Tomato (Nashik Hybrid Red)</div>
+                    <div><strong>Quality Pass:</strong> <code style="background: #e2e8f0; padding: 2px 4px; border-radius: 3px;">AGM-MH-2026-89421</code></div>
+                    <div><strong>Escrow Value to Release:</strong> <strong style="color: #059669; font-size: 13px;">₹240.00</strong></div>
+                    <div><strong>Payee Farmer:</strong> Ramesh Shinde (<span style="color: #2563eb;">ramesh.shinde@oksbi</span>)</div>
+                </div>
+
+                <!-- Consignment Quality & Tamper Checklist -->
+                <div style="margin-bottom: 14px;">
+                    <div style="font-size: 12px; font-weight: 800; color: #334155; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
+                        1. Physical Cargo Inspection Protocol:
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px;">
+                            <input type="checkbox" id="chkCrates" checked style="accent-color: #059669;">
+                            <span>📦 <strong>Crate Count:</strong> 24 / 24 Crates checked & barcode scanned (Zero damaged)</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px;">
+                            <input type="checkbox" id="chkTemp" checked style="accent-color: #059669;">
+                            <span>❄️ <strong>Cold-Chain Temp:</strong> +4.2°C logged at time of unloading (Compliant)</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; background: white; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px;">
+                            <input type="checkbox" id="chkSeal" checked style="accent-color: #059669;">
+                            <span>🛡️ <strong>Assayer Seal:</strong> Intact tamper-evident AGMARK holographic lot band</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Buyer Delivery OTP Entry -->
+                <div style="margin-bottom: 16px; text-align: center; background: white; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <div style="font-size: 12px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">
+                            2. Enter Recipient Buyer Delivery OTP:
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline" onclick="autofillDemoOtp()" style="font-size: 11px; padding: 2px 8px; font-weight: 700; color: #059669; border-color: #a7f3d0; background: #ecfdf5;">
+                            ⚡ Auto-Fill Demo OTP (8941)
+                        </button>
+                    </div>
+                    <p style="font-size: 11px; color: #64748b; margin: 0 0 8px 0;">
+                        OTP is transmitted exclusively to recipient Sneha Kulkarni (+91 98220 54109) upon vehicle arrival.
+                    </p>
+
+                    <div class="otp-input-group">
+                        <input type="text" maxlength="1" id="otpBox1" class="otp-box" oninput="onOtpInput(this, 'otpBox2')" onkeydown="onOtpKeydown(event, 'otpBox1', null)" autocomplete="off">
+                        <input type="text" maxlength="1" id="otpBox2" class="otp-box" oninput="onOtpInput(this, 'otpBox3')" onkeydown="onOtpKeydown(event, 'otpBox2', 'otpBox1')" autocomplete="off">
+                        <input type="text" maxlength="1" id="otpBox3" class="otp-box" oninput="onOtpInput(this, 'otpBox4')" onkeydown="onOtpKeydown(event, 'otpBox3', 'otpBox2')" autocomplete="off">
+                        <input type="text" maxlength="1" id="otpBox4" class="otp-box" oninput="onOtpInput(this, null)" onkeydown="onOtpKeydown(event, 'otpBox4', 'otpBox3')" autocomplete="off">
+                    </div>
+                    <div id="otpValidationMsg" style="font-size: 11px; font-weight: 700; color: #64748b;">Enter the 4-digit code provided by the buyer</div>
+                </div>
+
+                <!-- Buyer Digital Signature Pad -->
+                <div style="margin-bottom: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <div style="font-size: 12px; font-weight: 800; color: #334155; text-transform: uppercase; letter-spacing: 0.5px;">
+                            3. Recipient Digital Signature / Acknowledgment:
+                        </div>
+                        <div style="display: flex; gap: 6px;">
+                            <button type="button" onclick="clearSignatureCanvas()" style="background: none; border: none; color: #ef4444; font-size: 11px; font-weight: 700; cursor: pointer;">
+                                ✕ Clear
+                            </button>
+                            <button type="button" onclick="adoptDefaultSignature()" style="background: none; border: none; color: #2563eb; font-size: 11px; font-weight: 700; cursor: pointer;">
+                                ✍️ Adopt Sign
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sig-canvas-wrap">
+                        <canvas id="sigCanvas" class="sig-canvas" width="560" height="110"></canvas>
+                        <div id="sigPlaceholder" class="sig-canvas-placeholder">Sign with mouse, stylus or finger here...</div>
+                    </div>
+                </div>
+
+                <!-- Verification Stepper Progress (Hidden during input, active on submission) -->
+                <div id="verificationStepper" class="verification-stepper" style="display: none;">
+                    <div id="vStep1" class="v-step-item">
+                        <span>🛰️</span>
+                        <span>Step 1: Calculating Haversine Geofence Proximity (&lt; 100m)...</span>
+                    </div>
+                    <div id="vStep2" class="v-step-item">
+                        <span>🔑</span>
+                        <span>Step 2: Authenticating 4-Digit Ephemeral Delivery OTP Handshake...</span>
+                    </div>
+                    <div id="vStep3" class="v-step-item">
+                        <span>🛡️</span>
+                        <span>Step 3: Generating SHA-256 Electronic Proof of Delivery (e-PoD)...</span>
+                    </div>
+                    <div id="vStep4" class="v-step-item">
+                        <span>💰</span>
+                        <span>Step 4: Executing Escrow Release Webhook to Farmer UPI (₹240.00)...</span>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div style="display: flex; gap: 10px;">
+                    <button type="button" class="btn btn-outline" onclick="closeDeliveryVerificationModal()" style="flex: 1; padding: 12px;">
+                        Cancel
+                    </button>
+                    <button type="button" id="btnExecuteVerification" class="btn btn-primary" onclick="executeDeliveryVerification()" style="flex: 2; padding: 12px; background: #059669; font-weight: 800;">
+                        🔐 Verify Credentials & Release Escrow →
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIEW 2: OFFICIAL ELECTRONIC PROOF OF DELIVERY (e-PoD) RECEIPT -->
+            <div id="verifyStepReceipt" style="display: none;">
+                <div class="epod-receipt-sheet">
+                    <div class="epod-stamp">ESCROW RELEASED ✓</div>
+                    
+                    <div style="display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #065f46; padding-bottom: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 32px;">🇮🇳</span>
+                        <div>
+                            <div style="font-size: 10px; font-weight: 800; color: #065f46; letter-spacing: 1px;">REPUBLIC OF INDIA • DEPARTMENT OF CONSUMER AFFAIRS</div>
+                            <h3 style="font-size: 18px; font-weight: 900; color: #022c22; margin: 0;">Electronic Proof of Delivery (e-PoD)</h3>
+                            <div style="font-size: 11px; color: #64748b;">Smart India Hackathon 2026 • Automated Escrow Settlement Audit</div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12px; margin-bottom: 16px;">
+                        <div>
+                            <span style="color: #64748b; display: block; font-size: 10px; text-transform: uppercase;">e-PoD Receipt ID</span>
+                            <strong id="receiptPoDId" style="font-family: monospace; font-size: 13px;">EPOD-2026-8821-KST</strong>
+                        </div>
+                        <div>
+                            <span style="color: #64748b; display: block; font-size: 10px; text-transform: uppercase;">Timestamp</span>
+                            <strong id="receiptTimestamp">10 Sep 2026, 22:45 IST</strong>
+                        </div>
+                        <div>
+                            <span style="color: #64748b; display: block; font-size: 10px; text-transform: uppercase;">Consignee (Buyer)</span>
+                            <strong>Sneha Kulkarni</strong> (Baner Drop Node)
+                        </div>
+                        <div>
+                            <span style="color: #64748b; display: block; font-size: 10px; text-transform: uppercase;">Farmer Payee</span>
+                            <strong>Ramesh Shinde</strong> (Dindori, Nashik)
+                        </div>
+                        <div>
+                            <span style="color: #64748b; display: block; font-size: 10px; text-transform: uppercase;">Goods Delivered</span>
+                            <strong>250 kg Tomato (Nashik Hybrid)</strong>
+                        </div>
+                        <div>
+                            <span style="color: #64748b; display: block; font-size: 10px; text-transform: uppercase;">AGMARK Lot Certificate</span>
+                            <strong>AGM-MH-2026-89421 (Grade A)</strong>
+                        </div>
+                    </div>
+
+                    <!-- Escrow Payout Box -->
+                    <div style="background: #ecfdf5; border: 1.5px solid #a7f3d0; border-radius: 10px; padding: 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 11px; font-weight: 700; color: #047857; text-transform: uppercase;">Direct Escrow UPI Transfer</span>
+                            <div style="font-size: 22px; font-weight: 900; color: #065f46;">₹240.00 Settled</div>
+                            <div style="font-size: 11px; color: #059669;">Bank Txn Ref: <code id="receiptBankRef">ESC-UPI-2026-89410</code></div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="background: #10b981; color: white; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px;">IMMEDIATE UPI</span>
+                            <div style="font-size: 11px; color: #065f46; margin-top: 4px;">To: ramesh.shinde@oksbi</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 16px; align-items: center; border-top: 1px dashed #cbd5e1; padding-top: 14px;">
+                        <img id="receiptQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=KISANSETU-EPOD-2026-8821-VERIFIED" alt="e-PoD QR Code" style="width: 76px; height: 76px; border: 1px solid #cbd5e1; border-radius: 6px; padding: 3px; background: white;">
+                        <div style="flex: 1; font-size: 11px; color: #64748b;">
+                            <div><strong>Cryptographic e-PoD Hash:</strong></div>
+                            <code style="display: block; word-break: break-all; font-size: 10px; color: #1e293b; background: #f1f5f9; padding: 4px; border-radius: 4px; margin-top: 2px;">
+                                SHA256:d8f7e6a4b2c1e0f98a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5
+                            </code>
+                            <div style="margin-top: 4px; color: #059669; font-weight: 600;">✓ Haversine Geofence verified (18m) • Buyer OTP 8941 authenticated</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 16px;">
+                    <button type="button" class="btn btn-outline" onclick="window.print()" style="flex: 1; padding: 11px; font-weight: 700;">
+                        🖨️ Print / Save e-PoD Receipt
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="closeDeliveryVerificationModal()" style="flex: 1; padding: 11px; background: #059669; font-weight: 700;">
+                        ✓ Complete Corridor Run
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CVRPTW ALGORITHM EXPLAINER MODAL -->
+    <div class="modal-overlay" id="cvrptwExplainerModal" style="display: none; z-index: 10000;">
+        <div class="modal-box" style="max-width: 640px; max-height: 90vh; overflow-y: auto;">
+            <button class="modal-close-btn" onclick="closeCvrptwExplainerModal()">✕</button>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                <span style="font-size: 26px;">📐</span>
+                <div>
+                    <h3 class="modal-title" style="margin: 0; font-size: 20px; color: var(--primary-deep);">
+                        Capacitated Vehicle Routing Problem with Time Windows (CVRPTW)
+                    </h3>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0 0 0;">
+                        Mathematical Formulation & Agricultural Corridor Optimization Architecture
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 16px; margin: 14px 0;">
+                <div style="font-size: 12px; font-weight: 800; color: #1e40af; text-transform: uppercase; margin-bottom: 6px;">
+                    Mathematical Objective Function:
+                </div>
+                <div style="background: #ffffff; border: 1px solid #dbeafe; border-radius: 8px; padding: 10px 14px; font-family: monospace; font-size: 13px; color: #0f172a; text-align: center; margin-bottom: 8px;">
+                    min ∑ (k ∈ K) ∑ (i ∈ V) ∑ (j ∈ V) c_ij · x_ijk
+                </div>
+                <p style="font-size: 12px; color: #1e3a8a; margin: 0; line-height: 1.5;">
+                    Minimizes total travel distance and cold-chain energy costs across fleet vehicles $K$ connecting farm pickup nodes to urban drop clusters while satisfying three core constraints:
+                </p>
+                <div style="margin-top: 8px; font-size: 12px; color: #334155; display: flex; flex-direction: column; gap: 4px;">
+                    <div>1. <strong>Payload Constraint:</strong> ∑ q_i ≤ Q_k (Tata Ace EV capacity: 1,200 kg)</div>
+                    <div>2. <strong>Perishability Time Window:</strong> e_i ≤ s_ik ≤ l_i (Delivered before freshness degradation)</div>
+                    <div>3. <strong>Precedence Constraint:</strong> Farm collection nodes strictly precede urban drop points</div>
+                </div>
+            </div>
+
+            <!-- Savings Formula Card -->
+            <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                <div style="font-size: 12px; font-weight: 800; color: #334155; text-transform: uppercase; margin-bottom: 6px;">
+                    Clarke-Wright Savings Heuristic:
+                </div>
+                <div style="background: #ffffff; border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-family: monospace; font-size: 13px; text-align: center; margin-bottom: 8px;">
+                    S_ij = c_i0 + c_0j - c_ij
+                </div>
+                <p style="font-size: 12px; color: #64748b; margin: 0;">
+                    Instead of having each farmer drive individually to Pune and back ($2 \cdot c_{i0}$), the heuristic merges stops $(i, j)$ that maximize distance savings $S_{ij}$, consolidating 6 trips into 1 unified milk-run corridor.
+                </p>
+            </div>
+
+            <!-- Comparative Audit Matrix -->
+            <div class="custom-table-wrap" style="margin-bottom: 16px;">
+                <table class="custom-table" style="font-size: 12px;">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Uncoordinated (6 Trips)</th>
+                            <th>CVRPTW Optimized (1 Trip)</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Total Distance</strong></td>
+                            <td style="color: #ef4444;">184 km</td>
+                            <td style="color: #059669; font-weight: 700;">64 km</td>
+                            <td><span class="status-badge status-available">-65% Distance</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Corridor Fuel Cost</strong></td>
+                            <td style="color: #ef4444;">₹4,250</td>
+                            <td style="color: #059669; font-weight: 700;">₹1,680</td>
+                            <td><span class="status-badge status-available">-61% Transport Cost</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carbon Footprint</strong></td>
+                            <td style="color: #ef4444;">38.6 kg CO₂</td>
+                            <td style="color: #059669; font-weight: 700;">12.2 kg CO₂</td>
+                            <td><span class="status-badge status-available">-68% Emissions</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cold-Chain Temp</strong></td>
+                            <td style="color: #64748b;">Ambient (Heat damage)</td>
+                            <td style="color: #059669; font-weight: 700;">+4.2°C Controlled</td>
+                            <td><span class="status-badge status-verified">Zero Spoilage</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="closeCvrptwExplainerModal()" style="width: 100%; padding: 12px;">
+                Understood • Back to Live Route Map
+            </button>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer class="main-footer" style="padding: 30px 6%; margin-top: 40px;">
@@ -341,10 +687,10 @@
                 const dotColor = isDepot ? '#2563eb' : isPickup ? '#059669' : '#d97706';
 
                 html += `
-                    <div style="display:flex; align-items:flex-start; gap:12px; background:white; padding:10px 12px; border-radius:8px; border:1px solid var(--border);">
+                    <div style="display:flex; align-items:flex-start; gap:12px; background:white; padding:10px 12px; border-radius:8px; border:1px solid var(--border); cursor:pointer; transition:var(--transition);" onclick="focusStopOnMap(${idx})" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'" title="Click to view on map">
                         <div style="width:10px; height:10px; border-radius:50%; background:${dotColor}; margin-top:5px; flex-shrink:0;"></div>
                         <div style="flex:1;">
-                            <div style="font-weight:700; color:#1e293b;">Stop ${idx + 1}: ${n.name}</div>
+                            <div style="font-weight:700; color:#1e293b; font-size:13px;">Stop ${idx + 1}: ${n.name}</div>
                             <div style="font-size:12px; color:#64748b;">${n.info}</div>
                         </div>
                         <span style="font-size:11px; font-weight:700; color:${dotColor};">${n.type.toUpperCase()}</span>
@@ -354,6 +700,15 @@
 
             container.innerHTML = html;
             if (typeof translateDom === 'function') translateDom(container);
+        }
+
+        function focusStopOnMap(idx) {
+            const node = NODES[idx];
+            if (!node || !map) return;
+            map.flyTo([node.lat, node.lon], 13, { duration: 0.8 });
+            if (markers[idx]) {
+                markers[idx].openPopup();
+            }
         }
 
         function startVehicleSimulation() {
@@ -385,8 +740,16 @@
                 step = (step + 1) % points.length;
                 vehicleMarker.setLatLng(points[step]);
                 const currNode = NODES[step];
-                document.getElementById('liveRouteStatus').innerText = `Arrived at Stop ${step + 1}: ${currNode.name}`;
-                vehicleMarker.bindPopup(`<strong>🚚 Current GPS Ping</strong><br>${currNode.name}`).openPopup();
+                document.getElementById('liveRouteStatus').innerHTML = `<span class="pulse-beacon"></span> Arrived at Stop ${step + 1}: ${currNode.name}`;
+                vehicleMarker.bindPopup(`<strong>🚚 Live GPS Telemetry</strong><br>${currNode.name}<br><span style="font-size:11px; color:#059669;">Geofence Active</span>`).openPopup();
+
+                if (currNode.id === 'N4') {
+                    const btn = document.getElementById('btnOpenVerification');
+                    if (btn) {
+                        btn.style.animation = 'micPulse 1.5s infinite';
+                        btn.innerHTML = '🚨 In Geofence • Verify Delivery Now!';
+                    }
+                }
 
                 if (step === points.length - 1) {
                     clearInterval(animInterval);
@@ -396,16 +759,298 @@
             }, 2500);
         }
 
-        function simulateDeliveryConfirmation() {
-            alert(`📦 DELIVERY CONFIRMATION OTP VERIFIED!\n\nBuyer: Sneha Kulkarni\nOTP Entered: 8941 (Valid)\nDelivered by: Santosh Jadhav\n\n🛡️ ESCROW RELEASE WEBHOOK TRIGGERED:\nFunds (₹240.00) released from Nodal Escrow directly to Farmer Ramesh Shinde's UPI account.`);
-            
-            if (window.kisanStore) {
-                window.kisanStore.releaseEscrow('ORD-8821');
+        // ===================================================
+        // TRANSPORT VERIFICATION & e-PoD ESCROW RELEASE
+        // ===================================================
+
+        let isDrawing = false;
+        let sigContext = null;
+
+        function openDeliveryVerificationModal() {
+            const modal = document.getElementById('deliveryVerificationModal');
+            if (!modal) return;
+
+            document.getElementById('verifyStepForm').style.display = 'block';
+            document.getElementById('verifyStepReceipt').style.display = 'none';
+            document.getElementById('verificationStepper').style.display = 'none';
+            document.getElementById('btnExecuteVerification').disabled = false;
+            document.getElementById('btnExecuteVerification').innerText = '🔐 Verify Credentials & Release Escrow →';
+
+            modal.style.display = 'flex';
+
+            // Init canvas
+            setTimeout(initSignatureCanvas, 100);
+        }
+
+        function closeDeliveryVerificationModal() {
+            const modal = document.getElementById('deliveryVerificationModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function openCvrptwExplainerModal() {
+            const modal = document.getElementById('cvrptwExplainerModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeCvrptwExplainerModal() {
+            const modal = document.getElementById('cvrptwExplainerModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function onOtpInput(el, nextId) {
+            el.value = el.value.replace(/[^0-9]/g, '');
+            if (el.value.length === 1) {
+                el.classList.add('valid');
+                if (nextId) {
+                    const next = document.getElementById(nextId);
+                    if (next) next.focus();
+                }
+            } else {
+                el.classList.remove('valid');
+            }
+            checkOtpCompleteness();
+        }
+
+        function onOtpKeydown(e, currentId, prevId) {
+            if (e.key === 'Backspace') {
+                const el = document.getElementById(currentId);
+                if (el && !el.value && prevId) {
+                    const prev = document.getElementById(prevId);
+                    if (prev) {
+                        prev.focus();
+                        prev.value = '';
+                        prev.classList.remove('valid');
+                    }
+                }
+            }
+        }
+
+        function autofillDemoOtp() {
+            document.getElementById('otpBox1').value = '8';
+            document.getElementById('otpBox2').value = '9';
+            document.getElementById('otpBox3').value = '4';
+            document.getElementById('otpBox4').value = '1';
+
+            ['otpBox1', 'otpBox2', 'otpBox3', 'otpBox4'].forEach(id => {
+                document.getElementById(id).classList.add('valid');
+            });
+
+            const msg = document.getElementById('otpValidationMsg');
+            if (msg) {
+                msg.innerText = '✓ Valid OTP 8941 auto-filled for Sneha Kulkarni';
+                msg.style.color = '#059669';
+            }
+        }
+
+        function checkOtpCompleteness() {
+            const b1 = document.getElementById('otpBox1').value;
+            const b2 = document.getElementById('otpBox2').value;
+            const b3 = document.getElementById('otpBox3').value;
+            const b4 = document.getElementById('otpBox4').value;
+            const code = b1 + b2 + b3 + b4;
+
+            const msg = document.getElementById('otpValidationMsg');
+            if (code.length === 4) {
+                if (code === '8941') {
+                    msg.innerText = '✓ OTP Validated: Match confirmed with recipient handshake';
+                    msg.style.color = '#059669';
+                } else {
+                    msg.innerText = '⚠️ Code entered: ' + code + ' (Demo code: 8941)';
+                    msg.style.color = '#d97706';
+                }
+            }
+        }
+
+        function initSignatureCanvas() {
+            const canvas = document.getElementById('sigCanvas');
+            if (!canvas) return;
+
+            // Handle retina scaling
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = 110;
+
+            sigContext = canvas.getContext('2d');
+            sigContext.strokeStyle = '#0f172a';
+            sigContext.lineWidth = 2.5;
+            sigContext.lineCap = 'round';
+            sigContext.lineJoin = 'round';
+
+            const startDraw = (x, y) => {
+                isDrawing = true;
+                sigContext.beginPath();
+                sigContext.moveTo(x, y);
+                const p = document.getElementById('sigPlaceholder');
+                if (p) p.style.display = 'none';
+            };
+
+            const drawMove = (x, y) => {
+                if (!isDrawing) return;
+                sigContext.lineTo(x, y);
+                sigContext.stroke();
+            };
+
+            const endDraw = () => {
+                isDrawing = false;
+            };
+
+            canvas.onmousedown = (e) => {
+                const r = canvas.getBoundingClientRect();
+                startDraw(e.clientX - r.left, e.clientY - r.top);
+            };
+            canvas.onmousemove = (e) => {
+                const r = canvas.getBoundingClientRect();
+                drawMove(e.clientX - r.left, e.clientY - r.top);
+            };
+            window.addEventListener('mouseup', endDraw);
+
+            canvas.ontouchstart = (e) => {
+                e.preventDefault();
+                const t = e.touches[0];
+                const r = canvas.getBoundingClientRect();
+                startDraw(t.clientX - r.left, t.clientY - r.top);
+            };
+            canvas.ontouchmove = (e) => {
+                e.preventDefault();
+                const t = e.touches[0];
+                const r = canvas.getBoundingClientRect();
+                drawMove(t.clientX - r.left, t.clientY - r.top);
+            };
+            canvas.ontouchend = endDraw;
+        }
+
+        function clearSignatureCanvas() {
+            const canvas = document.getElementById('sigCanvas');
+            if (canvas && sigContext) {
+                sigContext.clearRect(0, 0, canvas.width, canvas.height);
+                const p = document.getElementById('sigPlaceholder');
+                if (p) p.style.display = 'block';
+            }
+        }
+
+        function adoptDefaultSignature() {
+            const canvas = document.getElementById('sigCanvas');
+            if (!canvas || !sigContext) return;
+
+            clearSignatureCanvas();
+            const p = document.getElementById('sigPlaceholder');
+            if (p) p.style.display = 'none';
+
+            sigContext.font = 'italic 32px "Caveat", "Dancing Script", cursive, sans-serif';
+            sigContext.fillStyle = '#1e3a8a';
+            sigContext.fillText('Sneha Kulkarni', 40, 68);
+
+            // subtle underline
+            sigContext.beginPath();
+            sigContext.strokeStyle = '#3b82f6';
+            sigContext.lineWidth = 1.8;
+            sigContext.moveTo(35, 76);
+            sigContext.lineTo(240, 78);
+            sigContext.stroke();
+        }
+
+        function executeDeliveryVerification() {
+            const b1 = document.getElementById('otpBox1').value;
+            const b2 = document.getElementById('otpBox2').value;
+            const b3 = document.getElementById('otpBox3').value;
+            const b4 = document.getElementById('otpBox4').value;
+            let code = b1 + b2 + b3 + b4;
+
+            if (!code || code.length < 4) {
+                autofillDemoOtp();
+                code = '8941';
             }
 
-            document.getElementById('liveRouteStatus').innerText = 'Delivered & Escrow Funds Released ✓';
-            showToast('Escrow Funds auto-released to Farmer UPI!', 'success');
+            const stepper = document.getElementById('verificationStepper');
+            stepper.style.display = 'flex';
+
+            const btn = document.getElementById('btnExecuteVerification');
+            btn.disabled = true;
+            btn.innerText = '⏳ Executing Automated Escrow Webhook...';
+
+            // Step 1: Geofence
+            const s1 = document.getElementById('vStep1');
+            const s2 = document.getElementById('vStep2');
+            const s3 = document.getElementById('vStep3');
+            const s4 = document.getElementById('vStep4');
+
+            s1.className = 'v-step-item active';
+
+            setTimeout(() => {
+                s1.className = 'v-step-item done';
+                s1.innerHTML = '<span>✓</span> <span>Step 1: Haversine Geofence Proximity Validated (18m &lt; 100m)</span>';
+                s2.className = 'v-step-item active';
+
+                setTimeout(() => {
+                    s2.className = 'v-step-item done';
+                    s2.innerHTML = `<span>✓</span> <span>Step 2: OTP ${code} Authenticated (Non-Repudiation Secured)</span>`;
+                    s3.className = 'v-step-item active';
+
+                    setTimeout(() => {
+                        s3.className = 'v-step-item done';
+                        s3.innerHTML = '<span>✓</span> <span>Step 3: Cryptographic e-PoD SHA-256 Hash Sealed</span>';
+                        s4.className = 'v-step-item active';
+
+                        setTimeout(() => {
+                            s4.className = 'v-step-item done';
+                            s4.innerHTML = '<span>✓</span> <span>Step 4: Nodal Escrow Released (₹240.00 to ramesh.shinde@oksbi)</span>';
+
+                            // Execute store escrow release
+                            if (window.kisanStore) {
+                                window.kisanStore.releaseEscrow('ORD-8821');
+                                if (typeof window.kisanStore.addNotification === 'function') {
+                                    window.kisanStore.addNotification({
+                                        id: `notif_${Date.now()}`,
+                                        title: '💰 Escrow Released: ₹240.00 Received (UPI)',
+                                        message: 'Order #ORD-8821 delivered to Sneha Kulkarni via CVRPTW. Haversine geofence & OTP 8941 verified. ₹240.00 transferred to ramesh.shinde@oksbi.',
+                                        type: 'escrow',
+                                        timestamp: new Date().toISOString(),
+                                        read: false
+                                    });
+                                }
+                            }
+
+                            // Switch to e-PoD receipt view
+                            setTimeout(() => {
+                                document.getElementById('verifyStepForm').style.display = 'none';
+                                document.getElementById('verifyStepReceipt').style.display = 'block';
+
+                                const now = new Date();
+                                document.getElementById('receiptTimestamp').innerText = now.toLocaleString('en-IN', {
+                                    day: 'numeric', month: 'short', year: 'numeric',
+                                    hour: '2-digit', minute: '2-digit'
+                                });
+                                document.getElementById('receiptBankRef').innerText = `ESC-UPI-2026-${Math.floor(10000 + Math.random() * 90000)}`;
+
+                                document.getElementById('liveRouteStatus').innerHTML = '<span style="color:#059669; font-weight:800;">Delivered & Escrow Funds Released ✓</span>';
+                                const openBtn = document.getElementById('btnOpenVerification');
+                                if (openBtn) {
+                                    openBtn.style.animation = 'none';
+                                    openBtn.innerHTML = '✓ View e-PoD Receipt';
+                                }
+
+                                showToast('🎉 Delivery Verified! ₹240.00 released to Farmer UPI.', 'success');
+                            }, 400);
+
+                        }, 500);
+                    }, 400);
+                }, 400);
+            }, 400);
         }
+
+        // Periodic telemetry subtle jiggle for live IoT simulation
+        setInterval(() => {
+            const tempEl = document.getElementById('telemetryTemp');
+            const speedEl = document.getElementById('telemetrySpeed');
+            if (tempEl) {
+                const randTemp = (4.1 + Math.random() * 0.3).toFixed(1);
+                tempEl.innerText = `+${randTemp}°C`;
+            }
+            if (speedEl) {
+                const randSpeed = Math.floor(38 + Math.random() * 8);
+                speedEl.innerText = `${randSpeed} km/h`;
+            }
+        }, 4000);
     </script>
 </body>
 </html>

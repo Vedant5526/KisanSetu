@@ -659,6 +659,7 @@ const UI_TRANSLATIONS = {
         "🌱 Active Produce Inventory": "🌱 उपलब्ध शेतमाल सूची",
         "💳 Escrow Wallet & UPI Payouts": "💳 एस्क्रो वॉलेट व यूपीआई भुगतान",
         "👥 FPO Aggregator Group": "👥 एफपीओ एकत्रीकरण समूह",
+        "🔬 Quality Testing & Assayer Labs": "🔬 गुणवत्ता चाचणी व प्रयोगशाळा",
         "Network Connectivity": "नेटवर्क कनेक्टिविटी",
         "ONLINE": "ऑनलाइन",
 
@@ -808,6 +809,8 @@ const UI_TRANSLATIONS = {
         "In-Transit: Heading to Drop 1 (Baner)": "मार्ग में: ड्रॉप 1 (बानेर) की ओर अग्रसर",
         "✓ Confirm Delivery & Release Escrow": "✓ डिलीवरी सत्यापित करें और एस्क्रो जारी करें",
         "Confirm Delivery & Release Escrow": "डिलीवरी सत्यापित करें और एस्क्रो जारी करें",
+        "🔐 Verify Delivery & Release Escrow →": "🔐 डिलीवरी सत्यापित करें व एस्क्रो जारी करें →",
+        "ℹ️ Inspect CVRPTW Algorithm": "ℹ️ CVRPTW एल्गोरिथ्म समझें",
         "Route Economics Audit": "मार्ग आर्थिक विश्लेषण व बचत ऑडिट",
         "OPTIMIZED CVRPTW": "अनुकूलित CVRPTW",
         "UNOPTIMIZED ROUTE": "असंयोजित मार्ग",
@@ -1089,6 +1092,7 @@ const UI_TRANSLATIONS = {
         "🌱 Active Produce Inventory": "🌱 उपलब्ध शेतमाल साठा",
         "💳 Escrow Wallet & UPI Payouts": "💳 एस्क्रो पाकीट व UPI जमा",
         "👥 FPO Aggregator Group": "👥 FPO शेतकरी गट",
+        "🔬 Quality Testing & Assayer Labs": "🔬 गुणवत्ता चाचणी व तपासणी लॅब्स",
         "Network Connectivity": "नेटवर्क स्थिती",
         "ONLINE": "ऑनलाइन",
 
@@ -1238,6 +1242,8 @@ const UI_TRANSLATIONS = {
         "In-Transit: Heading to Drop 1 (Baner)": "मार्गावर: वितरण १ (बाणेर) कडे रवाना",
         "✓ Confirm Delivery & Release Escrow": "✓ डिलिव्हरी खात्री करा आणि एस्क्रो जमा करा",
         "Confirm Delivery & Release Escrow": "डिलिव्हरी खात्री करा आणि एस्क्रो जमा करा",
+        "🔐 Verify Delivery & Release Escrow →": "🔐 डिलिव्हरी पडताळा आणि एस्क्रो जमा करा →",
+        "ℹ️ Inspect CVRPTW Algorithm": "ℹ️ CVRPTW अल्गोरिदम समजून घ्या",
         "Route Economics Audit": "वाहतूक खर्च व थेट बचत विश्लेषण",
         "OPTIMIZED CVRPTW": "अनुकूलित CVRPTW",
         "UNOPTIMIZED ROUTE": "असंयोजित मार्ग",
@@ -2832,3 +2838,331 @@ function renderOrderTimeline(ord) {
         </div>
     `;
 }
+
+// ===================================================
+// QUALITY CHECKER & ASSAYER CERTIFICATE SYSTEM
+// SIH 2026 PS 26033 - DoCA Quality Framework
+// ===================================================
+
+function viewListingCertificate(listingId) {
+    openCertVerificationModal(listingId);
+}
+
+function openCertVerificationModal(initialQuery = 'AGM-MH-2026-89421') {
+    let modal = document.getElementById('certVerificationModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'certVerificationModal';
+        modal.className = 'modal-overlay';
+        modal.style.zIndex = '99999';
+        document.body.appendChild(modal);
+    }
+
+    modal.innerHTML = `
+        <div class="cert-modal-box">
+            <button class="modal-close-btn" style="position: absolute; right: 20px; top: 18px; z-index: 10;" onclick="closeCertVerificationModal()">✕</button>
+            
+            <div class="cert-lookup-bar">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <div>
+                        <span style="background:#022c22; color:#ffffff; font-size:10px; font-weight:800; padding:2px 8px; border-radius:10px; letter-spacing:0.5px;">GOVERNMENT OF INDIA • DoCA SIH 2026</span>
+                        <h3 style="font-size:18px; font-weight:800; color:var(--primary-deep); margin-top:2px;">
+                            🔬 Quality Checker & Assayer Certificate Verification
+                        </h3>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline" style="border-color:#059669; color:#059669; font-weight:700;" onclick="simulateQrScan()">
+                        📷 Scan Lot QR Code
+                    </button>
+                </div>
+
+                <div class="cert-lookup-input-wrap">
+                    <input type="text" id="certSearchInput" class="cert-lookup-input" placeholder="Enter Certificate ID (e.g. AGM-MH-2026-89421) or Lot ID (e.g. lst_101)..." onkeydown="if(event.key==='Enter'){searchCertVerification();}">
+                    <button class="btn btn-primary" onclick="searchCertVerification()" style="padding:10px 18px; font-weight:700; white-space:nowrap;">
+                        🔍 Verify Authenticity
+                    </button>
+                </div>
+
+                <div class="cert-chips-row">
+                    <span style="font-size:11px; font-weight:700; color:#64748b;">Quick Demo Lots:</span>
+                    <button type="button" class="cert-chip-btn" onclick="lookupSpecificCert('AGM-MH-2026-89421')">🍅 Tomato (Nashik Hybrid)</button>
+                    <button type="button" class="cert-chip-btn" onclick="lookupSpecificCert('AGM-MH-2026-78142')">🧅 Onion (Lasalgaon 55mm+)</button>
+                    <button type="button" class="cert-chip-btn" onclick="lookupSpecificCert('GI-AGM-2026-11048')">🥭 Devgad Alphonso (GI Tagged)</button>
+                    <button type="button" class="cert-chip-btn" onclick="lookupSpecificCert('AGM-MP-2026-90234')">🌾 Sharbati Wheat (MRL Free)</button>
+                </div>
+            </div>
+
+            <div id="certResultContainer" style="padding: 10px 16px 24px 16px;">
+                <!-- Dynamically populated via renderOfficialCertificate() -->
+            </div>
+        </div>
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Set initial search value and render
+    const input = document.getElementById('certSearchInput');
+    if (input && initialQuery) {
+        input.value = initialQuery;
+        lookupSpecificCert(initialQuery);
+    }
+}
+
+function closeCertVerificationModal() {
+    const modal = document.getElementById('certVerificationModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+    document.body.style.overflow = 'auto';
+}
+
+function lookupSpecificCert(query) {
+    const input = document.getElementById('certSearchInput');
+    if (input) input.value = query;
+
+    if (!window.kisanStore) return;
+    const cert = window.kisanStore.getCertificate(query);
+    const container = document.getElementById('certResultContainer');
+    if (!container) return;
+
+    if (cert) {
+        container.innerHTML = renderOfficialCertificateHtml(cert);
+    } else {
+        container.innerHTML = `
+            <div style="background:#fef2f2; border:1.5px solid #fecaca; border-radius:12px; padding:36px 24px; text-align:center; margin:20px 8px;">
+                <div style="font-size:42px; margin-bottom:12px;">⚠️</div>
+                <h3 style="color:#b91c1c; font-size:20px; font-weight:800; margin-bottom:8px;">UNVERIFIED CERTIFICATE / RECORD NOT FOUND</h3>
+                <p style="color:#7f1d1d; font-size:14px; max-width:540px; margin:0 auto 16px; line-height:1.5;">
+                    No certified laboratory assay record matches <strong>"${query}"</strong> in the Central AGMARK / NABL Assayer Registry.
+                </p>
+                <div style="background:#ffffff; border:1px dashed #f87171; border-radius:8px; padding:12px; display:inline-block; font-size:12px; color:#991b1b; text-align:left;">
+                    <strong>Security Warning for Buyers:</strong><br>
+                    • Produce from unverified lots may not adhere to FSSAI MRL limits or mandated moisture standards.<br>
+                    • Only accept deliveries with verifiable QR seals on crates.
+                </div>
+            </div>
+        `;
+    }
+}
+
+function searchCertVerification() {
+    const input = document.getElementById('certSearchInput');
+    if (!input) return;
+    const val = input.value.trim();
+    if (!val) {
+        showToast('Please enter a Certificate ID or Lot Reference', 'warning');
+        return;
+    }
+    lookupSpecificCert(val);
+}
+
+function simulateQrScan() {
+    showToast('📷 Camera QR Scanner activated... Aligning with lot packaging barcode...', 'info');
+    setTimeout(() => {
+        const demoCerts = ['AGM-MH-2026-89421', 'AGM-MH-2026-78142', 'GI-AGM-2026-11048', 'AGM-MP-2026-90234'];
+        const picked = demoCerts[Math.floor(Math.random() * demoCerts.length)];
+        showToast(`✓ QR Barcode Scanned successfully: ${picked}`, 'success');
+        lookupSpecificCert(picked);
+    }, 900);
+}
+
+function copyCertId(certId) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(certId).then(() => {
+            showToast(`Certificate ID "${certId}" copied to clipboard!`, 'success');
+        });
+    } else {
+        showToast(`Certificate ID: ${certId}`, 'info');
+    }
+}
+
+function printQualityCertificate() {
+    window.print();
+}
+
+function renderOfficialCertificateHtml(cert) {
+    const paramRows = (cert.parameters || []).map(p => `
+        <tr>
+            <td style="font-weight:700;">
+                <span style="margin-right:6px;">${p.icon || '🔬'}</span> ${p.metric}
+            </td>
+            <td style="font-weight:800; color:#064e3b; font-size:13px;">
+                ${p.value}
+            </td>
+            <td style="color:#475569;">
+                ${p.benchmark}
+            </td>
+            <td>
+                <span class="cert-status-pass">✓ ${p.status || 'PASS'}</span>
+            </td>
+        </tr>
+    `).join('');
+
+    return `
+        <div class="official-cert-sheet" id="printableCertSheet">
+            <!-- Header -->
+            <div class="cert-header">
+                <div class="cert-emblem-row">
+                    <span class="gov-flag"></span>
+                    <span class="cert-emblem-badge">DIRECTORATE OF MARKETING & INSPECTION (DMI)</span>
+                    <span class="gov-flag"></span>
+                </div>
+                <div class="cert-title-main">AGMARK QUALITY ASSAY CERTIFICATE</div>
+                <div class="cert-subtitle">
+                    Issued in compliance with Agricultural Produce (Grading & Marking) Act, 1937 & DoCA SIH 2026 Guidelines
+                </div>
+            </div>
+
+            <!-- Meta Strip -->
+            <div class="cert-meta-strip">
+                <div class="cert-meta-item">
+                    <span class="cert-meta-label">Certificate ID / Assay No.</span>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <span class="cert-meta-value">${cert.certId}</span>
+                        <button type="button" onclick="copyCertId('${cert.certId}')" title="Copy Certificate ID" style="background:none; border:none; cursor:pointer; font-size:12px;">📋</button>
+                    </div>
+                </div>
+                <div class="cert-meta-item">
+                    <span class="cert-meta-label">Accreditation & Registry</span>
+                    <span class="cert-meta-value" style="font-size:11px;">${cert.accreditation || 'NABL Accredited Lab (TC-7841)'}</span>
+                </div>
+                <div class="cert-meta-item">
+                    <span class="cert-meta-label">Inspection Date</span>
+                    <span class="cert-meta-value">${cert.issueDate}</span>
+                </div>
+                <div class="cert-meta-item">
+                    <span class="cert-meta-label">Verification Status</span>
+                    <span class="cert-meta-value" style="color:#059669; display:flex; align-items:center; gap:4px;">
+                        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+                        VERIFIED & ACTIVE
+                    </span>
+                </div>
+            </div>
+
+            <!-- Entities: Farmer & Consignment + Assaying Lab -->
+            <div class="cert-entity-card">
+                <div class="cert-info-box">
+                    <h5>🌾 Consignment & Producer Details</h5>
+                    <div class="cert-info-row">
+                        <span>Produce Variety:</span>
+                        <strong>${cert.crop}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Farmer / Producer:</span>
+                        <strong>${cert.farmerName}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>FPO Aggregator:</span>
+                        <strong>${cert.fpo || 'Independent Primary Producer'}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Origin Geolocation:</span>
+                        <strong>${cert.region}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Certified Lot Volume:</span>
+                        <strong>${cert.quantityKg} kg</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Harvest Batch Timestamp:</span>
+                        <strong>${cert.harvestDate}</strong>
+                    </div>
+                </div>
+
+                <div class="cert-info-box">
+                    <h5>🔬 Authorized Testing Center & Assayer</h5>
+                    <div class="cert-info-row">
+                        <span>Assaying Laboratory:</span>
+                        <strong style="text-align:right; max-width:220px;">${cert.labName}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Certified Assayer:</span>
+                        <strong>${cert.assayerName}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Assayer License No.:</span>
+                        <strong style="color:#065f46;">${cert.assayerLicense}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Classification Grade:</span>
+                        <strong style="color:#059669; font-size:13px;">${cert.grade}</strong>
+                    </div>
+                    <div class="cert-info-row">
+                        <span>Certificate Valid Until:</span>
+                        <strong style="color:#b45309;">${cert.validUntil}</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physical & Chemical Parameter Table -->
+            <div style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:flex-end;">
+                <h4 style="font-size:13px; font-weight:800; color:#064e3b; text-transform:uppercase; letter-spacing:0.4px;">
+                    🧪 Laboratory Physical & Chemical Test Parameters:
+                </h4>
+                <span style="font-size:11px; color:#64748b;">NABL 17025 Compliant Standard</span>
+            </div>
+
+            <div class="cert-param-table-wrap">
+                <table class="cert-param-table">
+                    <thead>
+                        <tr>
+                            <th>Quality Parameter</th>
+                            <th>Lab Tested Result</th>
+                            <th>Mandated AGMARK Standard</th>
+                            <th>Compliance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${paramRows}
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; margin-bottom:18px; font-size:12px; color:#475569;">
+                <strong>Assayer Remarks & Handling Protocol:</strong> ${cert.notes || 'Graded and packed under cold-chain ambient inspection. Complies with all statutory grading criteria.'}
+            </div>
+
+            <!-- Official Seal & Cryptographic Signature -->
+            <div class="cert-footer-strip">
+                <div class="cert-seal-box">
+                    <div class="cert-official-seal">
+                        <span>AGMARK</span>
+                        <span>★ ★ ★</span>
+                        <span style="font-size:7px;">CERTIFIED</span>
+                    </div>
+                    <div>
+                        <div style="font-size:11px; font-weight:800; color:#064e3b; text-transform:uppercase;">
+                            Government Authorized Assayer Seal
+                        </div>
+                        <div style="font-size:10px; color:#64748b;">
+                            Signatory: ${cert.assayerName} (${cert.assayerLicense})
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cert-qr-container">
+                    <img src="${cert.qrCodeSim || 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-VERIFIED'}" alt="QR Verification">
+                    <div>
+                        <div style="font-size:10px; font-weight:700; color:#0f172a; margin-bottom:2px;">
+                            Tamper-Evident Verification Hash:
+                        </div>
+                        <div class="cert-hash-display">
+                            ${cert.digitalSignature || 'SHA256:7f8a9e2d1c4b5a68738920194857bdfa1029384756'}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons inside Sheet -->
+            <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px; padding-top:14px; border-top:1px solid #e2e8f0;">
+                <button type="button" class="btn btn-outline btn-sm" onclick="copyCertId('${cert.certId}')">
+                    📋 Copy Certificate ID
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="printQualityCertificate()">
+                    🖨️ Print Official Certificate
+                </button>
+            </div>
+        </div>
+    `;
+}
+

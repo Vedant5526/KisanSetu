@@ -43,6 +43,9 @@
         </nav>
 
         <div class="header-actions">
+            <button class="btn btn-outline btn-sm" onclick="openCertVerificationModal()" style="border-color:#059669; color:#059669; font-weight:700; display:inline-flex; align-items:center; gap:5px;" title="Audit Official Quality Certificates">
+                🔬 Verify Certificate
+            </button>
             <button class="btn btn-outline btn-sm" onclick="resetDatabase()">
                 🔄 Reset Demo Data
             </button>
@@ -243,6 +246,16 @@
                         <option>Underweight Delivery (Received 8kg instead of 10kg)</option>
                         <option>Wrong Produce Grade Delivered</option>
                     </select>
+                </div>
+
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:8px; padding:10px 12px; font-size:12px; color:#065f46; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <div>
+                        <strong>📜 Official Assayer Baseline Certificate:</strong>
+                        <div style="font-size:11px; color:#047857; margin-top:2px;">ID: AGM-MH-2026-89421 • Grade A (Moisture: 11.2%, Bruising: 1.4%)</div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline" style="font-size:11px; padding:3px 8px; border-color:#059669; color:#059669; font-weight:700;" onclick="openCertVerificationModal('AGM-MH-2026-89421')">
+                        Audit Certificate 🔬
+                    </button>
                 </div>
 
                 <div>

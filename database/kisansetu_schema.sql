@@ -317,6 +317,34 @@ CREATE TABLE `audit_logs` (
 ) ENGINE=InnoDB COMMENT='Audit trail for escrow disbursements, KYC, and disputes';
 
 -- ========================================================================
+-- 13. QUALITY CHECKER & ASSAYER CERTIFICATES TABLE
+-- Official AGMARK, NABL, and e-NAM produce assay, moisture and grade records
+-- ========================================================================
+CREATE TABLE `quality_certificates` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `cert_code` VARCHAR(50) NOT NULL UNIQUE COMMENT 'e.g. AGM-MH-2026-89421',
+    `listing_id` INT NOT NULL,
+    `assayer_name` VARCHAR(120) NOT NULL,
+    `assayer_license` VARCHAR(80) NOT NULL,
+    `testing_lab` VARCHAR(200) NOT NULL,
+    `accreditation` VARCHAR(150) DEFAULT 'NABL Accredited (TC-7841) • AGMARK Recognized',
+    `grade_awarded` VARCHAR(100) NOT NULL,
+    `moisture_pct` DECIMAL(5,2) DEFAULT NULL,
+    `foreign_matter_pct` DECIMAL(5,2) DEFAULT NULL,
+    `average_caliber_mm` DECIMAL(5,2) DEFAULT NULL,
+    `defect_pct` DECIMAL(5,2) DEFAULT NULL,
+    `sugar_brix` DECIMAL(5,2) DEFAULT NULL,
+    `digital_hash` VARCHAR(120) DEFAULT NULL,
+    `status` ENUM('verified', 'expired', 'revoked') NOT NULL DEFAULT 'verified',
+    `issue_date` DATE NOT NULL,
+    `valid_until` DATE NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT `fk_qc_listing` FOREIGN KEY (`listing_id`) REFERENCES `crop_listings` (`id`) ON DELETE CASCADE,
+    INDEX `idx_cert_code` (`cert_code`),
+    INDEX `idx_qc_grade` (`grade_awarded`)
+) ENGINE=InnoDB COMMENT='Official AGMARK and NABL certified produce quality assay records';
+
+-- ========================================================================
 -- SEED DATA INSERTION
 -- Comprehensive realistic dataset mirroring KisanSetu frontend and SIH demo
 -- ========================================================================
@@ -367,6 +395,17 @@ INSERT INTO `bulk_pricing_tiers` (`listing_id`, `min_kg`, `discounted_price_per_
 (6, 2000.00, 33.00),
 (7, 20.00, 19.50),
 (8, 200.00, 54.00);
+
+-- Insert Quality Assayer Certificates
+INSERT INTO `quality_certificates` (`id`, `cert_code`, `listing_id`, `assayer_name`, `assayer_license`, `testing_lab`, `accreditation`, `grade_awarded`, `moisture_pct`, `foreign_matter_pct`, `average_caliber_mm`, `defect_pct`, `sugar_brix`, `digital_hash`, `status`, `issue_date`, `valid_until`) VALUES
+(1, 'AGM-MH-2026-89421', 1, 'Dr. S. K. Deshmukh', 'AGM/DOCA/772-MH', 'Nashik Krishi Vigyan Kendra (KVK) Central Assaying Lab', 'NABL Accredited (TC-7841) • AGMARK Recognized', 'AGMARK Grade A (Export Quality)', 11.20, 0.20, 62.00, 1.40, 5.40, 'SHA256:7f8a9e2d1c4b5a68738920194857bdfa102938475610293847561029384756ab', 'verified', '2026-09-10', '2026-09-13'),
+(2, 'AGM-MH-2026-78142', 2, 'P. R. Kulkarni', 'AGM/APMC/541-LS', 'Lasalgaon APMC Quality Assaying & Testing Center', 'AGMARK State Reference Lab Reg. MH-ON-204', 'AGMARK Grade Extra Class (55mm+)', 13.80, 0.10, 58.00, 1.10, NULL, 'SHA256:4a3b2c1d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b', 'verified', '2026-09-09', '2026-10-09'),
+(3, 'AGM-MH-2026-64219', 3, 'Anil G. Jadhav', 'AGM/DOCA/618-PN', 'Manchar Agro Regional Commodity Testing Lab', 'NABL Accredited (TC-9102)', 'AGMARK Grade I (Table Smooth)', 12.10, 0.30, 52.00, 0.50, NULL, 'SHA256:9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b', 'verified', '2026-09-08', '2026-09-28'),
+(4, 'GI-AGM-2026-11048', 4, 'Dr. V. M. Sawant', 'GI/DOCA/HAPUS/042', 'Dr. BSKKV Dapoli Fruit Research & Testing Center', 'GI Registry Authenticated • AGMARK Grade Special', 'GI Tagged Premium Export Class', NULL, 0.00, 78.00, 0.00, 19.40, 'SHA256:1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b', 'verified', '2026-09-10', '2026-09-15'),
+(5, 'AGM-MH-2026-45190', 5, 'R. K. Meshram', 'AGM/DOCA/NG-312', 'ICAR-CCRI National Research Centre for Citrus Lab', 'ICAR Certified • AGMARK Recognized', 'AGMARK Grade Special (Ambiya Bahar)', NULL, 0.10, 68.00, 1.80, 12.80, 'SHA256:5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f', 'verified', '2026-09-09', '2026-09-16'),
+(6, 'AGM-MP-2026-90234', 6, 'Mahendra P. Sharma', 'AGM/DOCA/MP-118', 'Madhya Pradesh State Grain Quality Testing Laboratory', 'NABL Accredited (TC-6520)', 'AGMARK Grade Extra Bold Golden', 10.80, 0.15, 6.80, 0.30, NULL, 'SHA256:3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c', 'verified', '2026-09-05', '2027-03-05'),
+(7, 'AGM-MH-2026-33912', 7, 'Dr. S. K. Deshmukh', 'AGM/DOCA/772-MH', 'Nashik Krishi Vigyan Kendra (KVK) Central Assaying Lab', 'NABL Accredited (TC-7841)', 'AGMARK Grade A Tender Cut', 14.50, 0.20, NULL, 0.00, NULL, 'SHA256:8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e', 'verified', '2026-09-10', '2026-09-12'),
+(8, 'GI-AGM-2026-55210', 8, 'S. N. Thackeray', 'GI/DOCA/WADA/019', 'Palghar District Agriculture Testing Center', 'GI Registry Recognized • AGMARK Grade Special', 'GI Tagged Special Aged (Zini)', 11.40, 0.10, 5.90, 1.80, NULL, 'SHA256:2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c', 'verified', '2026-09-04', '2027-03-04');
 
 -- Insert Orders
 INSERT INTO `orders` (`id`, `order_ref`, `buyer_id`, `listing_id`, `buyer_name`, `buyer_phone`, `delivery_address`, `crop_summary`, `quantity_kg`, `farmer_payout`, `logistics_fee`, `platform_fee`, `total_amount`, `order_status`, `escrow_status`, `tracking_ref`, `eta_description`, `assigned_fleet_id`, `driver_name_display`, `delivery_otp`, `dispute_reason`) VALUES
@@ -492,5 +531,6 @@ LEFT JOIN `escrow_ledger` e ON o.id = e.order_id;
 SELECT 'KisanSetu Database Schema successfully created and populated!' AS Status;
 SELECT COUNT(*) AS total_users FROM `users`;
 SELECT COUNT(*) AS total_crop_listings FROM `crop_listings`;
+SELECT COUNT(*) AS total_quality_certificates FROM `quality_certificates`;
 SELECT COUNT(*) AS total_orders FROM `orders`;
 SELECT COUNT(*) AS total_escrow_records FROM `escrow_ledger`;

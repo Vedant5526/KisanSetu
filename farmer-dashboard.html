@@ -94,6 +94,9 @@
             <button class="sidebar-link" onclick="switchTab('tabFpo', this)">
                 👥 FPO Aggregator Group
             </button>
+            <button class="sidebar-link" onclick="switchTab('tabAssayingCenters', this)" id="btnTabAssaying">
+                🔬 Quality Testing & Assayer Labs
+            </button>
 
             <!-- Offline Action Sync Simulator Banner (From PDF 2.7) -->
             <div style="margin-top: auto; background: #f1f5f9; border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 12px;">
@@ -422,6 +425,137 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TAB 6: QUALITY TESTING & ASSAYING CENTERS -->
+            <div id="tabAssayingCenters" class="tab-pane" style="display: none;">
+                <div class="dash-header-row" style="margin-bottom: 20px;">
+                    <div>
+                        <div style="display: inline-flex; align-items: center; gap: 6px; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 8px;">
+                            <span>🏛️ Smart India Hackathon 2026 • DoCA PS 26033</span>
+                            <span>•</span>
+                            <span>AGMARK & NABL Accredited Testing</span>
+                        </div>
+                        <h2 style="font-size: 24px; font-weight: 800; color: var(--primary-deep); margin: 0 0 6px 0;">
+                            🔬 Authorized Quality Assaying & Testing Centers
+                        </h2>
+                        <p style="font-size: 13px; color: var(--text-muted); margin: 0; max-width: 760px;">
+                            Locate accredited testing laboratories, KVK centers, and APMC assaying terminals near <strong>Dindori, Nashik</strong>. Get your harvested lots officially graded to unlock verified badges and 18–25% higher marketplace prices.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+                        <button type="button" class="btn btn-outline" onclick="openCertVerificationModal()" style="font-size: 13px; padding: 9px 15px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+                            📜 Verify Any Certificate
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="openSampleBookingModal('lab_nsk_01')" style="font-size: 13px; padding: 9px 16px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; background: #059669;">
+                            🚜 Book Farm-Gate Sample Pickup
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Nearest Center Highlight Banner -->
+                <div style="background: linear-gradient(135deg, #064e3b 0%, #065f46 60%, #047857 100%); color: white; border-radius: 14px; padding: 22px 24px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(6, 78, 59, 0.18); position: relative; overflow: hidden;">
+                    <div style="position: absolute; right: -20px; bottom: -20px; font-size: 130px; opacity: 0.08; pointer-events: none;">🔬</div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; position: relative; z-index: 1;">
+                        <div style="flex: 1; min-width: 280px;">
+                            <div style="display: inline-flex; align-items: center; gap: 6px; background: #10b981; color: #022c22; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; margin-bottom: 8px;">
+                                📍 NEAREST TESTING CENTER • 14 KM FROM YOUR FARM
+                            </div>
+                            <h3 style="font-size: 20px; font-weight: 800; margin: 0 0 6px 0; color: #ffffff;">
+                                Nashik Krishi Vigyan Kendra (KVK) Central Assaying Lab
+                            </h3>
+                            <p style="font-size: 13px; color: #d1fae5; margin: 0 0 12px 0;">
+                                ICAR-KVK Campus, Dindori Road, Meri Colony, Nashik • Operating: Mon - Sat (7:30 AM - 6:30 PM)
+                            </p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; margin-bottom: 14px;">
+                                <span style="background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 6px;">⭐ 4.9 Rating (342 Lots Certified)</span>
+                                <span style="background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 6px;">⚡ Spot Assay: 15–20 Mins</span>
+                                <span style="background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 6px;">💰 Govt Subsidized (FREE Spot / ₹75 MRL)</span>
+                                <span style="background: rgba(255,255,255,0.25); color: #ecfdf5; font-weight: 700; padding: 4px 10px; border-radius: 6px;">🚜 On-Farm Pickup Van Active in Dindori</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 8px; min-width: 200px;">
+                            <button type="button" class="btn" onclick="openSampleBookingModal('lab_nsk_01')" style="background: #ffffff; color: #065f46; font-weight: 800; padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                                🚜 Schedule Farm Collection
+                            </button>
+                            <a href="tel:+912532591244" class="btn btn-outline" style="border-color: rgba(255,255,255,0.6); color: #ffffff; font-weight: 700; padding: 8px 16px; text-decoration: none; text-align: center; border-radius: 8px;">
+                                📞 Call Lab (+91 253 259 1244)
+                            </a>
+                            <button type="button" class="btn btn-outline" onclick="openCertVerificationModal('AGM-MH-2026-89421')" style="border-color: rgba(255,255,255,0.6); color: #ffffff; font-weight: 700; padding: 8px 16px; text-align: center; border-radius: 8px;">
+                                📜 View Sample Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter & Search Toolbar -->
+                <div style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; flex: 1; min-width: 280px;">
+                        <div style="flex: 2; min-width: 200px;">
+                            <input type="text" id="labSearchInput" class="form-input" placeholder="Search lab name, equipment, crop, or location..." oninput="filterAssayingCenters()" style="padding: 9px 12px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1; min-width: 150px;">
+                            <select id="labFilterDistrict" class="form-select" onchange="filterAssayingCenters()" style="padding: 9px 12px; font-size: 13px;">
+                                <option value="all">📍 All Districts</option>
+                                <option value="Nashik">Nashik (Dindori / Niphad)</option>
+                                <option value="Pune">Pune (Manchar / Narayangaon)</option>
+                                <option value="Amravati">Amravati Division</option>
+                                <option value="Nagpur">Nagpur (Vidarbha)</option>
+                                <option value="Ratnagiri">Ratnagiri / Konkan</option>
+                                <option value="Palghar">Palghar (Wada)</option>
+                                <option value="Sehore">Sehore (Madhya Pradesh)</option>
+                            </select>
+                        </div>
+                        <div style="flex: 1; min-width: 140px;">
+                            <select id="labFilterCrop" class="form-select" onchange="filterAssayingCenters()" style="padding: 9px 12px; font-size: 13px;">
+                                <option value="all">🌾 All Commodities</option>
+                                <option value="Tomato">Tomato</option>
+                                <option value="Onion">Onion</option>
+                                <option value="Grapes">Grapes</option>
+                                <option value="Wheat">Wheat</option>
+                                <option value="Soybean">Soybean</option>
+                                <option value="Orange">Nagpur Orange / Citrus</option>
+                                <option value="Mango">Alphonso Mango</option>
+                                <option value="Rice">Kolam Rice</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="labCountBadge" style="font-size: 12px; font-weight: 700; color: #64748b; background: #f1f5f9; padding: 6px 14px; border-radius: 20px; white-space: nowrap;">
+                        Showing 8 Centers
+                    </div>
+                </div>
+
+                <!-- Assaying Centers Grid -->
+                <div class="lab-centers-grid" id="assayingCentersGrid">
+                    <!-- Dynamically populated via renderAssayingCenters() -->
+                </div>
+
+                <!-- Educational Workflow Box -->
+                <div style="margin-top: 30px; background: #f8fafc; border: 1px solid var(--border); border-radius: 14px; padding: 22px;">
+                    <h3 style="font-size: 16px; font-weight: 800; color: var(--primary-deep); margin: 0 0 8px 0;">
+                        📖 How Quality Assaying Works for Farmers on KisanSetu
+                    </h3>
+                    <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                        Transparent certification protects farmers from unscientific mandi rejections and unlocks bulk buyer premiums.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+                        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px;">
+                            <div style="font-size: 24px; margin-bottom: 6px;">🚜 1. Sample Collection</div>
+                            <div style="font-weight: 700; font-size: 13px; color: #0f172a; margin-bottom: 4px;">Walk-in or Farm Pickup</div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Bring a 1-2 kg composite produce sample to any lab or request an assayer van to visit your farm gate in Dindori.</p>
+                        </div>
+                        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px;">
+                            <div style="font-size: 24px; margin-bottom: 6px;">🧪 2. Machine Calibration</div>
+                            <div style="font-weight: 700; font-size: 13px; color: #0f172a; margin-bottom: 4px;">Objective Grading</div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">Automated sensors test moisture, Brix sweetness, millimeter caliber, and FSSAI pesticide MRLs in 15–20 minutes.</p>
+                        </div>
+                        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px;">
+                            <div style="font-size: 24px; margin-bottom: 6px;">📜 3. Cryptographic Pass</div>
+                            <div style="font-weight: 700; font-size: 13px; color: #0f172a; margin-bottom: 4px;">Direct Marketplace Boost</div>
+                            <p style="font-size: 12px; color: #64748b; margin: 0;">A digitally signed AGMARK certificate is linked to your lot. Buyers purchase instantly with zero quality disputes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
@@ -474,6 +608,19 @@
                     💡 <strong>AI Pricing Advisory:</strong> Recommended price range for today: <strong>₹23.00 - ₹26.50/kg</strong> based on Nashik arrivals.
                 </div>
 
+                <div class="form-group" style="background:#f8fafc; border:1.5px dashed #cbd5e1; padding:12px; border-radius:8px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+                        <label for="listCertId" class="form-label" style="font-size:12px; font-weight:700; color:#334155; margin:0;">
+                            🔬 Assayer Quality Certificate (Optional)
+                        </label>
+                        <button type="button" class="btn btn-sm btn-outline" style="font-size:11px; padding:2px 8px; border-color:#059669; color:#059669; font-weight:700;" onclick="autoFetchAssayerReport()">
+                            ⚡ Auto-Fetch Mandi Lab Test
+                        </button>
+                    </div>
+                    <input type="text" id="listCertId" class="form-input" style="font-size:12px;" placeholder="e.g. AGM-MH-2026-89421 (or click Auto-Fetch to link Mandi Lab)">
+                    <div id="certFetchNotice" style="display:none; font-size:11px; color:#059669; margin-top:6px; font-weight:600; background:#ecfdf5; padding:6px 8px; border-radius:4px; border:1px solid #a7f3d0;"></div>
+                </div>
+
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <input type="checkbox" id="listOrganic" checked>
                     <label for="listOrganic" style="font-size: 13px; font-weight: 600;">100% Pesticide Residue Free / Organic</label>
@@ -482,6 +629,91 @@
                 <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; margin-top: 6px;">
                     🌱 Publish to Live Direct Marketplace →
                 </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FARM-GATE SAMPLE BOOKING MODAL -->
+    <div class="modal-overlay" id="sampleBookingModal" style="display: none;">
+        <div class="modal-box" style="max-width: 560px;">
+            <button class="modal-close-btn" onclick="closeSampleBookingModal()">✕</button>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                <span style="font-size: 24px;">🚜</span>
+                <div>
+                    <h3 class="modal-title" style="margin: 0; font-size: 19px;">Book On-Farm Sample Collection</h3>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0 0 0;">
+                        Authorized field assayer visits your farm gate in Dindori with portable testing sensors.
+                    </p>
+                </div>
+            </div>
+
+            <form onsubmit="confirmSampleBooking(event)" style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="bookingLabSelect">Assaying Laboratory <span class="required-indicator">*</span></label>
+                    <select id="bookingLabSelect" class="form-select" required>
+                        <!-- Populated dynamically -->
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="bookingProduceLot">Produce Lot for Inspection <span class="required-indicator">*</span></label>
+                    <select id="bookingProduceLot" class="form-select" required>
+                        <option value="lst_101">Tomato (Nashik Hybrid Red) • Active Inventory (500 kg)</option>
+                        <option value="lst_102">Lasalgaon Red Onion • Active Inventory (1,200 kg)</option>
+                        <option value="new_lot">🌱 Fresh Harvest Scheduled for Tomorrow (New Lot - 1,000 kg)</option>
+                    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="bookingDate">Preferred Date <span class="required-indicator">*</span></label>
+                        <input type="date" id="bookingDate" class="form-input" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="bookingSlot">Time Slot <span class="required-indicator">*</span></label>
+                        <select id="bookingSlot" class="form-select" required>
+                            <option value="morning">🌅 Morning (08:00 AM – 11:00 AM)</option>
+                            <option value="afternoon">☀️ Afternoon (01:00 PM – 04:00 PM)</option>
+                            <option value="evening">🌇 Evening (04:00 PM – 07:00 PM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="bookingAddress">Farm Gate Address / Gat Number <span class="required-indicator">*</span></label>
+                    <input type="text" id="bookingAddress" class="form-input" required value="Gat No. 44, Dindori Shiwar, Dindori, Nashik - 422202">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="bookingPhone">Contact Phone <span class="required-indicator">*</span></label>
+                        <input type="tel" id="bookingPhone" class="form-input" required value="+91 98221 44892">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label" for="bookingAssayType">Assay Scope</label>
+                        <select id="bookingAssayType" class="form-select">
+                            <option value="spot">Standard Spot Physical (Moisture + Caliber)</option>
+                            <option value="comprehensive">Comprehensive (Physical + Chemical MRL)</option>
+                            <option value="organic">Organic Residue Verification (NPOP)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #065f46; display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="font-size: 16px;">💡</span>
+                    <div>
+                        <strong>Zero Upfront Cost:</strong> Spot testing is 100% subsidized under DoCA Mandi Modernization. Digital AGMARK certificate automatically links to your listing.
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 6px;">
+                    <button type="button" class="btn btn-outline" onclick="closeSampleBookingModal()" style="flex: 1; padding: 11px;">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="flex: 2; padding: 11px; background: #059669; font-weight: 700;">
+                        Confirm Assayer Visit Booking →
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -521,6 +753,11 @@
                 if (hash === 'orders') switchTab('tabOrders', links[2]);
                 if (hash === 'listings') switchTab('tabListings', links[3]);
                 if (hash === 'wallet') switchTab('tabWallet', links[4]);
+                if (hash === 'fpo') switchTab('tabFpo', links[5]);
+                if (hash === 'assaying' || hash === 'labs' || hash === 'tabAssayingCenters') {
+                    const labBtn = document.getElementById('btnTabAssaying') || links[6];
+                    switchTab('tabAssayingCenters', labBtn);
+                }
             }
         });
 
@@ -563,16 +800,20 @@
 
         function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
-            document.getElementById(tabId).style.display = 'block';
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) targetPane.style.display = 'block';
 
             document.querySelectorAll('.sidebar-link').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            if (btn) btn.classList.add('active');
 
             if (tabId === 'tabForecast' && myForecastChart) {
                 myForecastChart.resize();
             }
             if (tabId === 'tabMandiRates') {
                 renderDashboardMandiTable();
+            }
+            if (tabId === 'tabAssayingCenters') {
+                renderAssayingCenters();
             }
         }
 
@@ -951,6 +1192,21 @@
             document.getElementById('newListingModal').classList.remove('active');
         }
 
+        function autoFetchAssayerReport() {
+            showToast('Connecting to APMC Mandi Assayer Laboratory Database...', 'info');
+            setTimeout(() => {
+                const genCertId = 'AGM-MH-2026-' + Math.floor(10000 + Math.random() * 89999);
+                const input = document.getElementById('listCertId');
+                const notice = document.getElementById('certFetchNotice');
+                if (input) input.value = genCertId;
+                if (notice) {
+                    notice.style.display = 'block';
+                    notice.innerHTML = `✓ Assayer Test Report Verified! Dr. S. K. Deshmukh (Nashik KVK Lab) • Moisture: 11.4% • Grade: AGMARK Grade A`;
+                }
+                showToast(`Assayer Certificate ${genCertId} Linked!`, 'success');
+            }, 800);
+        }
+
         function handleNewListingSubmit(e) {
             e.preventDefault();
             const isCropValid = validateField('listCrop', { required: true, minLength: 3, requiredMsg: 'Please enter crop name and variety' });
@@ -968,6 +1224,31 @@
             const farmerPrice = parseFloat(document.getElementById('listPrice').value);
             const harvestDate = document.getElementById('listHarvest').value;
             const organic = document.getElementById('listOrganic').checked;
+            const certIdVal = document.getElementById('listCertId') ? document.getElementById('listCertId').value.trim() : '';
+
+            let qualityCertificate = null;
+            if (certIdVal) {
+                qualityCertificate = {
+                    certId: certIdVal,
+                    status: 'VERIFIED',
+                    grade: 'AGMARK Grade A (Export Quality)',
+                    assayerName: 'Dr. S. K. Deshmukh',
+                    assayerLicense: 'AGM/DOCA/772-MH',
+                    labName: 'Nashik Krishi Vigyan Kendra (KVK) Central Assaying Lab',
+                    accreditation: 'NABL Accredited (TC-7841) • AGMARK Recognized',
+                    issueDate: new Date().toISOString().substring(0, 10),
+                    validUntil: new Date(Date.now() + 7 * 86400000).toISOString().substring(0, 10),
+                    qrCodeSim: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-${certIdVal}`,
+                    parameters: [
+                        { metric: 'Moisture Content', value: '11.4%', benchmark: '≤ 12.0%', status: 'PASS', icon: '💧' },
+                        { metric: 'Average Caliber / Size', value: '60 mm', benchmark: '≥ 55 mm', status: 'PASS', icon: '📏' },
+                        { metric: 'Surface Defects & Bruising', value: '1.2%', benchmark: '≤ 3.0%', status: 'PASS', icon: '🍅' },
+                        { metric: 'Pesticide MRL Residue', value: 'ND (Zero Synthetic Residue)', benchmark: 'FSSAI Compliant', status: 'PASS', icon: '🌿' }
+                    ],
+                    digitalSignature: 'SHA256:' + Math.random().toString(16).substring(2) + Math.random().toString(16).substring(2),
+                    notes: 'Digitally authenticated on-farm inspection report.'
+                };
+            }
 
             if (window.kisanStore) {
                 window.kisanStore.addListing({
@@ -977,6 +1258,7 @@
                     farmerPrice,
                     harvestDate,
                     organic,
+                    qualityCertificate,
                     description: `Direct farm lot listed by Ramesh Shinde. Harvested fresh: ${harvestDate}.`
                 });
 
@@ -1007,6 +1289,18 @@
                         <div class="product-body">
                             <h4 style="font-size:16px; font-weight:700;">${item.crop}</h4>
                             <div style="font-size:13px; color:#64748b;">Quantity Available: <strong>${item.quantityKg} kg</strong></div>
+
+                            ${item.qualityCertificate ? `
+                                <div style="margin: 8px 0; padding: 6px 10px; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; display: flex; align-items: center; justify-content: space-between;">
+                                    <div>
+                                        <span style="font-size: 10px; font-weight: 800; color: #065f46; text-transform: uppercase;">🔬 Assayer Certified</span>
+                                        <div style="font-size: 11px; font-weight: 700; color: #047857;">ID: ${item.qualityCertificate.certId}</div>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-outline" style="font-size: 10px; padding: 2px 6px; border-color: #059669; color: #059669;" onclick="viewListingCertificate('${item.id}')">
+                                        View Sheet 📄
+                                    </button>
+                                </div>
+                            ` : ''}
                             
                             <div style="background:#f8fafc; padding:8px 12px; border-radius:6px; border:1px solid var(--border); margin:6px 0;">
                                 <div style="font-size:12px; color:#64748b;">Farmer Realized Price:</div>
@@ -1246,11 +1540,227 @@
             initForecastChart();
         }
 
+        // ==========================================
+        // Quality Assaying & Testing Centers Locator
+        // ==========================================
+        function renderAssayingCenters(filter = null) {
+            const grid = document.getElementById('assayingCentersGrid');
+            if (!grid || !window.kisanStore) return;
+
+            let filterObj = filter;
+            if (!filterObj) {
+                const searchEl = document.getElementById('labSearchInput');
+                const distEl = document.getElementById('labFilterDistrict');
+                const cropEl = document.getElementById('labFilterCrop');
+                filterObj = {
+                    search: searchEl ? searchEl.value : '',
+                    district: distEl ? distEl.value : 'all',
+                    crop: cropEl ? cropEl.value : 'all'
+                };
+            }
+
+            const centers = window.kisanStore.getAssayingCenters(filterObj);
+            const countBadge = document.getElementById('labCountBadge');
+            if (countBadge) {
+                countBadge.innerText = `Showing ${centers.length} Center${centers.length === 1 ? '' : 's'}`;
+            }
+
+            if (!centers || centers.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: white; border-radius: 14px; border: 1px dashed var(--border);">
+                        <div style="font-size: 38px; margin-bottom: 8px;">🔍</div>
+                        <h4 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 6px;">No Testing Centers Found</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                            No authorized laboratories match your current filter criteria. Try clearing search keywords or selecting all commodities.
+                        </p>
+                        <button type="button" class="btn btn-outline btn-sm" onclick="resetLabFilters()" style="font-weight: 700;">
+                            🔄 Reset All Filters
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            centers.forEach(c => {
+                const isNearest = c.distanceKm <= 15;
+                const equipBadges = (c.equipment || []).map(eq => `<span class="lab-equip-tag">✓ ${eq}</span>`).join('');
+                const cropsBadges = (c.cropsSupported || []).slice(0, 4).map(cr => `<span style="font-size: 10px; background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-weight: 600;">${cr}</span>`).join(' ');
+
+                html += `
+                    <div class="lab-center-card">
+                        <div>
+                            <div class="lab-card-header">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <span class="lab-accred-strip">${c.accreditation}</span>
+                                    <h4 class="lab-title">${c.name}</h4>
+                                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 5px; font-size: 12px; color: #64748b; flex-wrap: wrap;">
+                                        <span>⭐ <strong>${c.rating.toFixed(2)}</strong> (${c.lotsCertified} Certified)</span>
+                                        <span>•</span>
+                                        <span>Lic: <code style="font-size: 11px; background: #f1f5f9; padding: 2px 4px; border-radius: 3px;">${c.license}</code></span>
+                                    </div>
+                                </div>
+                                <div class="lab-distance-badge ${isNearest ? 'nearest' : ''}">
+                                    📍 ${c.distanceKm} km away
+                                    ${isNearest ? '<span style="background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 10px; font-size: 9px; font-weight: 800; margin-left: 4px;">NEAREST</span>' : ''}
+                                </div>
+                            </div>
+
+                            <div class="lab-details-list">
+                                <div class="lab-detail-row">
+                                    <span>📍</span>
+                                    <div><strong>Location:</strong> ${c.address} (${c.taluka}, ${c.district})</div>
+                                </div>
+                                <div class="lab-detail-row">
+                                    <span>👨‍🔬</span>
+                                    <div><strong>Assayer In-Charge:</strong> ${c.inCharge}</div>
+                                </div>
+                                <div class="lab-detail-row">
+                                    <span>🕒</span>
+                                    <div><strong>Operating Hours:</strong> ${c.operatingHours}</div>
+                                </div>
+                                <div class="lab-detail-row">
+                                    <span>📞</span>
+                                    <div><strong>Contact:</strong> <a href="tel:${c.phone.replace(/[^0-9+]/g, '')}" style="color: var(--primary); font-weight: 700; text-decoration: none;">${c.phone}</a></div>
+                                </div>
+                                <div class="lab-detail-row" style="align-items: center;">
+                                    <span>🌾</span>
+                                    <div style="display: flex; gap: 4px; align-items: center; flex-wrap: wrap;">
+                                        <strong>Crops:</strong> ${cropsBadges}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+                                🔬 Available Equipment & Testing Kits:
+                            </div>
+                            <div class="lab-equip-wrap">
+                                ${equipBadges}
+                            </div>
+
+                            <div class="lab-turnaround-box">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 5px; flex-wrap: wrap; gap: 4px;">
+                                    <span>⚡ <strong>Turnaround:</strong> ${c.turnaround}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px;">
+                                    <span>💰 <strong>Assay Fee:</strong> ${c.fee}</span>
+                                    ${c.farmGatePickup ? '<span style="color: #059669; font-weight: 800;">🚜 On-Farm Pickup Available</span>' : '<span style="color: #64748b;">🏢 Mandi Yard Walk-in</span>'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lab-actions-row">
+                            <a href="tel:${c.phone.replace(/[^0-9+]/g, '')}" class="btn btn-sm btn-outline" style="flex: 1; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-size: 12px;">
+                                📞 Call
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.name + ', ' + c.address)}" target="_blank" rel="noopener" class="btn btn-sm btn-outline" style="flex: 1; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-size: 12px;">
+                                📍 Map
+                            </a>
+                            <button type="button" class="btn btn-sm btn-primary" onclick="openSampleBookingModal('${c.id}')" style="flex: 1.4; display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-size: 12px; background: #059669;">
+                                🚜 Book Pickup
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline" onclick="openCertVerificationModal('${c.sampleCertId}')" style="display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-size: 12px; border-color: #8b5cf6; color: #7c3aed; font-weight: 700;" title="View official certificate issued by this lab">
+                                📜 Cert
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        function filterAssayingCenters() {
+            const searchVal = document.getElementById('labSearchInput')?.value || '';
+            const districtVal = document.getElementById('labFilterDistrict')?.value || 'all';
+            const cropVal = document.getElementById('labFilterCrop')?.value || 'all';
+
+            renderAssayingCenters({
+                search: searchVal,
+                district: districtVal,
+                crop: cropVal
+            });
+        }
+
+        function resetLabFilters() {
+            const searchInput = document.getElementById('labSearchInput');
+            const distSelect = document.getElementById('labFilterDistrict');
+            const cropSelect = document.getElementById('labFilterCrop');
+
+            if (searchInput) searchInput.value = '';
+            if (distSelect) distSelect.value = 'all';
+            if (cropSelect) cropSelect.value = 'all';
+
+            renderAssayingCenters();
+        }
+
+        function openSampleBookingModal(centerId = 'lab_nsk_01') {
+            const modal = document.getElementById('sampleBookingModal');
+            if (!modal) return;
+
+            const labSelect = document.getElementById('bookingLabSelect');
+            if (labSelect && window.kisanStore) {
+                const centers = window.kisanStore.getAssayingCenters();
+                labSelect.innerHTML = centers.map(c => 
+                    `<option value="${c.id}" ${c.id === centerId ? 'selected' : ''}>${c.name} (${c.distanceKm} km • ${c.district})</option>`
+                ).join('');
+            }
+
+            const dateInput = document.getElementById('bookingDate');
+            if (dateInput && !dateInput.value) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeSampleBookingModal() {
+            const modal = document.getElementById('sampleBookingModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function confirmSampleBooking(e) {
+            e.preventDefault();
+            const labSelect = document.getElementById('bookingLabSelect');
+            const lotSelect = document.getElementById('bookingProduceLot');
+            const dateInput = document.getElementById('bookingDate');
+            const slotSelect = document.getElementById('bookingSlot');
+
+            const labName = labSelect ? labSelect.options[labSelect.selectedIndex].text.split('(')[0].trim() : 'Central Assaying Lab';
+            const lotText = lotSelect ? lotSelect.options[lotSelect.selectedIndex].text.split('•')[0].trim() : 'Active Produce Lot';
+            const dateVal = dateInput ? dateInput.value : 'Tomorrow';
+            const slotText = slotSelect ? slotSelect.options[slotSelect.selectedIndex].text : 'Morning';
+
+            const bookingRef = `KST-ASSAY-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            closeSampleBookingModal();
+
+            if (typeof showToast === 'function') {
+                showToast(`✅ Sample Collection Booked! Ref: ${bookingRef} at ${labName}. An assayer will arrive on ${dateVal}.`, 'success');
+            } else {
+                alert(`✅ On-Farm Quality Sample Collection Confirmed!\n\nBooking Reference: ${bookingRef}\nAssaying Lab: ${labName}\nProduce: ${lotText}\nScheduled Visit: ${dateVal} (${slotText})\nFarm Location: Gat No. 44, Dindori Shiwar, Nashik\n\nAssayer field agent will call +91 98221 44892 upon departure.`);
+            }
+
+            if (window.kisanStore && typeof window.kisanStore.addNotification === 'function') {
+                window.kisanStore.addNotification({
+                    id: `notif_${Date.now()}`,
+                    title: `🔬 Assayer Inspection Scheduled (${bookingRef})`,
+                    message: `Field assayer from ${labName} will visit your farm on ${dateVal} for ${lotText}. Spot test is 100% free under DoCA subsidy.`,
+                    type: 'quality',
+                    timestamp: new Date().toISOString(),
+                    read: false
+                });
+            }
+        }
+
         // Live theme change handler for charts and tables
         window.addEventListener('kisansetuThemeChanged', () => {
             if (typeof updateForecastChart === 'function') updateForecastChart();
             if (typeof renderDashboardMandiTable === 'function') renderDashboardMandiTable();
             if (typeof renderFarmerListings === 'function') renderFarmerListings();
+            if (typeof renderAssayingCenters === 'function') renderAssayingCenters();
         });
     </script>
 </body>

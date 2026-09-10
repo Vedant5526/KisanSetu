@@ -264,6 +264,28 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 42.00,
             organic: true,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'AGM-MH-2026-89421',
+                status: 'VERIFIED',
+                grade: 'AGMARK Grade A (Export Quality)',
+                assayerName: 'Dr. S. K. Deshmukh',
+                assayerLicense: 'AGM/DOCA/772-MH',
+                labName: 'Nashik Krishi Vigyan Kendra (KVK) Central Assaying Lab',
+                accreditation: 'NABL Accredited (TC-7841) • AGMARK Recognized',
+                issueDate: '2026-09-10',
+                validUntil: '2026-09-13',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-AGM-MH-2026-89421',
+                parameters: [
+                    { metric: 'Moisture Content', value: '11.2%', benchmark: '≤ 12.0%', status: 'PASS', icon: '💧' },
+                    { metric: 'Average Caliber / Size', value: '62 mm', benchmark: '≥ 55 mm', status: 'PASS', icon: '📏' },
+                    { metric: 'Surface Defects & Bruising', value: '1.4%', benchmark: '≤ 3.0%', status: 'PASS', icon: '🍅' },
+                    { metric: 'Sugar Brix (°Bx)', value: '5.4 °Bx', benchmark: '≥ 4.5 °Bx', status: 'PASS', icon: '🍯' },
+                    { metric: 'Foreign Matter / Admixture', value: '0.2%', benchmark: '≤ 0.5%', status: 'PASS', icon: '🔍' },
+                    { metric: 'Pesticide MRL Residue', value: 'Not Detected (ND)', benchmark: 'FSSAI MRL Compliant', status: 'PASS', icon: '🌿' }
+                ],
+                digitalSignature: 'SHA256:7f8a9e2d1c4b5a68738920194857bdfa102938475610293847561029384756ab',
+                notes: 'Sampled directly at farm packing shade under cold-chain pre-cooling supervision.'
+            },
             bulkTiers: [
                 { minKg: 100, pricePerKg: 26.50 },
                 { minKg: 500, pricePerKg: 25.00 }
@@ -294,6 +316,28 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 38.00,
             organic: false,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'AGM-MH-2026-78142',
+                status: 'VERIFIED',
+                grade: 'AGMARK Grade Extra Class (55mm+)',
+                assayerName: 'P. R. Kulkarni',
+                assayerLicense: 'AGM/APMC/541-LS',
+                labName: 'Lasalgaon APMC Quality Assaying & Testing Center',
+                accreditation: 'AGMARK State Reference Lab Reg. MH-ON-204',
+                issueDate: '2026-09-09',
+                validUntil: '2026-10-09',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-AGM-MH-2026-78142',
+                parameters: [
+                    { metric: 'Curing & Dry Matter Index', value: '96.2%', benchmark: '≥ 92.0%', status: 'PASS', icon: '🧅' },
+                    { metric: 'Bulb Diameter (Caliber)', value: '58 mm', benchmark: '≥ 55 mm', status: 'PASS', icon: '📏' },
+                    { metric: 'Sprouting & Rooting %', value: '0.0%', benchmark: '≤ 1.0%', status: 'PASS', icon: '🌱' },
+                    { metric: 'Double / Deformed Bulbs', value: '1.1%', benchmark: '≤ 3.0%', status: 'PASS', icon: '⚖️' },
+                    { metric: 'Moisture in Outer Scales', value: '13.8%', benchmark: '≤ 15.0%', status: 'PASS', icon: '💧' },
+                    { metric: 'Pungency (Pyruvic Acid)', value: '11.8 µmol/g', benchmark: 'High Pungent Export', status: 'PASS', icon: '🌶️' }
+                ],
+                digitalSignature: 'SHA256:4a3b2c1d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b7c6d5e4f3a2b',
+                notes: 'Graded in 25kg aerated nylon mesh packaging. Optimal 60-day dry ambient storage index.'
+            },
             bulkTiers: [
                 { minKg: 250, pricePerKg: 22.00 },
                 { minKg: 1000, pricePerKg: 21.00 }
@@ -324,6 +368,27 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 30.00,
             organic: false,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'AGM-MH-2026-64219',
+                status: 'VERIFIED',
+                grade: 'AGMARK Grade I (Table Smooth)',
+                assayerName: 'Anil G. Jadhav',
+                assayerLicense: 'AGM/DOCA/618-PN',
+                labName: 'Manchar Agro Regional Commodity Testing Lab',
+                accreditation: 'NABL Accredited (TC-9102)',
+                issueDate: '2026-09-08',
+                validUntil: '2026-09-28',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-AGM-MH-2026-64219',
+                parameters: [
+                    { metric: 'Tuber Diameter / Size', value: '52 mm', benchmark: '45 – 65 mm', status: 'PASS', icon: '🥔' },
+                    { metric: 'Skin Firmness & Soil Cure', value: '94.5%', benchmark: '≥ 90.0%', status: 'PASS', icon: '🛡️' },
+                    { metric: 'Green / Sunburned Tubers', value: '0.5%', benchmark: '≤ 2.0%', status: 'PASS', icon: '🟢' },
+                    { metric: 'Internal Brown Spot / Hollow Heart', value: '0.0%', benchmark: '≤ 1.0%', status: 'PASS', icon: '🔍' },
+                    { metric: 'Reducing Sugar Content', value: '0.14%', benchmark: '≤ 0.25% (Non-sweet)', status: 'PASS', icon: '🧪' }
+                ],
+                digitalSignature: 'SHA256:9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b',
+                notes: 'Cleaned, soil-cured, and sprout-inhibited under natural ambient conditions.'
+            },
             bulkTiers: [
                 { minKg: 150, pricePerKg: 18.00 },
                 { minKg: 500, pricePerKg: 17.00 }
@@ -354,6 +419,27 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 480.00,
             organic: true,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'GI-AGM-2026-11048',
+                status: 'VERIFIED',
+                grade: 'GI Tagged Premium Export Class',
+                assayerName: 'Dr. V. M. Sawant',
+                assayerLicense: 'GI/DOCA/HAPUS/042',
+                labName: 'Dr. BSKKV Dapoli Fruit Research & Testing Center',
+                accreditation: 'GI Registry Authenticated • AGMARK Grade Special',
+                issueDate: '2026-09-10',
+                validUntil: '2026-09-15',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-GI-AGM-2026-11048',
+                parameters: [
+                    { metric: 'GI Authenticity Verification', value: '100% Devgad/Ratnagiri', benchmark: 'GI #249 Certified', status: 'PASS', icon: '🥭' },
+                    { metric: 'TSS / Sugar Brix (°Bx)', value: '19.4 °Bx', benchmark: '≥ 18.0 °Bx', status: 'PASS', icon: '🍯' },
+                    { metric: 'Average Fruit Weight', value: '265 g', benchmark: '230 – 290 g', status: 'PASS', icon: '⚖️' },
+                    { metric: 'Spongy Tissue Occurrence', value: '0.0%', benchmark: '≤ 1.0%', status: 'PASS', icon: '🔬' },
+                    { metric: 'Organic Ripening Method', value: 'Natural Rice Hay', benchmark: 'No Calcium Carbide', status: 'PASS', icon: '🌿' }
+                ],
+                digitalSignature: 'SHA256:1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b',
+                notes: 'GI Tag registered batch. Chemical artificial ripening strictly prohibited and lab verified.'
+            },
             bulkTiers: [
                 { minKg: 50, pricePerKg: 295.00 }
             ],
@@ -383,6 +469,26 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 75.00,
             organic: false,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'AGM-MH-2026-45190',
+                status: 'VERIFIED',
+                grade: 'AGMARK Grade Special (Ambiya Bahar)',
+                assayerName: 'R. K. Meshram',
+                assayerLicense: 'AGM/DOCA/NG-312',
+                labName: 'ICAR-CCRI National Research Centre for Citrus Lab',
+                accreditation: 'ICAR Certified • AGMARK Recognized',
+                issueDate: '2026-09-09',
+                validUntil: '2026-09-16',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-AGM-MH-2026-45190',
+                parameters: [
+                    { metric: 'Juice Content (%)', value: '47.5%', benchmark: '≥ 40.0%', status: 'PASS', icon: '🍊' },
+                    { metric: 'Brix-to-Acid Ratio', value: '12.8 : 1', benchmark: '≥ 10.0 : 1', status: 'PASS', icon: '🧪' },
+                    { metric: 'Fruit Diameter', value: '68 mm', benchmark: '65 – 75 mm', status: 'PASS', icon: '📏' },
+                    { metric: 'Skin Blemish / Scars', value: '1.8%', benchmark: '≤ 4.0%', status: 'PASS', icon: '🔍' }
+                ],
+                digitalSignature: 'SHA256:5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f',
+                notes: 'Harvested from drip-irrigated orchards in Katol belt. Pre-sorted on electronic grading line.'
+            },
             bulkTiers: [
                 { minKg: 100, pricePerKg: 45.00 }
             ],
@@ -412,6 +518,27 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 52.00,
             organic: true,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'AGM-MP-2026-90234',
+                status: 'VERIFIED',
+                grade: 'AGMARK Grade Extra Bold Golden',
+                assayerName: 'Mahendra P. Sharma',
+                assayerLicense: 'AGM/DOCA/MP-118',
+                labName: 'Madhya Pradesh State Grain Quality Testing Laboratory',
+                accreditation: 'NABL Accredited (TC-6520)',
+                issueDate: '2026-09-05',
+                validUntil: '2027-03-05',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-AGM-MP-2026-90234',
+                parameters: [
+                    { metric: 'Grain Moisture Content', value: '10.8%', benchmark: '≤ 12.0%', status: 'PASS', icon: '💧' },
+                    { metric: 'Test Weight (Hectolitre Weight)', value: '82.4 kg/hL', benchmark: '≥ 78.0 kg/hL', status: 'PASS', icon: '⚖️' },
+                    { metric: 'Foreign Matter / Stones', value: '0.15%', benchmark: '≤ 0.75%', status: 'PASS', icon: '🌾' },
+                    { metric: 'Damaged / Weeviled Grains', value: '0.3%', benchmark: '≤ 1.5%', status: 'PASS', icon: '🔍' },
+                    { metric: 'Protein Content (Dry Basis)', value: '13.6%', benchmark: '≥ 12.0%', status: 'PASS', icon: '🧪' }
+                ],
+                digitalSignature: 'SHA256:3d2c1b0a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c',
+                notes: 'Machine cleaned, magnetic separator treated, moisture controlled for safe long storage.'
+            },
             bulkTiers: [
                 { minKg: 500, pricePerKg: 34.00 },
                 { minKg: 2000, pricePerKg: 33.00 }
@@ -442,6 +569,26 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 35.00,
             organic: true,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'AGM-MH-2026-33912',
+                status: 'VERIFIED',
+                grade: 'AGMARK Grade A Tender Cut',
+                assayerName: 'Dr. S. K. Deshmukh',
+                assayerLicense: 'AGM/DOCA/772-MH',
+                labName: 'Nashik Krishi Vigyan Kendra (KVK) Central Assaying Lab',
+                accreditation: 'NABL Accredited (TC-7841)',
+                issueDate: '2026-09-10',
+                validUntil: '2026-09-12',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-AGM-MH-2026-33912',
+                parameters: [
+                    { metric: 'Yellow / Dehydrated Leaves', value: '0.0%', benchmark: '≤ 1.5%', status: 'PASS', icon: '🥬' },
+                    { metric: 'Stem Fiber Tenderness', value: '98.5%', benchmark: '≥ 92.0%', status: 'PASS', icon: '🌿' },
+                    { metric: 'Pesticide Chemical Residue', value: 'Zero Residue (Bio)', benchmark: 'FSSAI MRL Compliant', status: 'PASS', icon: '🧪' },
+                    { metric: 'Soil Wash / Extraneous Matter', value: '0.2%', benchmark: '≤ 1.0%', status: 'PASS', icon: '💧' }
+                ],
+                digitalSignature: 'SHA256:8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e',
+                notes: 'Hydro-cooled post-harvest packing. Certified zero synthetic pesticide cultivation.'
+            },
             bulkTiers: [
                 { minKg: 20, pricePerKg: 19.50 }
             ],
@@ -471,6 +618,27 @@ const INITIAL_DATA = {
             traditionalMandiPrice: 85.00,
             organic: true,
             kycVerified: true,
+            qualityCertificate: {
+                certId: 'GI-AGM-2026-55210',
+                status: 'VERIFIED',
+                grade: 'GI Tagged Special Aged (Zini)',
+                assayerName: 'S. N. Thackeray',
+                assayerLicense: 'GI/DOCA/WADA/019',
+                labName: 'Palghar District Agriculture Testing Center',
+                accreditation: 'GI Registry Recognized • AGMARK Grade Special',
+                issueDate: '2026-09-04',
+                validUntil: '2027-03-04',
+                qrCodeSim: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=KISANSETU-CERT-GI-AGM-2026-55210',
+                parameters: [
+                    { metric: 'Grain Aging Period', value: '12 Months', benchmark: '≥ 9 Months', status: 'PASS', icon: '⏳' },
+                    { metric: 'Moisture Content', value: '11.4%', benchmark: '≤ 13.0%', status: 'PASS', icon: '💧' },
+                    { metric: 'Broken Grain Ratio', value: '1.8%', benchmark: '≤ 5.0%', status: 'PASS', icon: '🍚' },
+                    { metric: 'Chalky / Immature Kernels', value: '1.1%', benchmark: '≤ 3.0%', status: 'PASS', icon: '🔍' },
+                    { metric: 'Aroma & Amylose Index', value: '24.2% (Fluffy Non-stick)', benchmark: '22 – 26%', status: 'PASS', icon: '✨' }
+                ],
+                digitalSignature: 'SHA256:2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c',
+                notes: 'Authentic Palghar Wada Kolam fragrant variety. Natural warehouse aged for premium elongation.'
+            },
             bulkTiers: [
                 { minKg: 200, pricePerKg: 54.00 }
             ],
@@ -4675,6 +4843,176 @@ const INITIAL_DATA = {
             disputeFlag: false,
             notes: 'Auto-released after 24h flawless delivery.'
         }
+    ],
+    assayingCenters: [
+        {
+            id: 'lab_nsk_01',
+            name: 'Nashik Krishi Vigyan Kendra (KVK) Central Assaying Lab',
+            district: 'Nashik',
+            taluka: 'Dindori / Nashik',
+            distanceKm: 14,
+            address: 'ICAR-KVK Campus, Dindori Road, Meri Colony, Nashik - 422004',
+            rating: 4.9,
+            lotsCertified: 342,
+            inCharge: 'Dr. S. K. Deshmukh',
+            license: 'AGM/DOCA/772-MH',
+            phone: '+91 253 259 1244',
+            operatingHours: 'Mon - Sat: 7:30 AM - 6:30 PM',
+            accreditation: 'NABL Accredited (TC-7841) • AGMARK State Reference Lab',
+            equipment: ['Digital Grain Moisture Meter', 'Optical Caliber Sorter', 'Brix Sugar Refractometer', 'GC-MS Pesticide MRL Screening'],
+            turnaround: 'Spot Assay: 15-20 Mins | Chemical MRL: 24 Hours',
+            fee: 'Government Subsidized (FREE Spot / ₹75 MRL Certificate)',
+            farmGatePickup: true,
+            sampleCertId: 'AGM-MH-2026-89421',
+            cropsSupported: ['Tomato', 'Onion', 'Grapes', 'Vegetables', 'Pomegranate']
+        },
+        {
+            id: 'lab_las_02',
+            name: 'Lasalgaon APMC Quality Assaying & Grading Terminal',
+            district: 'Nashik',
+            taluka: 'Niphad (Lasalgaon)',
+            distanceKm: 32,
+            address: 'Main Terminal Mandi Yard, Lasalgaon, Niphad, Nashik - 422306',
+            rating: 4.85,
+            lotsCertified: 890,
+            inCharge: 'P. R. Kulkarni',
+            license: 'AGM/APMC/541-LS',
+            phone: '+91 2550 266 130',
+            operatingHours: 'Daily: 6:00 AM - 7:00 PM (Auction Hours)',
+            accreditation: 'AGMARK State Reference Lab Reg. MH-ON-204',
+            equipment: ['55mm+ Nylon Sizing Grader', 'Bulk Curing Dryness Meter', 'Weight Calibration Cell', 'Sprouting/Rotting Index Scanner'],
+            turnaround: 'Spot Assay: 10 Mins (At gate weighbridge)',
+            fee: 'Free (APMC Market Cess Covered)',
+            farmGatePickup: true,
+            sampleCertId: 'AGM-MH-2026-78142',
+            cropsSupported: ['Onion', 'Wheat', 'Soybean', 'Maize']
+        },
+        {
+            id: 'lab_mnc_03',
+            name: 'Manchar Agro Regional Commodity Testing Lab',
+            district: 'Pune',
+            taluka: 'Ambegaon (Manchar)',
+            distanceKm: 18,
+            address: 'APMC Complex, Pune-Nashik Highway, Manchar, Pune - 410503',
+            rating: 4.8,
+            lotsCertified: 215,
+            inCharge: 'Anil G. Jadhav',
+            license: 'AGM/DOCA/618-PN',
+            phone: '+91 2135 222 410',
+            operatingHours: 'Mon - Sat: 8:00 AM - 5:30 PM',
+            accreditation: 'NABL Accredited (TC-9102)',
+            equipment: ['Tuber Specific Gravity Tester', 'Internal Hollow Heart Scanner', 'Skin Adhesion Firmness Gauge', 'Moisture Analyzer'],
+            turnaround: 'Spot Assay: 20 Mins',
+            fee: '₹40 / Commercial Lot',
+            farmGatePickup: false,
+            sampleCertId: 'AGM-MH-2026-64219',
+            cropsSupported: ['Potato', 'Cauliflower', 'Tomato', 'Green Peas']
+        },
+        {
+            id: 'lab_amr_04',
+            name: 'Amravati Divisional APMC Agri-Testing Terminal',
+            district: 'Amravati',
+            taluka: 'Amravati Central',
+            distanceKm: 48,
+            address: 'Morshi Road Mandi Yard, Amravati, Maharashtra - 444603',
+            rating: 4.9,
+            lotsCertified: 520,
+            inCharge: 'Dr. Nitin R. Bhende',
+            license: 'AGM/DOCA/AMR-109',
+            phone: '+91 721 267 8901',
+            operatingHours: 'Mon - Sat: 7:00 AM - 6:00 PM',
+            accreditation: 'DoCA SIH 2026 Model Assaying Terminal',
+            equipment: ['Yellow Soybean Oil & Moisture Analyzer', 'Cotton Lint & Staple Sorter', 'Grain Foreign Matter Separator'],
+            turnaround: 'Spot Assay: 15 Mins',
+            fee: 'Free under DoCA Model Scheme',
+            farmGatePickup: true,
+            sampleCertId: 'AGM-MH-2026-89421',
+            cropsSupported: ['Soybean', 'Cotton', 'Wheat', 'Chilli']
+        },
+        {
+            id: 'lab_ngp_05',
+            name: 'ICAR-CCRI Citrus Quality Inspection Facility',
+            district: 'Nagpur',
+            taluka: 'Katol / Nagpur',
+            distanceKm: 65,
+            address: 'National Research Centre for Citrus, Amravati Road, Nagpur - 440033',
+            rating: 4.95,
+            lotsCertified: 410,
+            inCharge: 'R. K. Meshram',
+            license: 'AGM/DOCA/NG-312',
+            phone: '+91 712 250 0813',
+            operatingHours: 'Mon - Fri: 9:00 AM - 5:00 PM',
+            accreditation: 'ICAR Certified • AGMARK Recognized',
+            equipment: ['Digital Fruit Refractometer (Brix)', 'Citric Acid Titration Analyzer', 'Fruit Pressure Tester (Penetrometer)'],
+            turnaround: 'Spot Assay: 30 Mins',
+            fee: '₹50 per Batch',
+            farmGatePickup: true,
+            sampleCertId: 'AGM-MH-2026-45190',
+            cropsSupported: ['Mandarin Orange', 'Sweet Lime (Mosambi)', 'Acid Lime']
+        },
+        {
+            id: 'lab_dap_06',
+            name: 'Dr. BSKKV Dapoli Fruit Research & Testing Center',
+            district: 'Sindhudurg',
+            taluka: 'Devgad / Dapoli',
+            distanceKm: 85,
+            address: 'Devgad Coastal Horticulture Sub-Center, Sindhudurg - 416613',
+            rating: 4.95,
+            lotsCertified: 680,
+            inCharge: 'Dr. V. M. Sawant',
+            license: 'GI/DOCA/HAPUS/042',
+            phone: '+91 2364 262 215',
+            operatingHours: 'Daily during harvest: 7:00 AM - 7:00 PM',
+            accreditation: 'GI Registry Authenticated • AGMARK Grade Special',
+            equipment: ['Non-destructive NIR Fruit Ripeness Sensor', 'Spongy Tissue Acoustic Scanner', 'GI Tag Digital Encoder'],
+            turnaround: 'Spot Assay: 20 Mins | GI Tag Authorization: Instant',
+            fee: '₹60 per Crate Lot',
+            farmGatePickup: true,
+            sampleCertId: 'GI-AGM-2026-11048',
+            cropsSupported: ['Alphonso Mango', 'Cashew', 'Kokum']
+        },
+        {
+            id: 'lab_seh_07',
+            name: 'MP State Grain Quality Testing & Moisture Lab',
+            district: 'Sehore',
+            taluka: 'Sehore Central',
+            distanceKm: 110,
+            address: 'Krishi Upaj Mandi Samiti, Sehore, Madhya Pradesh - 466001',
+            rating: 4.88,
+            lotsCertified: 760,
+            inCharge: 'Mahendra P. Sharma',
+            license: 'AGM/DOCA/MP-118',
+            phone: '+91 7562 224 518',
+            operatingHours: 'Mon - Sat: 8:00 AM - 6:00 PM',
+            accreditation: 'NABL Accredited (TC-6520)',
+            equipment: ['Hectolitre Test Weight Scale', 'Grain Protein Dumas Analyzer', 'Magnetic Stoner & Grain Cleanliness Grader'],
+            turnaround: 'Spot Assay: 15 Mins',
+            fee: 'Subsidized: ₹30',
+            farmGatePickup: false,
+            sampleCertId: 'AGM-MP-2026-90234',
+            cropsSupported: ['Sharbati Wheat', 'Gram (Chana)', 'Soybean']
+        },
+        {
+            id: 'lab_wda_08',
+            name: 'Palghar District Agriculture Assaying Center',
+            district: 'Palghar',
+            taluka: 'Wada',
+            distanceKm: 70,
+            address: 'Wada APMC Agro Complex, Wada, Palghar, Maharashtra - 421303',
+            rating: 4.82,
+            lotsCertified: 290,
+            inCharge: 'S. N. Thackeray',
+            license: 'GI/DOCA/WADA/019',
+            phone: '+91 2526 271 042',
+            operatingHours: 'Mon - Sat: 8:30 AM - 5:00 PM',
+            accreditation: 'GI Registry Recognized • AGMARK Grade Special',
+            equipment: ['Paddy De-husker & Polisher Test Unit', 'Broken Grain Vibratory Sieve', 'Rice Aroma / Amylose Test Kit'],
+            turnaround: 'Spot Assay: 25 Mins',
+            fee: '₹45 per Sample',
+            farmGatePickup: true,
+            sampleCertId: 'GI-AGM-2026-55210',
+            cropsSupported: ['Kolam Rice', 'Finger Millet (Ragi)', 'Waradi Pulses']
+        }
     ]
 };
 
@@ -4769,9 +5107,26 @@ class DataStore {
                 const parsed = JSON.parse(raw);
                 const role = (parsed.currentUser && parsed.currentUser.role) || 'farmer';
                 const baseUser = DEMO_USERS[role] || DEMO_USERS.farmer;
+
+                let listings = (parsed.listings && parsed.listings.length) ? parsed.listings : INITIAL_DATA.listings;
+                // Merge/backfill qualityCertificate from INITIAL_DATA into any existing listings that lack it
+                if (Array.isArray(listings)) {
+                    listings = listings.map(l => {
+                        if (!l.qualityCertificate) {
+                            const match = INITIAL_DATA.listings.find(init => init.id === l.id);
+                            if (match && match.qualityCertificate) {
+                                return { ...l, qualityCertificate: match.qualityCertificate };
+                            }
+                        }
+                        return l;
+                    });
+                }
+
                 return {
                     ...INITIAL_DATA,
                     ...parsed,
+                    listings: listings,
+                    assayingCenters: INITIAL_DATA.assayingCenters,
                     mandiTicker: INITIAL_DATA.mandiTicker,
                     forecasts: { ...INITIAL_DATA.forecasts, ...(parsed.forecasts || {}) },
                     mandiPrices: INITIAL_DATA.mandiPrices,
@@ -5414,6 +5769,103 @@ class DataStore {
 
     getMandis() {
         return ['Akola APMC', 'Buldhana APMC'];
+    }
+
+    /* ================================================================
+     * QUALITY CHECKER & ASSAYER CERTIFICATE METHODS
+     * ================================================================ */
+    getCertificate(certIdOrListingId) {
+        if (!certIdOrListingId) return null;
+        const query = String(certIdOrListingId).trim().toLowerCase();
+
+        // 1. Direct match by certId or listingId
+        const listing = (this.data.listings || []).find(l => 
+            (l.id && l.id.toLowerCase() === query) ||
+            (l.qualityCertificate && l.qualityCertificate.certId && l.qualityCertificate.certId.toLowerCase() === query)
+        );
+
+        if (listing && listing.qualityCertificate) {
+            return {
+                ...listing.qualityCertificate,
+                listingId: listing.id,
+                crop: listing.crop,
+                farmerName: listing.farmerName,
+                fpo: listing.fpo,
+                region: listing.region,
+                photo: listing.photo,
+                quantityKg: listing.quantityKg,
+                harvestDate: listing.harvestDate,
+                freshnessScore: listing.freshnessScore
+            };
+        }
+        return null;
+    }
+
+    verifyCertificate(certId) {
+        if (!certId || !String(certId).trim()) {
+            return { verified: false, message: 'Please enter a valid Certificate Number or Scan QR Code.' };
+        }
+        const cert = this.getCertificate(certId);
+        if (cert) {
+            return { verified: true, cert };
+        }
+        return { 
+            verified: false, 
+            message: `No active official assay certificate found matching "${certId}". Please verify the certificate ID on your lot packaging or crate seal.` 
+        };
+    }
+
+    getAllCertificates() {
+        return (this.data.listings || [])
+            .filter(l => l.qualityCertificate)
+            .map(l => ({
+                ...l.qualityCertificate,
+                listingId: l.id,
+                crop: l.crop,
+                farmerName: l.farmerName,
+                fpo: l.fpo,
+                region: l.region
+            }));
+    }
+
+    /* ================================================================
+     * ASSAYING & QUALITY CERTIFICATION CENTERS LOCATOR METHODS
+     * ================================================================ */
+    getAssayingCenters(filter = {}) {
+        let list = (this.data.assayingCenters && this.data.assayingCenters.length)
+            ? this.data.assayingCenters
+            : (INITIAL_DATA.assayingCenters || []);
+
+        if (filter.district && filter.district !== 'all') {
+            const distNeedle = filter.district.toLowerCase();
+            list = list.filter(c => c.district.toLowerCase() === distNeedle);
+        }
+
+        if (filter.crop && filter.crop !== 'all') {
+            const cropNeedle = filter.crop.toLowerCase();
+            list = list.filter(c => c.cropsSupported.some(cr => cr.toLowerCase().includes(cropNeedle)));
+        }
+
+        if (filter.search) {
+            const searchVal = filter.search.toLowerCase().trim();
+            list = list.filter(c => 
+                c.name.toLowerCase().includes(searchVal) ||
+                c.district.toLowerCase().includes(searchVal) ||
+                c.taluka.toLowerCase().includes(searchVal) ||
+                c.address.toLowerCase().includes(searchVal) ||
+                c.inCharge.toLowerCase().includes(searchVal) ||
+                c.equipment.some(e => e.toLowerCase().includes(searchVal)) ||
+                c.cropsSupported.some(crop => crop.toLowerCase().includes(searchVal))
+            );
+        }
+
+        // Return copy sorted by proximity
+        return [...list].sort((a, b) => a.distanceKm - b.distanceKm);
+    }
+
+    getAssayingCenterById(id) {
+        const centers = this.data.assayingCenters || INITIAL_DATA.assayingCenters || [];
+        return centers.find(c => c.id === id) || null;
     }
 }
 
