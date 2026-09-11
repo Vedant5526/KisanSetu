@@ -1004,7 +1004,105 @@ const UI_TRANSLATIONS = {
         "🌾 YOUR FARM LISTING": "🌾 आपकी कृषि उपज",
         "✓ eKYC Verified": "✓ ई-केवाईसी सत्यापित",
         "ORGANIC": "जैविक",
-        "Manage Lot in Farmer Command Hub": "⚙️ किसान केंद्र में लॉट का प्रबंधन करें"
+        "Manage Lot in Farmer Command Hub": "⚙️ किसान केंद्र में लॉट का प्रबंधन करें",
+
+        // Farmer Dashboard Navigation & Tabs
+        "AI Demand & Price Forecast": "एआई मांग व मूल्य पूर्वानुमान",
+        "APMC Mandi Rates (Amravati)": "एपीएमसी मंडी भाव (अमरावती)",
+        "Incoming Orders & Counter-Offers": "प्राप्त ऑर्डर्स व मोलभाव",
+        "Active Produce Inventory": "सक्रिय कृषि उपज स्टॉक",
+        "Escrow Wallet & UPI Payouts": "एस्क्रो वॉलेट व यूपीआई भुगतान",
+        "FPO Aggregator Group": "एफपीओ उत्पादक संघ",
+        "Quality Testing & Assayer Labs": "गुणवत्ता जांच व प्रयोगशाला",
+
+        // Farmer Dashboard Mandi Table
+        "Amravati Division APMC Mandi Rates": "अमरावती संभाग एपीएमसी मंडी भाव",
+        "Real-time wholesale modal arrivals for Akola APMC & Buldhana APMC (July 10 – September 9, 2026) verified via Agmarknet / data.gov.in.": "अकोला व बुलढाणा एपीएमसी हेतु वास्तविक थोक आवक दर (10 जुलाई - 9 सितंबर, 2026) एगमार्कनेट द्वारा सत्यापित।",
+        "Filter APMC:": "मंडी चुनें:",
+        "All Mandis (Akola & Buldhana)": "सभी मंडियां (अकोला व बुलढाणा)",
+        "Akola APMC": "अकोला एपीएमसी",
+        "Buldhana APMC": "बुलढाणा एपीएमसी",
+        "Commodity:": "फसल / जिंस:",
+        "All Commodities (7 Crops)": "सभी फसलें (7 फसलें)",
+        "Tomato (Hybrid)": "टमाटर (हाइब्रिड)",
+        "Onion (Red Kharif)": "प्याज (लाल खरीफ)",
+        "Potato (Jyoti)": "आलू (ज्योति)",
+        "Wheat (Sharbati)": "गेहूं (शरबती)",
+        "Soybean (Yellow Gr. A)": "सोयाबीन (पीला ग्रेड ए)",
+        "Cauliflower (Snowball)": "फूलगोभी (स्नोबॉल)",
+        "Red Chilli (Byadagi Dry)": "लाल मिर्च (ब्यादगी सूखी)",
+        "Search date, crop...": "दिनांक, फसल खोजें...",
+        "View Full Market Terminal →": "संपूर्ण मार्केट टर्मिनल देखें →",
+        "Mandi Yard": "मंडी केंद्र",
+        "Min (₹/kg)": "न्यूनतम (₹/किग्रा)",
+        "Max (₹/kg)": "अधिकतम (₹/किग्रा)",
+        "Modal Price": "मॉडल भाव",
+        "Modal (₹/Qtl)": "मॉडल (₹/क्विंटल)",
+        "Arrivals": "दैनिक आवक",
+        "24h Trend": "24 घंटे का रुझान",
+        "Forecast": "पूर्वानुमान",
+        "AI Curve": "एआई ग्राफ",
+
+        // Quality Assaying & Labs
+        "Smart India Hackathon 2026 • DoCA PS 26033": "स्मार्ट इंडिया हैकाथॉन 2026 • उपभोक्ता मामले मंत्रालय",
+        "AGMARK & NABL Accredited Testing": "एगमार्क व एनएबीएल मान्यता प्राप्त प्रयोगशाला",
+        "Authorized Quality Assaying & Testing Centers": "अधिकृत गुणवत्ता परख व परीक्षण केंद्र",
+        "Locate accredited testing laboratories, KVK centers, and APMC assaying terminals near": "अपने निकट अधिकृत परीक्षण प्रयोगशालाएं, केवीके केंद्र और एपीएमसी टर्मिनल खोजें",
+        "Verify Any Certificate": "प्रमाणपत्र सत्यापित करें",
+        "Book Farm-Gate Sample Pickup": "खेत से नमूना संग्रहण बुक करें",
+        "Schedule Farm Collection": "खेत पर जांच शेड्यूल करें",
+        "Call Lab": "प्रयोगशाला को कॉल करें",
+        "View Sample Certificate": "नमूना प्रमाणपत्र देखें",
+        "All Districts": "सभी जिले",
+        "All Commodities": "सभी फसलें",
+        "Search lab name, equipment, crop, or location...": "प्रयोगशाला का नाम, उपकरण, फसल या स्थान खोजें...",
+        "How Quality Assaying Works for Farmers on KisanSetu": "किसानसेतु पर किसानों हेतु गुणवत्ता परख कैसे कार्य करती है",
+        "Transparent certification protects farmers from unscientific mandi rejections and unlocks bulk buyer premiums.": "पारदर्शी प्रमाणीकरण किसानों को अकारण मंडी अस्वीकृति से बचाता है और 18-25% अधिक मूल्य दिलाता है।",
+        "1. Sample Collection": "1. नमूना संग्रहण",
+        "Walk-in or Farm Pickup": "वॉक-इन या खेत से पिकअप",
+        "Bring a 1-2 kg composite produce sample to any lab or request an assayer van to visit your farm gate in Dindori.": "किसी भी लैब में 1-2 किग्रा नमूना लाएं या डिंडोरी में खेत पर सैंपल वैन बुलाएं।",
+        "2. Machine Calibration": "2. मशीन अंशांकन व परीक्षण",
+        "Objective Grading": "वैज्ञानिक ग्रेडिंग",
+        "Automated sensors test moisture, Brix sweetness, millimeter caliber, and FSSAI pesticide MRLs in 15–20 minutes.": "स्वचालित सेंसर 15-20 मिनट में नमी, मिठास, आकार और कीटनाशक अवशेषों का परीक्षण करते हैं।",
+        "3. Cryptographic Pass": "3. डिजिटल प्रमाणपत्र",
+        "Direct Marketplace Boost": "सीधे मंडी में अतिरिक्त मूल्य",
+        "A digitally signed AGMARK certificate is linked to your lot. Buyers purchase instantly with zero quality disputes.": "डिजिटल हस्ताक्षरित एगमार्क प्रमाणपत्र से खरीदार बिना किसी गुणवत्ता विवाद के तुरंत खरीदारी करते हैं।",
+        "Location:": "स्थान:",
+        "Assayer In-Charge:": "प्रभारी परीक्षक:",
+        "Operating Hours:": "कार्यकारी समय:",
+        "Contact:": "संपर्क:",
+        "Crops:": "फसलें:",
+        "Available Equipment & Testing Kits:": "उपलब्ध उपकरण व परीक्षण किट:",
+        "Turnaround:": "जांच अवधि:",
+        "Assay Fee:": "परीक्षण शुल्क:",
+        "Book Pickup": "पिकअप बुक करें",
+        "Cert": "सर्टिफिकेट",
+        "Map": "नक्शा",
+        "Call": "कॉल",
+        "On-Farm Pickup Available": "खेत पर पिकअप उपलब्ध",
+        "Mandi Yard Walk-in": "मंडी यार्ड वॉक-इन",
+        "NEAREST": "निकटतम",
+        "NEAREST TESTING CENTER • 14 KM FROM YOUR FARM": "निकटतम परीक्षण केंद्र • आपके खेत से 14 किमी",
+        "Spot Assay: 15–20 Mins": "त्वरित परीक्षण: 15–20 मिनट",
+        "Govt Subsidized (FREE Spot / ₹75 MRL)": "सरकारी अनुदानित (निःशुल्क स्पॉट / ₹75 MRL)",
+        "On-Farm Pickup Van Active in Dindori": "खेत से सैंपल कलेक्शन वैन डिंडोरी में सक्रिय",
+
+        // Badges & Labels
+        "Assayer Certified": "एगमार्क प्रमाणित",
+        "View Sheet 📄": "प्रमाणपत्र देखें 📄",
+        "Network Connectivity": "नेटवर्क कनेक्टिविटी",
+        "ONLINE": "ऑनलाइन",
+        "Hold produce 3-4 days for upside": "अधिक लाभ हेतु 3-4 दिन उपज रोकें",
+        "Akola APMC Daily Modal Rate": "अकोला एपीएमसी दैनिक मॉडल भाव",
+        "Buldhana APMC Daily Modal Rate": "बुलढाणा एपीएमसी दैनिक मॉडल भाव",
+        "Daily Modal Rate": "दैनिक मॉडल भाव",
+        "Tomato (Akola APMC Hybrid)": "टमाटर (अकोला एपीएमसी हाइब्रिड)",
+        "Onion (Buldhana APMC Red Kharif)": "प्याज (बुलढाणा एपीएमसी लाल खरीफ)",
+        "Potato (Akola APMC Jyoti)": "आलू (अकोला एपीएमसी ज्योति)",
+        "Wheat (Akola APMC Sharbati)": "गेहूं (अकोला एपीएमसी शरबती)",
+        "Soybean (Akola APMC Yellow Gr. A)": "सोयाबीन (अकोला एपीएमसी पीला ग्रेड ए)",
+        "Cauliflower (Buldhana APMC Snowball)": "फूलगोभी (बुलढाणा एपीएमसी स्नोबॉल)",
+        "Red Chilli (Buldhana APMC Byadagi Dry)": "लाल मिर्च (बुलढाणा एपीएमसी ब्यादगी सूखी)"
     },
     mr: {
         // Gov Bar & Tagline
@@ -1448,7 +1546,105 @@ const UI_TRANSLATIONS = {
         "🌾 YOUR FARM LISTING": "🌾 तुमची स्वतःची शेतमाल नोंद",
         "✓ eKYC Verified": "✓ e-KYC पडताळलेले",
         "ORGANIC": "सेंद्रिय",
-        "Manage Lot in Farmer Command Hub": "⚙️ शेतकरी केंद्रात साठा व्यवस्थापित करा"
+        "Manage Lot in Farmer Command Hub": "⚙️ शेतकरी केंद्रात साठा व्यवस्थापित करा",
+
+        // Farmer Dashboard Navigation & Tabs
+        "AI Demand & Price Forecast": "AI मागणी व दर अंदाज",
+        "APMC Mandi Rates (Amravati)": "एपीएमसी बाजार समिती दर (अमरावती)",
+        "Incoming Orders & Counter-Offers": "प्राप्त ऑर्डर्स व वाटाघाटी",
+        "Active Produce Inventory": "उपलब्ध शेतमाल साठा",
+        "Escrow Wallet & UPI Payouts": "एस्क्रो पाकीट व यूपीआय खात्यात जमा",
+        "FPO Aggregator Group": "FPO शेतकरी उत्पादक गट",
+        "Quality Testing & Assayer Labs": "प्रतवारी चाचणी व प्रयोगशाळा",
+
+        // Farmer Dashboard Mandi Table
+        "Amravati Division APMC Mandi Rates": "अमरावती विभाग एपीएमसी बाजार भाव",
+        "Real-time wholesale modal arrivals for Akola APMC & Buldhana APMC (July 10 – September 9, 2026) verified via Agmarknet / data.gov.in.": "अकोला व बुलढाणा एपीएमसी घाऊक आवक दर (१० जुलै - ९ सप्टेंबर, २०२६) ॲगमार्कनेटद्वारे पडताळलेले.",
+        "Filter APMC:": "मंडी निवडा:",
+        "All Mandis (Akola & Buldhana)": "सर्व बाजार समित्या (अकोला व बुलढाणा)",
+        "Akola APMC": "अकोला एपीएमसी",
+        "Buldhana APMC": "बुलढाणा एपीएमसी",
+        "Commodity:": "शेतमाल / पीक:",
+        "All Commodities (7 Crops)": "सर्व शेतमाल (७ पिके)",
+        "Tomato (Hybrid)": "टोमॅटो (हायब्रिड)",
+        "Onion (Red Kharif)": "कांदा (लाल खरीप)",
+        "Potato (Jyoti)": "बटाटा (ज्योती)",
+        "Wheat (Sharbati)": "गहू (शरबती)",
+        "Soybean (Yellow Gr. A)": "सोयाबीन (पिवळा ग्रेड A)",
+        "Cauliflower (Snowball)": "फ्लॉवर (स्नोबॉल)",
+        "Red Chilli (Byadagi Dry)": "लाल मिरची (ब्याडगी सुकी)",
+        "Search date, crop...": "तारीख, पीक शोधा...",
+        "View Full Market Terminal →": "संपूर्ण मार्केट टर्मिनल पहा →",
+        "Mandi Yard": "बाजार आवार",
+        "Min (₹/kg)": "किमान (₹/किलो)",
+        "Max (₹/kg)": "कमाल (₹/किलो)",
+        "Modal Price": "सरासरी भाव",
+        "Modal (₹/Qtl)": "सरासरी (₹/क्विंटल)",
+        "Arrivals": "दैनिक आवक",
+        "24h Trend": "२४ तास कल",
+        "Forecast": "अंदाज",
+        "AI Curve": "AI आलेख",
+
+        // Quality Assaying & Labs
+        "Smart India Hackathon 2026 • DoCA PS 26033": "स्मार्ट इंडिया हॅकाथॉन २०२६ • ग्राहक व्यवहार मंत्रालय",
+        "AGMARK & NABL Accredited Testing": "ॲगमार्क व NABL मान्यताप्राप्त प्रयोगशाळा",
+        "Authorized Quality Assaying & Testing Centers": "अधिकृत प्रतवारी व गुणवत्ता चाचणी प्रयोगशाळा",
+        "Locate accredited testing laboratories, KVK centers, and APMC assaying terminals near": "आपल्या नजीक अधिकृत प्रयोगशाळा, केव्हीके केंद्रे आणि बाजार समिती प्रतवारी केंद्रे शोधा",
+        "Verify Any Certificate": "प्रमाणपत्र पडताळा",
+        "Book Farm-Gate Sample Pickup": "थेट बांधावरून नमुना संकलन बुक करा",
+        "Schedule Farm Collection": "बांधावर चाचणी निश्चित करा",
+        "Call Lab": "प्रयोगशाळेला कॉल करा",
+        "View Sample Certificate": "नमुना प्रमाणपत्र पहा",
+        "All Districts": "सर्व जिल्हे",
+        "All Commodities": "सर्व शेतमाल",
+        "Search lab name, equipment, crop, or location...": "प्रयोगशाळेचे नाव, उपकरणे, पीक किंवा ठिकाण शोधा...",
+        "How Quality Assaying Works for Farmers on KisanSetu": "किसानसेतूवर शेतकऱ्यांसाठी प्रतवारी चाचणी कशी कार्य करते",
+        "Transparent certification protects farmers from unscientific mandi rejections and unlocks bulk buyer premiums.": "पारदर्शक प्रमाणीकरणामुळे बाजारात विनाकारण माल नाकारला जात नाही आणि १८-२५% जास्त दर मिळतो.",
+        "1. Sample Collection": "१. नमुना संकलन",
+        "Walk-in or Farm Pickup": "थेट भेट किंवा बांधावरून पिकअप",
+        "Bring a 1-2 kg composite produce sample to any lab or request an assayer van to visit your farm gate in Dindori.": "कोणत्याही प्रयोगशाळेत १-२ किलो नमुना आणा किंवा दिंडोरीत थेट शेतात सॅम्पल व्हॅन बोलवा.",
+        "2. Machine Calibration": "२. अचूक डिजिटल चाचणी",
+        "Objective Grading": "वस्तुनिष्ठ प्रतवारी",
+        "Automated sensors test moisture, Brix sweetness, millimeter caliber, and FSSAI pesticide MRLs in 15–20 minutes.": "स्वयंचलित सेन्सर्स १५-२० मिनिटांत ओलावा, गोडवा, साईझ आणि कीटकनाशक प्रमाणाची अचूक चाचणी करतात.",
+        "3. Cryptographic Pass": "३. डिजिटल स्वाक्षरी प्रमाणपत्र",
+        "Direct Marketplace Boost": "बाजारपेठेत वाढीव दर",
+        "A digitally signed AGMARK certificate is linked to your lot. Buyers purchase instantly with zero quality disputes.": "डिजिटल स्वाक्षरी असलेले ॲगमार्क प्रमाणपत्र शेतमालाशी जोडले जाते. खरेदीदार विनातक्रार त्वरित खरेदी करतात.",
+        "Location:": "ठिकाण:",
+        "Assayer In-Charge:": "प्रयोगशाळा प्रमुख:",
+        "Operating Hours:": "कामकाजाची वेळ:",
+        "Contact:": "संपर्क:",
+        "Crops:": "शेतमाल:",
+        "Available Equipment & Testing Kits:": "उपलब्ध उपकरणे व चाचणी किट:",
+        "Turnaround:": "चाचणी कालावधी:",
+        "Assay Fee:": "चाचणी शुल्क:",
+        "Book Pickup": "पिकअप बुक करा",
+        "Cert": "प्रमाणपत्र",
+        "Map": "नकाशा",
+        "Call": "कॉल",
+        "On-Farm Pickup Available": "बांधावर संकलन उपलब्ध",
+        "Mandi Yard Walk-in": "बाजार आवार थेट भेट",
+        "NEAREST": "सर्वात जवळ",
+        "NEAREST TESTING CENTER • 14 KM FROM YOUR FARM": "सर्वात जवळची लॅब • तुमच्या शेतापासून १४ किमी",
+        "Spot Assay: 15–20 Mins": "त्वरित चाचणी: १५–२० मिनिटे",
+        "Govt Subsidized (FREE Spot / ₹75 MRL)": "शासकीय अनुदानित (मोफत स्पॉट / ₹७५ MRL)",
+        "On-Farm Pickup Van Active in Dindori": "बांधावर नमुना संकलन व्हॅन दिंडोरीत कार्यरत",
+
+        // Badges & Labels
+        "Assayer Certified": "प्रतवारी प्रमाणित",
+        "View Sheet 📄": "प्रमाणपत्र पहा 📄",
+        "Network Connectivity": "नेटवर्क कनेक्टिव्हिटी",
+        "ONLINE": "ऑनलाइन",
+        "Hold produce 3-4 days for upside": "+१८% अधिक नफ्यासाठी माल ३-४ दिवस राखून ठेवा",
+        "Akola APMC Daily Modal Rate": "अकोला बाजार समिती दैनिक दर",
+        "Buldhana APMC Daily Modal Rate": "बुलढाणा बाजार समिती दैनिक दर",
+        "Daily Modal Rate": "दैनंदिन सरासरी दर",
+        "Tomato (Akola APMC Hybrid)": "टोमॅटो (अकोला एपीएमसी हायब्रिड)",
+        "Onion (Buldhana APMC Red Kharif)": "कांदा (बुलढाणा एपीएमसी लाल खरीप)",
+        "Potato (Akola APMC Jyoti)": "बटाटा (अकोला एपीएमसी ज्योती)",
+        "Wheat (Akola APMC Sharbati)": "गहू (अकोला एपीएमसी शरबती)",
+        "Soybean (Akola APMC Yellow Gr. A)": "सोयाबीन (अकोला एपीएमसी पिवळा ग्रेड A)",
+        "Cauliflower (Buldhana APMC Snowball)": "फ्लॉवर (बुलढाणा एपीएमसी स्नोबॉल)",
+        "Red Chilli (Buldhana APMC Byadagi Dry)": "लाल मिरची (बुलढाणा एपीएमसी ब्याडगी सुकी)"
     }
 };
 
@@ -1534,6 +1730,31 @@ function translateText(text, lang) {
     const retMandiMatch = clean.match(/^Retail\/Mandi:\s*(.+)$/i);
     if (retMandiMatch) {
         return (lang === 'mr' ? 'स्थानिक अडत भाव: ' : 'पारंपरिक मंडी भाव: ') + retMandiMatch[1];
+    }
+    // Showing X Centers
+    const countMatch = clean.match(/^Showing\s*(\d+)\s*Centers?$/i);
+    if (countMatch) {
+        return lang === 'mr' ? `${countMatch[1]} प्रयोगशाळा दाखवत आहे` : `${countMatch[1]} केंद्र प्रदर्शित`;
+    }
+    // X km away
+    const kmMatch = clean.match(/^(\d+(?:\.\d+)?)\s*km away$/i);
+    if (kmMatch) {
+        return lang === 'mr' ? `${kmMatch[1]} किमी अंतरावर` : `${kmMatch[1]} किमी दूर`;
+    }
+    // Member Farmers
+    const membersMatch = clean.match(/^(\d+)\s*Member Farmers$/i);
+    if (membersMatch) {
+        return lang === 'mr' ? `${membersMatch[1]} शेतकरी सदस्य` : `${membersMatch[1]} सदस्य किसान`;
+    }
+    // Transferred to ...
+    const transMatch = clean.match(/^Transferred to\s*(.+)$/i);
+    if (transMatch) {
+        return lang === 'mr' ? `${transMatch[1]} वर वर्ग केले` : `${transMatch[1]} पर स्थानांतरित`;
+    }
+    // Role: ...
+    const roleMatch = clean.match(/^Role:\s*(.+)$/i);
+    if (roleMatch) {
+        return (lang === 'mr' ? 'भूमिका: ' : 'भूमिका: ') + roleMatch[1];
     }
 
     return text;
@@ -1681,7 +1902,15 @@ function applyLanguage(lang) {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
 
-    // 2. Translate [data-i18n] elements
+    // 2. Synchronize WhatsApp Chatbot language state
+    if (typeof currentWaLang !== 'undefined' && currentWaLang !== lang) {
+        currentWaLang = lang;
+        if (typeof updateWhatsAppChatUI === 'function') {
+            updateWhatsAppChatUI();
+        }
+    }
+
+    // 3. Translate [data-i18n] elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (!el.getAttribute('data-orig-html')) {
@@ -3073,9 +3302,7 @@ function renderOfficialCertificateHtml(cert) {
             <!-- Header -->
             <div class="cert-header">
                 <div class="cert-emblem-row">
-                    <span class="gov-flag"></span>
                     <span class="cert-emblem-badge">DIRECTORATE OF MARKETING & INSPECTION (DMI)</span>
-                    <span class="gov-flag"></span>
                 </div>
                 <div class="cert-title-main">AGMARK QUALITY ASSAY CERTIFICATE</div>
                 <div class="cert-subtitle">
@@ -3856,12 +4083,17 @@ const WA_I18N = {
         title: 'किसानसेतू सहाय्यक AI',
         badge: 'शासकीय कृषी सहाय्यता • ऑनलाइन 🟢',
         welcome: `सस्नेह नमस्कार शेतकरी बंधूंनो! 🙏<br>मी आपला <strong>किसानसेतू सहाय्यक AI</strong> आहे. आज मी आपल्याला शेतमाल बाजारभाव, ॲगमार्क गुणवत्ता लॅब, वाहतूक किंवा एस्क्रो पेमेंटमध्ये काय मदत करू शकतो?`,
-        placeholder: 'संदेश टाईप करा (उदा. टोमॅटो भाव, लॅब, पेमेंट)...',
+        placeholder: 'संदेश टाईप करा (उदा. टोमॅटो भाव, कांदा दर, माल कसा विकायचा, लॅब)...',
         prompts: [
-            { label: '🍅 आजचे बाजारभाव', query: 'आजचे टोमॅटो आणि कांदा बाजारभाव काय आहेत?' },
-            { label: '🔬 ॲगमार्क लॅब तपासणी', query: 'ॲगमार्क गुणवत्ता तपासणी प्रमाणपत्र कोठे मिळेल?' },
-            { label: '🛡️ एस्क्रो पेमेंट सुरक्षा', query: 'एस्क्रो खात्यातून शेतकऱ्यांना पैसे कसे मिळतात?' },
-            { label: '🚚 शीतगृह वाहतूक पिकअप', query: 'कोल्ड-चेन वाहतूक आणि शेतातून पिकअप कसा होतो?' }
+            { label: '🍅 टोमॅटो भाव', query: 'आजचे टोमॅटो बाजारभाव काय आहेत?' },
+            { label: '🧅 कांदा दर', query: 'लासलगाव आजचा कांदा बाजारभाव काय आहे?' },
+            { label: '🥔 बटाटा भाव', query: 'आजचा बटाटा बाजारभाव काय आहे?' },
+            { label: '🌾 माल कसा विकायचा?', query: 'किसानसेतूवर माझा शेतमाल कसा विकायचा?' },
+            { label: '📝 शेतकरी नोंदणी', query: 'शेतकरी नोंदणी आणि आधार व्हेरिफिकेशन कसे करावे?' },
+            { label: '🔬 ॲगमार्क लॅब', query: 'ॲगमार्क गुणवत्ता तपासणी प्रमाणपत्र कोठे व कसे मिळेल?' },
+            { label: '🛡️ एस्क्रो पेमेंट सुरक्षा', query: 'एस्क्रो खात्यातून शेतकऱ्यांना पैसे २४ तासांत कसे मिळतात?' },
+            { label: '🚚 शीतगृह वाहतूक', query: 'कोल्ड-चेन वाहतूक आणि शेतातून पिकअप कसा होतो?' },
+            { label: '🌦️ हवामान अंदाज', query: 'शेतमाल काढणी आणि वाहतुकीसाठी आजचे हवामान कसे आहे?' }
         ],
         switchNotice: '🌐 भाषा मराठीत बदलली आहे. आता मराठीत थेट प्रश्न विचारा.',
         listenBtn: '🔊 ऐका'
@@ -3870,12 +4102,17 @@ const WA_I18N = {
         title: 'किसानसेतु सहायक AI',
         badge: 'आधिकारिक सरकारी कृषि सहायता • ऑनलाइन 🟢',
         welcome: `नमस्ते किसान भाइयों! 🙏<br>मैं आपका <strong>किसानसेतु सहायक AI</strong> हूँ। आज मैं फसलों के मंडी भाव, एगमार्क गुणवत्ता जांच, ट्रांसपोर्ट या एस्क्रो भुगतान में आपकी क्या सहायता कर सकता हूँ?`,
-        placeholder: 'संदेश लिखें (उदा. टमाटर भाव, लैब, भुगतान)...',
+        placeholder: 'संदेश लिखें (उदा. टमाटर भाव, प्याज दाम, फसल कैसे बेचें, लैब)...',
         prompts: [
-            { label: '🍅 आज का मंडी भाव', query: 'आज का टमाटर और प्याज का मंडी भाव क्या है?' },
-            { label: '🔬 एगमार्क जांच लैब', query: 'एगमार्क गुणवत्ता जांच प्रयोगशाला कहां है?' },
-            { label: '🛡️ एस्क्रो भुगतान गारंटी', query: 'एस्क्रो से किसान को पेमेंट कैसे सुरक्षित मिलता है?' },
-            { label: '🚚 कोल्ड-चेन ट्रांसपोर्ट', query: 'कोल्ड-चेन ट्रांसपोर्ट और खेत से पिकअप कैसे होगा?' }
+            { label: '🍅 टमाटर भाव', query: 'आज का टमाटर का मंडी भाव क्या है?' },
+            { label: '🧅 प्याज दाम', query: 'लासलगांव आज का प्याज मंडी भाव क्या है?' },
+            { label: '🥔 आलू भाव', query: 'आज का आलू का मंडी भाव क्या है?' },
+            { label: '🌾 फसल कैसे बेचें?', query: 'किसानसेतु पर अपनी फसल सीधे कैसे बेचें?' },
+            { label: '📝 किसान पंजीकरण', query: 'किसान पंजीकरण और आधार सत्यापन कैसे करें?' },
+            { label: '🔬 एगमार्क जांच लैब', query: 'एगमार्क गुणवत्ता जांच प्रयोगशाला कहां और कैसे मिलेगी?' },
+            { label: '🛡️ एस्क्रो भुगतान गारंटी', query: 'एस्क्रो से किसान को 24 घंटे में सुरक्षित भुगतान कैसे मिलता है?' },
+            { label: '🚚 कोल्ड-चेन ट्रांसपोर्ट', query: 'कोल्ड-चेन ट्रांसपोर्ट और खेत से पिकअप कैसे होगा?' },
+            { label: '🌦️ मौसम पूर्वानुमान', query: 'फसल कटाई और परिवहन के लिए मौसम का हाल क्या है?' }
         ],
         switchNotice: '🌐 भाषा हिंदी में बदल दी गई है। अब हिंदी में सीधे सवाल पूछें।',
         listenBtn: '🔊 सुनें'
@@ -3884,12 +4121,17 @@ const WA_I18N = {
         title: 'KisanSetu Sahayak AI',
         badge: 'Official Govt. Agri Support • Online 🟢',
         welcome: `Welcome farmers! 🙏<br>I am your <strong>KisanSetu Sahayak AI</strong>. How can I assist you with crops, mandi benchmark prices, AGMARK testing labs, or escrow settlements today?`,
-        placeholder: 'Type a message (e.g. mandi price, certificate)...',
+        placeholder: 'Type a message (e.g. tomato price, how to sell, escrow)...',
         prompts: [
-            { label: '🍅 Today Mandi Prices', query: 'What are today tomato and onion mandi prices?' },
-            { label: '🔬 AGMARK Testing Labs', query: 'Where can I get AGMARK quality certificate?' },
-            { label: '🛡️ Escrow Guarantee', query: 'How does escrow payment guarantee protect farmers?' },
-            { label: '🚚 Cold-Chain Logistics', query: 'How does refrigerated transport pickup work?' }
+            { label: '🍅 Tomato Price', query: 'What is today live Tomato mandi rate?' },
+            { label: '🧅 Onion Rate', query: 'What is today Lasalgaon & Nashik onion rate?' },
+            { label: '🥔 Potato Price', query: 'What is today Potato market rate?' },
+            { label: '🌾 How to Sell Produce?', query: 'How do I list and sell produce directly on KisanSetu?' },
+            { label: '📝 Farmer Registration', query: 'How to register as a verified farmer with Aadhaar eKYC?' },
+            { label: '🔬 AGMARK Testing Labs', query: 'Where are the official AGMARK & NABL testing labs located?' },
+            { label: '🛡️ Escrow Guarantee', query: 'How does DoCA Escrow guarantee 24-hour payment to farmers?' },
+            { label: '🚚 Cold-Chain Logistics', query: 'How does refrigerated transport and farm-gate pickup work?' },
+            { label: '🌦️ Weather Advisory', query: 'What is the agricultural weather advisory for harvest?' }
         ],
         switchNotice: '🌐 Language switched to English. You can now ask questions in English.',
         listenBtn: '🔊 Listen'
@@ -3907,14 +4149,19 @@ function renderWaPromptPills(lang) {
 
 function setWhatsAppChatLang(lang) {
     currentWaLang = lang;
-    updateWhatsAppChatUI();
+    if (window.kisanStore) {
+        window.kisanStore.setLanguage(lang);
+    } else {
+        localStorage.setItem('kisansetu_lang', lang);
+    }
+    applyLanguage(lang);
 
     // Post friendly language change indicator in chat
     const chatBody = document.getElementById('waChatBody');
     if (chatBody) {
         const note = document.createElement('div');
         note.style.cssText = 'align-self:center; background:#dcf8c6; color:#075e54; font-size:11px; font-weight:700; padding:4px 12px; border-radius:12px; box-shadow:0 1px 2px rgba(0,0,0,0.08); text-align:center; margin:4px 0;';
-        note.innerHTML = WA_I18N[lang].switchNotice;
+        note.innerHTML = (WA_I18N[lang] || WA_I18N.mr).switchNotice;
         chatBody.appendChild(note);
         chatBody.scrollTop = chatBody.scrollHeight;
     }
@@ -3927,11 +4174,19 @@ function updateWhatsAppChatUI() {
     const inputEl = document.getElementById('waSimInput');
     const pillsEl = document.getElementById('waPromptPills');
     const btnGroup = document.getElementById('waLangBtnGroup');
+    const welcomeBubble = document.getElementById('waWelcomeBubble');
 
     if (titleEl) titleEl.innerText = config.title;
     if (subEl) subEl.innerText = config.badge;
     if (inputEl) inputEl.placeholder = config.placeholder;
     if (pillsEl) pillsEl.innerHTML = renderWaPromptPills(currentWaLang);
+
+    if (welcomeBubble) {
+        welcomeBubble.innerHTML = `
+            ${config.welcome}
+            <div style="font-size:10px; color:#667781; text-align:right; margin-top:4px;">Just now</div>
+        `;
+    }
 
     if (btnGroup) {
         const buttons = btnGroup.querySelectorAll('.wa-lang-btn');
@@ -4079,6 +4334,244 @@ function speakWhatsAppMessage(btn, lang) {
     window.speechSynthesis.speak(utterance);
 }
 
+function detectWaQueryLang(query, activeLang) {
+    const text = (query || '').trim();
+    if (!text) return activeLang || 'mr';
+
+    // Distinctive Marathi indicator words & postpositions
+    const mrRegex = /(कांदा|टोमॅटो|बटाटा|गहू|सोयाबीन|फ्लॉवर|फुलकोबी|मिरची|कापूस|शेतकरी|आहे|नाही|कसे|कधी|करावे|मिळेल|मिळतील|तपासणी|चाचणी|वाहतूक|शीतगृह|हवामान|विक्री|नोंदणी|पैसे|बाजारभाव|सस्नेह|नमस्कार|काय|आहात|भांडवल|खरेदीदार|ऑर्डर|तक्रार|घ्यावे|द्यावे|आम्हाला|तुम्ही)/i;
+    // Distinctive Hindi indicator words & postpositions
+    const hiRegex = /(टमाटर|प्याज|आलू|गेहूं|सोयाबीन|गोभी|मिर्च|कपास|किसान|है|नहीं|कैसे|कब|करना|मिलेगा|मिलेंगे|जांच|परिवहन|मौसम|बिक्री|पंजीकरण|रुपये|नमस्ते|दाम|प्रयोगशाला|क्या|हो|खरीददार|शिकायत|सुरक्षा|चाहिए|सकते|हमको|आप)/i;
+
+    if (mrRegex.test(text)) return 'mr';
+    if (hiRegex.test(text)) return 'hi';
+
+    // If text contains Devanagari script
+    if (/[\u0900-\u097F]/.test(text)) {
+        return (activeLang === 'hi' || activeLang === 'mr') ? activeLang : 'mr';
+    }
+
+    // If English alphabetic characters dominate
+    if (/[a-zA-Z]{2,}/.test(text)) {
+        return (activeLang === 'en' || !/[\u0900-\u097F]/.test(text)) ? 'en' : activeLang;
+    }
+
+    return activeLang || 'mr';
+}
+
+function generateWhatsAppBotReply(query, preferredLang) {
+    const clean = (query || '').trim();
+    const lang = detectWaQueryLang(clean, preferredLang);
+    const lower = clean.toLowerCase();
+
+    // Intent Matchers with boundary checks and comprehensive synonym coverage
+    const isLogistics = /\b(transport|transportation|transporter|transporters|transporting|logistics|truck|trucks|lorry|tempo|vehicle|vehicles|reefer|cold\s*chain|cold\s*storage|pickup|pickups|delivery|deliveries|dispatch|freight|transit)\b/i.test(lower) || /(वाहतूक|वाहतुकी|वाहतुकीसाठी|शीतगृह|पिकअप|गाडी|गाड्या|वाहन|वाहने|कोल्ड\s*चेन|ट्रक|परिवहन|डिस्पॅच|भाडे|पोहोच)/i.test(clean);
+    const isSell = /\b(sell|selling|seller|list|listing|how to sell|upload crop|put up for sale|start selling)\b/i.test(lower) || /(विक्री|विकायचे|विकायचा|विकणे|बेचना|बेचें|बिक्री|लिस्टिंग)/i.test(clean);
+    const isLab = /\b(lab|labs|agmark|agmarknet|cert|certificate|nabl|assay|assaying|test|testing|quality|moisture|grade|grading)\b/i.test(lower) || /(लॅब|प्रयोगशाळा|तपासणी|चाचणी|गुणवत्ता|ॲगमार्क|एगमार्क|सर्टिफिकेट|प्रमाणपत्र|जांच|ग्रेडिंग|ओलावा)/i.test(clean);
+    const isEscrow = /\b(escrow|pay|payment|payments|settlement|money|bank|upi|funds|wallet|credit|payout|guarantee)\b/i.test(lower) || /(पैसे|पेमेंट|एस्क्रो|खात्यात|बँक|खाते|रुपये|मिळतील|मिळतात|भुगतान|पैसा|बैंक|खाता|सुरक्षा|हमी)/i.test(clean);
+    const isRegister = /\b(register|registration|sign\s*up|create account|login|kyc|aadhaar|join)\b/i.test(lower) || /(नोंदणी|खाते|अकाउंट|पंजीकरण|साइन\s*अप|आधार|दस्तऐवज|ई-केवायसी|ekyc)/i.test(clean);
+    const isWeather = /\b(weather|rain|rains|climate|monsoon|temperature|forecast|harvest weather)\b/i.test(lower) || /(हवामान|पाऊस|तापमान|अंदाज|मौसम|बारिश|धूप)/i.test(clean);
+    const isBuyerOrder = /\b(buyer|buyers|order|orders|offer|offers|counter\s*offer|bid|bids|negotiate|bargain|deal)\b/i.test(lower) || /(खरेदीदार|ऑर्डर|ऑफर|काउंटर|व्यापारी|सौदा|बोली|खरीदार)/i.test(clean);
+    const isFpo = /\b(fpo|farmer group|cooperative|aggregation|cluster)\b/i.test(lower) || /(fpo|गट\s*शेती|शेतकरी\s*गट|सह्याद्री|उत्पादक\s*कंपनी|समूह)/i.test(clean);
+    const isVoice = /\b(voice|speak|microphone|mic|audio|speech|listen)\b/i.test(lower) || /(आवाज|बोलून|माईक|ऐका|सुनें|ध्वनी)/i.test(clean);
+    const isDispute = /\b(dispute|complaint|problem|issue|cancel|refund|help|helpline|call|toll\s*free|phone|support)\b/i.test(lower) || /(तक्रार|समस्या|मदत|कॉल|हेल्पलाइन|टोल\s*फ्री|नंबर|फोन|शिकायत|सहाय्यता)/i.test(clean);
+    const isAbout = /\b(what is kisansetu|about kisansetu|who (made|built|developed)|sih|hackathon|objective|mission)\b/i.test(lower) || /(किसान\s*सेतू|किसानसेतू|किसान\s*सेतु).*(काय|क्या|बद्दल|बारे)/i.test(clean) || /(काय आहे|क्या है).*(किसान\s*सेतू|किसानसेतू|किसान\s*सेतु|प्लॅटफॉर्म|प्लेटफॉर्म)/i.test(clean);
+    const isGreeting = /\b(hi|hello|hey|greetings|namaste|namaskar|ram\s*ram)\b/i.test(lower) || /(नमस्कार|नमस्ते|राम\s*राम|हॅलो|हाय|सुप्रभात|शुभ\s*सकाळ|कसे\s*आहात|कैसे\s*हो|रामराम)/i.test(clean);
+
+    // Crops
+    const isTomato = /\b(tomato|tomatoes|tamatar)\b/i.test(lower) || /(टोमॅटो|टमाटर)/i.test(clean);
+    const isOnion = /\b(onion|onions|kanda|pyaj|pyaz)\b/i.test(lower) || /(कांदा|कांदे|कांद्याचा|कांद्याचे|प्याज)/i.test(clean);
+    const isPotato = /\b(potato|potatoes|aloo|alu|batata)\b/i.test(lower) || /(बटाटा|बटाटे|बटाट्याचे|आलू)/i.test(clean);
+    const isWheat = /\b(wheat|gehu|gehun|gahu)\b/i.test(lower) || /(गहू|गव्हाचा|गव्हाचे|गेहूं|गेहू)/i.test(clean);
+    const isSoybean = /\b(soybean|soya\s*bean|soya)\b/i.test(lower) || /(सोयाबीन)/i.test(clean);
+    const isCauliflower = /\b(cauliflower|cabbage|gobhi|gobi|flower)\b/i.test(lower) || /(कॉलिफ्लॉवर|फुलकोबी|गोभी|पत्ताकोबी|फ्लॉवर)/i.test(clean);
+    const isChilli = /\b(chilli|chili|mirchi|mirch)\b/i.test(lower) || /(मिरची|मिरचीचे|मिर्च)/i.test(clean);
+    const isCotton = /\b(cotton|kapas|kapus)\b/i.test(lower) || /(कापूस|कपाशी|कपास)/i.test(clean);
+    const isGeneralPrice = /\b(price|prices|rate|rates|mandi|bhav|market rate|cost|benchmark)\b/i.test(lower) || /(भाव|दर|बाजारभाव|मंडी\s*भाव|दाम|किंमत)/i.test(clean);
+
+    let reply = '';
+
+    // ==========================================
+    // MARATHI (मराठी) INTENT RESPONSES
+    // ==========================================
+    if (lang === 'mr') {
+        // Priority 1: Workflows & Actions (Logistics, Selling, Lab, Escrow, etc.)
+        if (isLogistics) {
+            reply = `🚚 <strong>स्मार्ट कोल्ड-चेन वाहतूक आणि शेतातून थेट पिकअप:</strong><br>• <strong>CVRPTW अल्गोरिदम:</strong> एकाच परिसरातील शेतकऱ्यांचा शेतमाल एकत्र करून शीतगृह (+४°C ते +८°C) वाहने पाठवली जातात.<br>• <strong>३४% वाहतूक बचत:</strong> मार्ग अनुकूलनामुळे वाहतूक खर्च ३४% ने कमी होतो.<br>• <strong>थेट शेतातून पिकअप:</strong> वाहन शेतात पोहोचण्यापूर्वी २ तास आधी ड्रायव्हरचे नाव, संपर्क आणि थेट GPS ट्रॅकिंग SMS द्वारे पाठवले जाते.`;
+        } else if (isSell) {
+            reply = `🌾 <strong>किसानसेतूवर शेतमाल विक्रीची सोपी ४-टप्पी पद्धत:</strong><br>१. <strong>डॅशबोर्डवर जा:</strong> 'Farmer Hub' किंवा 'माझे डॅशबोर्ड' उघडा.<br>२. <strong>माल नोंदणी करा:</strong> <strong>'List New Produce'</strong> बटनावर क्लिक करा (किंवा माईक 🎙️ द्वारे बोलून नोंदवा).<br>३. <strong>तपशील भरा:</strong> पिकाचे नाव, उपलब्ध प्रमाण (किलो/क्विंटल), अपेक्षित दर आणि काढणी तारीख टाका.<br>४. <strong>थेट खरेदीदार:</strong> नोंदणी होताच हजारो किरकोळ ग्राहक व घाऊक खरेदीदारांना तुमचा माल थेट दिसतो.<br>🛡️ <em>फायदा: ०% दलाली + २४ तासांत एस्क्रो द्वारे थेट बँक खात्यात पैसे जमा!</em>`;
+        } else if (isLab) {
+            reply = `🔬 <strong>शासकीय ॲगमार्क व NABL गुणवत्ता तपासणी लॅब केंद्र:</strong><br>• <strong>जवळची प्रमुख केंद्रे:</strong><br>  - <strong>नाशिक जिल्हा:</strong> KVK दिंडोरी व पिंपळगाव बसवंत गुणवत्ता केंद्र (०२५३-२३४१२९०)<br>  - <strong>अमरावती APMC:</strong> विदर्भ ॲग्री टेस्टिंग लॅब (कापूस यार्ड जवळ)<br>  - <strong>बुलढाणा APMC:</strong> शेगाव रोड ॲगमार्क असेसिंग लॅब<br>• <strong>तपासणी वेळ:</strong> <strong>फक्त २ तास</strong> (ओलावा, साईझ ग्रेडिंग, कीटकनाशक अवशेष).<br>• <strong>फायदा:</strong> डिजिटल QR प्रमाणपत्रामुळे बाजारात <strong>१८% ते २५% अधिक हमीभाव</strong> मिळतो!<br>👉 <em>वर हेडरमधील 'Verify Certificate' वरून आपण कोणत्याही लॉटचा QR कोड तपासू शकता.</em>`;
+        } else if (isEscrow) {
+            reply = `🛡️ <strong>DoCA ग्राहक व्यवहार मंत्रालय एस्क्रो पेमेंट सुरक्षा:</strong><br>• <strong>१००% सुरक्षित ठेव:</strong> खरेदीदाराचे पैसे शेतमाल निघण्यापूर्वीच RBI-नियमन केलेल्या एस्क्रो खात्यात जमा केले जातात.<br>• <strong>२४ तासांत थेट बँक जमा:</strong> शेतमाल पोहोचून खरेदीदाराने OTP व QR पडताळणी करताच <strong>२४ तासांच्या आत थेट तुमच्या बँक खात्यात / UPI वर पैसे जमा होतात</strong>.<br>• <strong>शून्य मध्यस्थ दलाली:</strong> कोणतीही गुप्त कपात किंवा आढ़त कट होत नाही.<br>⚖️ <em>तक्रार निवारण: मालाबाबत वाद झाल्यास DoCA नोडल अधिकारी ६ तासांत निष्पक्ष तोडगा काढतात.</em>`;
+        } else if (isRegister) {
+            reply = `📝 <strong>किसानसेतू नोंदणी व आधार eKYC माहिती:</strong><br>• <strong>कोणी नोंदणी करावी?</strong> शेतकरी, ग्राहक, FPO उत्पादक समूह, घाऊक खरेदीदार आणि वाहतूकदार सर्वांसाठी नोंदणी पूर्णपणे मोफत आहे.<br>• <strong>आवश्यक कागदपत्रे:</strong> मोबाईलशी जोडलेला आधार क्रमांक आणि बँक खाते तपशील (किंवा UPI आयडी).<br>• <strong>नोंदणी कशी करावी?</strong> स्क्रीनवरील उजव्या कोपऱ्यात <strong>'नोंदणी / Register'</strong> वर क्लिक करा.<br>✅ <em>eKYC फायदा: आधार पडताळणी पूर्ण झाल्यावर तुमच्या प्रोफाईलला अधिकृत 'Verified' हिरवा टिक मिळतो, ज्यामुळे खरेदीदारांचा विश्वास वाढतो.</em>`;
+        } else if (isWeather) {
+            reply = `🌦️ <strong>हवामान अंदाज व कृषी सल्ला (Agricultural Weather Advisory):</strong><br>• <strong>सद्यस्थिती (महाराष्ट्र):</strong> स्वच्छ आकाश, आर्द्रता ६५%-७०%, तापमान २२°C ते ३१°C दरम्यान.<br>• <strong>काढणी सल्ला:</strong> टोमॅटो, भाजीपाला व कांदा काढणीसाठी हवामान अत्यंत अनुकूल आहे.<br>💡 <em>महत्त्वाची टीप: उष्णतेमुळे होणारे नुकसान टाळण्यासाठी काढणी सकाळी ६:०० ते ९:३० या वेळेतच करावी आणि माल झाडाच्या सावलीत ठेवावा.</em>`;
+        } else if (isBuyerOrder) {
+            reply = `🤝 <strong>खरेदीदार ऑर्डर्स व काउंटर-ऑफर (Negotiation System):</strong><br>• <strong>थेट ऑर्डर्स:</strong> घाऊक किंवा किरकोळ खरेदीदाराने मागणी नोंदवल्यावर तुम्हाला तत्काळ SMS व डॅशबोर्ड सूचना मिळते.<br>• <strong>काउंटर ऑफर:</strong> खरेदीदाराचा दर कमी असल्यास तुम्ही डॅशबोर्डमध्ये <strong>'Counter Offer'</strong> बटनावर क्लिक करून तुमचा योग्य दर सुचवू शकता.<br>• <strong>सौदा पक्का:</strong> दोघांचे एकमत होताच एस्क्रो रक्कम लॉक होते आणि माल उचलण्यासाठी वाहन निश्चित केले जाते.`;
+        } else if (isFpo) {
+            reply = `🌾 <strong>FPO शेतकरी उत्पादक समूह व एकत्रित विक्री:</strong><br>• <strong>मोठा फायदा:</strong> लहान शेतकरी एकत्र येऊन ५ टन किंवा त्याहून अधिक मोठा लॉट तयार करतात.<br>• <strong>मोठ्या कंपन्यांशी थेट करार:</strong> सह्याद्री FPO सारख्या समूहांना सुपरमार्केट्स, हॉटेल्स व प्रक्रिया उद्योग थेट उच्चतम घाऊक दराने खरेदी करतात.<br>• <strong>नफा वाटप:</strong> शेतमाल विक्रीनंतर प्रत्येक शेतकऱ्याला त्यांच्या वजनानुसार पूर्ण नफा थेट बँक खात्यात मिळतो.`;
+        } else if (isVoice) {
+            reply = `🎙️ <strong>आवाज सहाय्यक (Voice Reader & Mic Features):</strong><br>• <strong>बोलून शोधा:</strong> शोध पट्टी किंवा माल नोंदणीमध्ये 🎙️ माईक आयकॉन दाबून मराठी, हिंदी किंवा इंग्रजीत थेट बोला.<br>• <strong>ऐका:</strong> कोणत्याही संदेशाखालील <strong>'🔊 ऐका'</strong> बटनावर क्लिक केल्यास संपूर्ण संदेश मराठी आवाजात वाचून दाखवला जातो.<br>• <strong>स्क्रीन वाचक:</strong> खालील उजव्या कोपऱ्यातील मदत बटणातून 'Voice Reader' चालू करून संपूर्ण स्क्रीन ऐकू शकता.`;
+        } else if (isDispute) {
+            reply = `📞 <strong>तक्रार निवारण व शासकीय किसान कॉल सेंटर:</strong><br>• <strong>एस्क्रो सुरक्षा:</strong> मालाच्या वजनात किंवा दर्जात तफावत असल्यास पेमेंट तात्काळ थांबवले जाते आणि ६ तासांत तपासणी केली जाते.<br>• <strong>शासकीय टोल-फ्री हेल्पलाइन:</strong> २४x७ कृषी सहाय्यासाठी थेट किसान कॉल सेंटरवर 📞 <strong>१८००-१८०-१५५१</strong> वर मोफत कॉल करा.<br>• <strong>DoCA नोडल अधिकारी:</strong> ईमेल: nodal.admin@kisansetu.gov.in`;
+        } else if (isAbout) {
+            reply = `🌾 <strong>किसानसेतू (KisanSetu) प्लॅटफॉर्मविषयी माहिती:</strong><br>• <strong>उद्दिष्ट:</strong> Smart India Hackathon 2026 (Problem Statement 26033) अंतर्गत ग्राहक व्यवहार मंत्रालय (DoCA) द्वारे विकसित.<br>• <strong>मुख्य कार्य:</strong> शेतकरी आणि ग्राहक यांच्यातील ३ ते ५ दलालांची साखळी नष्ट करून शेतकऱ्यांना <strong>२५% ते ३८% अधिक नफा</strong> मिळवून देणे आणि ग्राहकांना ताजा शेतमाल वाजवी दरात पुरवणे.<br>• <strong>प्रमुख वैशिष्ट्ये:</strong> AI बाजारभाव अंदाज, ८ NABL तपासणी लॅब, DoCA एस्क्रो २४ तास बँक जमा, आणि CVRPTW शीतगृह वाहतूक.`;
+        }
+        // Priority 2: Specific Crop Live Mandi Benchmarks
+        else if (isTomato) {
+            reply = `🍅 <strong>थेट टोमॅटो बाजारभाव व AI अंदाज (Tomato Live APMC Rates):</strong><br>• <strong>अमरावती APMC:</strong> संकरित टोमॅटो (ग्रेड A) सरासरी दर: <strong>₹२१.५० / किलो</strong> (आवक: ५४ क्विंटल).<br>• <strong>नाशिक APMC:</strong> टोमॅटो क्रेट दर: <strong>₹२२.८० / किलो</strong>.<br>• <strong>किसानसेतू थेट शेतकरी दर:</strong> <strong>₹२४.०० / किलो</strong> (दलाल नसल्यामुळे ₹२.५० अधिक थेट नफा).<br>📈 <em>AI ३-दिवसीय अंदाज: स्थानिक आवक नियंत्रित असल्यामुळे पुढील ३ दिवसांत दर ₹२–₹३ वाढण्याची शक्यता आहे.</em><br>💡 <em>सल्ला: शेतमाल स्वच्छ प्लास्टिक क्रेटमध्ये पॅक करून ठेवल्यास वाहतुकीतील नुकसान ४% पेक्षा कमी होते.</em>`;
+        } else if (isOnion) {
+            reply = `🧅 <strong>थेट कांदा बाजारभाव व निर्यात अपडेट (Onion Live Benchmark):</strong><br>• <strong>लासलगाव APMC (आशियातील सर्वात मोठी बाजारपेठ):</strong> नाशिक लाल कांदा सरासरी दर: <strong>₹२२.०० - ₹२४.५० / किलो</strong>.<br>• <strong>पिंपळगाव बसवंत APMC:</strong> उन्हाळ कांदा उत्तम प्रत: <strong>₹२५.२० / किलो</strong>.<br>• <strong>किसानसेतू थेट विक्री भाव:</strong> <strong>₹२६.०० / किलो</strong> (थेट UPI जमा).<br>📊 <em>AI मार्केट अलर्ट: मुंबई व दक्षिण भारतातील घाऊक खरेदीदारांकडून चांगल्या वाळवलेल्या लाल कांद्याला मोठी मागणी आहे. ओलावा १२% पेक्षा कमी असावा.</em>`;
+        } else if (isPotato) {
+            reply = `🥔 <strong>थेट बटाटा बाजारभाव व शीतगृह स्टॉक (Potato APMC Rates):</strong><br>• <strong>पुणे गुलटेकडी मार्केट यार्ड:</strong> ज्योती बटाटा सरासरी भाव: <strong>₹२१.०० / किलो</strong>.<br>• <strong>अकोला APMC:</strong> कुफरी पुखराज दर: <strong>₹२२.५० / किलो</strong>.<br>• <strong>किसानसेतू थेट दर:</strong> <strong>₹२३.०० / किलो</strong>.<br>❄️ <em>AI सल्ला: शीतगृहातील बटाटा बाहेर काढल्यानंतर २-३ तास सावलीत ठेवून मगच वाहतुकीसाठी लोड करावा, जेणेकरून सालीला घाम येत नाही.</em>`;
+        } else if (isWheat) {
+            reply = `🌾 <strong>थेट गहू बाजारभाव व हमीभाव पडताळणी (Wheat APMC & MSP Rates):</strong><br>• <strong>अमरावती / अकोला APMC:</strong> शरबती / लोकवन गहू: <strong>₹२७.५० - ₹३१.०० / किलो</strong> (₹२,७५० - ₹३,१०० / क्विंटल).<br>• <strong>शासकीय हमीभाव (MSP):</strong> ₹२,२७५ / क्विंटल.<br>• <strong>किसानसेतू थेट शेतकरी विक्री:</strong> <strong>₹३२.०० / किलो</strong> थेट गिरणी मालकांना.<br>🔍 <em>गुणवत्ता टीप: ओलावा १०% पेक्षा कमी असल्यास NABL लॅबकडून Grade A प्रमाणपत्र मिळते.</em>`;
+        } else if (isSoybean) {
+            reply = `🌱 <strong>थेट सोयाबीन बाजारभाव व तेल प्रमाण चाचणी (Soybean Rates):</strong><br>• <strong>लातूर APMC:</strong> पिवळा सोयाबीन सरासरी दर: <strong>₹४४.५० - ₹४६.८० / किलो</strong> (₹४,४५० - ₹४,६८० / क्विंटल).<br>• <strong>अकोला APMC:</strong> <strong>₹४५.२० / किलो</strong>.<br>• <strong>किसानसेतू थेट विक्री:</strong> <strong>₹४८.०० / किलो</strong> थेट सॉल्व्हेंट एक्स्ट्रॅक्शन प्लांटला.<br>🧪 <em>टीप: १९% पेक्षा जास्त तेल प्रमाण असल्यास ₹१५० ते ₹२०० प्रति क्विंटल अधिक भाव मिळतो.</em>`;
+        } else if (isCauliflower) {
+            reply = `🥦 <strong>थेट कॉलिफ्लॉवर / कोबी बाजारभाव (Cauliflower & Cabbage):</strong><br>• <strong>बुलढाणा APMC:</strong> स्नोबॉल कॉलिफ्लॉवर सरासरी दर: <strong>₹१९.०० / किलो</strong>.<br>• <strong>पुणे गुलटेकडी:</strong> पत्ताकोबी दर: <strong>₹१६.५० / किलो</strong>.<br>• <strong>किसानसेतू थेट भाव:</strong> <strong>₹२१.०० / किलो</strong> (शेतकऱ्यांना पूर्ण नफा).<br>🚚 <em>शीतगृह वाहतूक: +६°C ते +८°C तापमानात वाहतूक केल्यास पानांचा ताजेपणा ४८ तास टिकून राहतो.</em>`;
+        } else if (isChilli) {
+            reply = `🌶️ <strong>थेट मिरची बाजारभाव (Chilli Mandi Benchmark):</strong><br>• <strong>नंदुरबार / ब्याडगी APMC:</strong> सुकी लाल मिरची: <strong>₹१५५.०० - ₹१९०.०० / किलो</strong>.<br>• <strong>अमरावती APMC:</strong> ताजी हिरवी मिरची (ज्वाला): <strong>₹३८.०० - ₹४६.०० / किलो</strong>.<br>• <strong>किसानसेतू थेट विक्री:</strong> <strong>₹४८.०० / किलो</strong> हिरवी, <strong>₹२०५.०० / किलो</strong> लाल मिरची थेट मसाला उत्पादकांना.`;
+        } else if (isCotton) {
+            reply = `🌾 <strong>थेट कापूस बाजारभाव व लांब धागा प्रत (Cotton APMC Rates):</strong><br>• <strong>विदर्भ / खान्देश APMC:</strong> मध्यम-लांब धागा कापूस: <strong>₹७,१५० - ₹७,४५० / क्विंटल</strong>.<br>• <strong>शासकीय हमीभाव (MSP):</strong> ₹७,१२१ / क्विंटल.<br>• <strong>किसानसेतू थेट जिनिंग मिल भाव:</strong> <strong>₹७,६५० / क्विंटल</strong>.<br>🔍 <em>सल्ला: कापसात ओलावा ८% पेक्षा कमी आणि कचरा २% पेक्षा कमी असल्यास सर्वोत्तम ग्रेड मिळतो.</em>`;
+        }
+        // Priority 3: General Mandi Prices Overview
+        else if (isGeneralPrice) {
+            reply = `📊 <strong>थेट शासकीय ॲगमार्कनेट बाजारभाव सारांश (Live APMC Benchmarks):</strong><br>• 🍅 <strong>टोमॅटो:</strong> ₹२१.५० / किलो (अमरावती APMC)<br>• 🧅 <strong>कांदा:</strong> ₹२२.०० / किलो (लासलगाव APMC)<br>• 🥔 <strong>बटाटा:</strong> ₹२१.०० / किलो (पुणे गुलटेकडी)<br>• 🥦 <strong>कॉलिफ्लॉवर:</strong> ₹१९.०० / किलो (बुलढाणा APMC)<br>• 🌾 <strong>गहू:</strong> ₹२८.५० / किलो (अकोला APMC)<br>• 🌱 <strong>सोयाबीन:</strong> ₹४५.५० / किलो (लातूर APMC)<br>💡 <em>विशिष्ट शेतमालाचा अधिक माहितीसाठी थेट 'टोमॅटो भाव' किंवा 'कांदा भाव' असा प्रश्न विचारा.</em>`;
+        }
+        // Priority 4: Greetings
+        else if (isGreeting) {
+            reply = `सस्नेह नमस्कार! 🙏 मी आपला <strong>किसानसेतू सहाय्यक AI</strong> आहे.<br>मी आपल्याला खालील सर्व विषयांवर अचूक मदत करू शकतो:<br>• 🍅 <strong>थेट बाजारभाव:</strong> टोमॅटो, कांदा, बटाटा, गहू, सोयाबीन इ.<br>• 🌾 <strong>शेतमाल विक्री:</strong> माल कसा नोंदवायचा व विकायचा<br>• 🔬 <strong>ॲगमार्क लॅब:</strong> गुणवत्ता चाचणी व QR प्रमाणपत्र<br>• 🛡️ <strong>एस्क्रो पेमेंट:</strong> २४ तासांत थेट बँक खात्यात जमा<br>• 🚚 <strong>वाहतूक:</strong> शेतातून शीतगृह पिकअप<br><em>खालीलपैकी कोणताही प्रश्न विचारा किंवा पर्याय निवडा!</em>`;
+        }
+        // Priority 5: Fallback with Interactive Chips
+        else {
+            reply = `🙏 <strong>आपल्या प्रश्नाचे स्वागत आहे!</strong><br>आपण विचारलेल्या विषयावर अचूक माहिती देण्यासाठी कृपया खालील पर्यायांपैकी एकावर क्लिक करा किंवा अधिक स्पष्ट प्रश्न विचारा:<br><div style="display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;"><button type="button" onclick="sendSimulatedWhatsAppMsg('आजचे टोमॅटो भाव काय आहेत?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🍅 टोमॅटो भाव</button><button type="button" onclick="sendSimulatedWhatsAppMsg('किसानसेतूवर माझा शेतमाल कसा विकायचा?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🌾 माल कसा विकायचा?</button><button type="button" onclick="sendSimulatedWhatsAppMsg('एस्क्रो खात्यातून शेतकऱ्यांना पैसे कसे मिळतात?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🛡️ एस्क्रो पेमेंट</button><button type="button" onclick="sendSimulatedWhatsAppMsg('ॲगमार्क गुणवत्ता तपासणी प्रमाणपत्र कोठे मिळेल?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🔬 ॲगमार्क लॅब</button><button type="button" onclick="sendSimulatedWhatsAppMsg('कोल्ड-चेन वाहतूक आणि शेतातून पिकअप कसा होतो?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🚚 शीतगृह वाहतूक</button></div>तसेच २४x७ शासकीय किसान कॉल सेंटर 📞 <strong>१८००-१८०-१५५१</strong> वर मोफत कॉल करू शकता.`;
+        }
+    }
+    // ==========================================
+    // HINDI (हिंदी) INTENT RESPONSES
+    // ==========================================
+    else if (lang === 'hi') {
+        // Priority 1: Workflows & Actions (Logistics, Selling, Lab, Escrow, etc.)
+        if (isLogistics) {
+            reply = `🚚 <strong>स्मार्ट कोल्ड-चेन ट्रांसपोर्ट और खेत से सीधा पिकअप:</strong><br>• <strong>CVRPTW रूट ऑप्टिमाइजेशन:</strong> एक ही तहसील के किसानों के माल को समेकित करके रेफ्रिजरेटेड (+4°C से +8°C) वाहन सीधे खेत पर आते हैं।<br>• <strong>34% तक किराए की बचत:</strong> साझा परिवहन से लॉजिस्टिक्स लागत में 34% की भारी कटौती होती है।<br>• <strong>लाइव जीपीएस:</strong> पिकअप से 2 घंटे पहले ड्राइवर का नाम, मोबाइल नंबर और लाइव GPS ट्रैकिंग SMS द्वारा प्राप्त होती है।`;
+        } else if (isSell) {
+            reply = `🌾 <strong>किसानसेतु पर फसल बेचने की आसान 4-चरणीय विधि:</strong><br>1. <strong>डैशबोर्ड खोलें:</strong> 'Farmer Hub' या 'My Dashboard' पर जाएं।<br>2. <strong>फसल दर्ज करें:</strong> <strong>'List New Produce'</strong> बटन दबाएं (या माइक 🎙️ से बोलकर दर्ज करें)।<br>3. <strong>विवरण भरें:</strong> फसल का नाम, मात्रा (किग्रा/क्विंटल), अपनी न्यूनतम कीमत और कटाई की तारीख चुनें।<br>4. <strong>सीधी बिक्री:</strong> दर्ज होते ही पूरे राज्य के थोक व्यापारियों और उपभोक्ताओं को आपका माल दिखता है।<br>🛡️ <em>लाभ: 0% बिचौलिया कमीशन + 24 घंटे में सीधे बैंक खाते / UPI में सुरक्षित भुगतान!</em>`;
+        } else if (isLab) {
+            reply = `🔬 <strong>सरकारी एगमार्क व NABL गुणवत्ता जांच केंद्र:</strong><br>• <strong>निकटतम प्रमुख लैब:</strong><br>  - <strong>नासिक:</strong> KVK डिंडोरी और पिंपलगांव बसवंत लैब (0253-2341290)<br>  - <strong>अमरावती APMC:</strong> विदर्भ एग्री टेस्टिंग लैब (कॉटन यार्ड के पास)<br>  - <strong>बुलढाणा APMC:</strong> शेगांव रोड एगमार्क असेसिंग सेंटर<br>• <strong>जांच समय:</strong> <strong>मात्र 2 घंटे</strong> (नमी, साइज ग्रेडिंग, कीटनाशक अवशेष)।<br>• <strong>लाभ:</strong> डिजिटल QR सर्टिफिकेट से सीधे <strong>18% से 25% अधिक दाम</strong> मिलते हैं!<br>👉 <em>ऊपर हेडर में 'Verify Certificate' दबाकर किसी भी लॉट का प्रमाण पत्र तुरंत सत्यापित करें।</em>`;
+        } else if (isEscrow) {
+            reply = `🛡️ <strong>DoCA उपभोक्ता मामले मंत्रालय एस्क्रो भुगतान सुरक्षा:</strong><br>• <strong>100% फंड लॉक:</strong> खेत से गाड़ी निकलने से पहले ही खरीदार का पूरा भुगतान RBI-विनियमित एस्क्रो खाते में जमा करा लिया जाता है।<br>• <strong>24 घंटे में सीधा ट्रांसफर:</strong> डिलीवरी के समय OTP और QR सत्यापन होते ही <strong>24 घंटे के भीतर सीधे आपके बैंक खाते / UPI में भुगतान आ जाता है</strong>।<br>• <strong>शून्य बिचौलिया कटौती:</strong> कोई कमीशन या गुप्त कटौती नहीं होती।<br>⚖️ <em>विवाद सुरक्षा: गुणवत्ता को लेकर कोई आपत्ति होने पर DoCA नोडल अधिकारी 6 घंटे में समाधान करते हैं।</em>`;
+        } else if (isRegister) {
+            reply = `📝 <strong>किसानसेतु पंजीकरण और आधार eKYC प्रक्रिया:</strong><br>• <strong>कौन जुड़ सकता है?</strong> किसान, उपभोक्ता, FPO समूह, थोक खरीददार और ट्रांसपोर्टर्स के लिए पंजीकरण पूर्णतः निःशुल्क है।<br>• <strong>आवश्यक दस्तावेज:</strong> आधार नंबर (OTP सत्यापन हेतु) और बैंक खाता विवरण / UPI आईडी।<br>• <strong>पंजीकरण कैसे करें?</strong> ऊपर दाईं ओर <strong>'Register / पंजीकरण'</strong> बटन पर क्लिक करें।<br>✅ <em>सत्यापन लाभ: आधार eKYC होते ही प्रोफाइल पर आधिकारिक 'Verified' ग्रीन टिक मिलता है, जिससे खरीदारों में भरोसा बढ़ता है।</em>`;
+        } else if (isWeather) {
+            reply = `🌦️ <strong>मौसम पूर्वानुमान व कृषि सलाह (Agricultural Weather Advisory):</strong><br>• <strong>वर्तमान स्थिति (महाराष्ट्र):</strong> साफ आसमान, आर्द्रता 65%-70%, तापमान 22°C से 31°C के बीच।<br>• <strong>कटाई सलाह:</strong> टमाटर, सब्जियों और प्याज की तुड़ाई के लिए मौसम पूरी तरह अनुकूल है।<br>💡 <em>महत्वपूर्ण टिप: धूप से फसल को बचाने के लिए सुबह 6:00 से 9:30 बजे के बीच ही तुड़ाई करें और माल को छाया में रखें।</em>`;
+        } else if (isBuyerOrder) {
+            reply = `🤝 <strong>खरीददार ऑर्डर्स और काउंटर-ऑफर (Negotiation System):</strong><br>• <strong>डायरेक्ट ऑर्डर्स:</strong> खरीदार द्वारा ऑर्डर या बोली लगाने पर आपको तुरंत SMS और डैशबोर्ड अलर्ट मिलता है।<br>• <strong>काउंटर ऑफर:</strong> यदि खरीदार का दाम कम लगे, तो आप 'Counter Offer' बटन दबाकर अपनी उचित कीमत भेज सकते हैं।<br>• <strong>डील फाइनल:</strong> दोनों पक्षों की सहमति होते ही एस्क्रो राशि लॉक हो जाती है और पिकअप गाड़ी शेड्यूल हो जाती है।`;
+        } else if (isFpo) {
+            reply = `🌾 <strong>FPO किसान उत्पादक समूह व सामूहिक बिक्री:</strong><br>• <strong>बड़ा लाभ:</strong> छोटे व सीमांत किसान मिलकर 5 टन या अधिक का बड़ा लॉट तैयार करते हैं।<br>• <strong>संस्थागत खरीदार:</strong> सह्याद्री FPO जैसे समूहों से सुपरमार्केट्स, होटल चेन्स और फूड प्रोसेसर्स सीधे थोक भाव पर माल खरीदते हैं।<br>• <strong>पारदर्शी मुनाफा:</strong> बिक्री के बाद प्रत्येक किसान को उनके माल के वजन के अनुपात में पूरा भुगतान सीधे बैंक में मिलता है।`;
+        } else if (isVoice) {
+            reply = `🎙️ <strong>आवाज सहायक (Voice Reader & Mic Features):</strong><br>• <strong>बोलकर खोजें:</strong> सर्च बार या फसल लिस्टिंग में 🎙️ माइक आइकन दबाकर हिंदी, मराठी या अंग्रेजी में सीधे बोलें।<br>• <strong>सुनें:</strong> किसी भी मैसेज के नीचे <strong>'🔊 सुनें'</strong> बटन दबाकर पूरा उत्तर हिंदी आवाज में सुन सकते हैं।<br>• <strong>स्क्रीन रीडर:</strong> नीचे दाईं ओर हेल्प मेनू से 'Voice Reader' ऑन करके पूरा पेज सुन सकते हैं।`;
+        } else if (isDispute) {
+            reply = `📞 <strong>शिकायत निवारण व सरकारी किसान कॉल सेंटर:</strong><br>• <strong>एस्क्रो सुरक्षा:</strong> वजन या गुणवत्ता में अंतर आने पर पेमेंट रोक दिया जाता है और 6 घंटे में सरकारी लैब जांच होती है।<br>• <strong>टोल-फ्री हेल्पलाइन:</strong> 24x7 कृषि सहायता के लिए सीधे किसान कॉल सेंटर 📞 <strong>1800-180-1551</strong> पर निःशुल्क संपर्क करें।<br>• <strong>DoCA नोडल अधिकारी:</strong> ईमेल: nodal.admin@kisansetu.gov.in`;
+        } else if (isAbout) {
+            reply = `🌾 <strong>किसानसेतु (KisanSetu) प्लेटफॉर्म के बारे में:</strong><br>• <strong>उद्देश्य:</strong> Smart India Hackathon 2026 (Problem Statement 26033) के तहत उपभोक्ता मामले मंत्रालय (DoCA) द्वारा विकसित।<br>• <strong>मुख्य कार्य:</strong> खेत से सीधे उपभोक्ता व थोक खरीददारों को जोड़कर 3-5 बिचौलियों को हटाना, जिससे किसानों को <strong>25% से 38% अधिक आमदनी</strong> और उपभोक्ताओं को ताजा माल मिले।<br>• <strong>मुख्य स्तंभ:</strong> AI मंडी पूर्वानुमान, 8 NABL लैब नेटवर्क, DoCA एस्क्रो 24 घंटे में भुगतान, और CVRPTW कोल्ड-चेन ट्रांसपोर्ट।`;
+        }
+        // Priority 2: Specific Crop Live Mandi Benchmarks
+        else if (isTomato) {
+            reply = `🍅 <strong>लाइव टमाटर मंडी भाव व AI पूर्वानुमान (Tomato Live APMC Rates):</strong><br>• <strong>अमरावती APMC:</strong> हाइब्रिड टमाटर (ग्रेड A) मॉडल भाव: <strong>₹21.50 / किग्रा</strong> (आवक: 54 क्विंटल)।<br>• <strong>नासिक APMC:</strong> टमाटर क्रेट भाव: <strong>₹22.80 / किग्रा</strong>।<br>• <strong>किसानसेतु डायरेक्ट किसान भाव:</strong> <strong>₹24.00 / किग्रा</strong> (बिचौलिया न होने से ₹2.50 ज्यादा मुनाफा)।<br>📈 <em>AI 3-दिवसीय पूर्वानुमान: आवक नियंत्रित रहने से अगले 3 दिनों में भाव ₹2–₹3 मजबूत होने की उम्मीद है।</em><br>💡 <em>सलाह: जालीदार प्लास्टिक क्रेट में पैकिंग करने से परिवहन के दौरान नुकसान 4% से कम रहता है।</em>`;
+        } else if (isOnion) {
+            reply = `🧅 <strong>लाइव प्याज मंडी भाव व एक्सपोर्ट अपडेट (Onion Live Benchmark):</strong><br>• <strong>लासलगांव APMC (एशिया की सबसे बड़ी मंडी):</strong> नासिक लाल प्याज मॉडल भाव: <strong>₹22.00 - ₹24.50 / किग्रा</strong>।<br>• <strong>पिंपलगांव बसवंत APMC:</strong> उन्नत समर प्याज: <strong>₹25.20 / किग्रा</strong>।<br>• <strong>किसानसेतु डायरेक्ट किसान भाव:</strong> <strong>₹26.00 / किग्रा</strong> (सीधे बैंक में जमा)।<br>📊 <em>AI मार्केट अलर्ट: अच्छी तरह सुखाए गए प्याज की मुंबई और थोक खरीदारों से भारी मांग है। नमी 12% से कम रखें।</em>`;
+        } else if (isPotato) {
+            reply = `🥔 <strong>लाइव आलू मंडी भाव व कोल्ड स्टोरेज अपडेट (Potato APMC Rates):</strong><br>• <strong>पुणे गुलटेकडी मार्केट यार्ड:</strong> ज्योति आलू मॉडल भाव: <strong>₹21.00 / किग्रा</strong>।<br>• <strong>अकोला APMC:</strong> कुफरी पुखराज भाव: <strong>₹22.50 / किग्रा</strong>।<br>• <strong>किसानसेतु डायरेक्ट भाव:</strong> <strong>₹23.00 / किग्रा</strong>।<br>❄️ <em>AI सलाह: कोल्ड स्टोरेज से आलू निकालने के बाद 2-3 घंटे छायादार स्थान पर रखें ताकि छिलके में नमी न रहे।</em>`;
+        } else if (isWheat) {
+            reply = `🌾 <strong>लाइव गेहूं मंडी भाव व एमएसपी तुलना (Wheat APMC & MSP Rates):</strong><br>• <strong>अमरावती / अकोला APMC:</strong> शरबती / लोकवन गेहूं: <strong>₹27.50 - ₹31.00 / किग्रा</strong> (₹2,750 - ₹3,100 / क्विंटल)।<br>• <strong>सरकारी न्यूनतम समर्थन मूल्य (MSP):</strong> ₹2,275 / क्विंटल।<br>• <strong>किसानसेतु डायरेक्ट भाव:</strong> <strong>₹32.00 / किग्रा</strong> सीधे फ्लोर मिल खरीदारों को।<br>🔍 <em>गुणवत्ता टिप: नमी 10% से कम रहने पर NABL लैब से Grade A सर्टिफिकेट जारी होता है।</em>`;
+        } else if (isSoybean) {
+            reply = `🌱 <strong>लाइव सोयाबीन मंडी भाव व तेल प्रतिशत जांच (Soybean Rates):</strong><br>• <strong>लातूर APMC:</strong> पीला सोयाबीन मॉडल भाव: <strong>₹44.50 - ₹46.80 / किग्रा</strong> (₹4,450 - ₹4,680 / क्विंटल)।<br>• <strong>अकोला APMC:</strong> <strong>₹45.20 / किग्रा</strong>।<br>• <strong>किसानसेतु डायरेक्ट भाव:</strong> <strong>₹48.00 / किग्रा</strong> सीधे ऑयल मिल खरीदारों को।<br>🧪 <em>टिप: 19% से अधिक तेल प्रतिशत होने पर ₹150 से ₹200 प्रति क्विंटल अतिरिक्त बोनस मिलता है।</em>`;
+        } else if (isCauliflower) {
+            reply = `🥦 <strong>लाइव गोभी / फूलगोभी मंडी भाव (Cauliflower & Cabbage Rates):</strong><br>• <strong>बुलढाणा APMC:</strong> स्नोबॉल फूलगोभी मॉडल भाव: <strong>₹19.00 / किग्रा</strong>।<br>• <strong>पुणे गुलटेकडी:</strong> पत्तागोभी भाव: <strong>₹16.50 / किग्रा</strong>।<br>• <strong>किसानसेतु डायरेक्ट भाव:</strong> <strong>₹21.00 / किग्रा</strong> (100% बिचौलिया मुक्त)।<br>🚚 <em>कोल्ड ट्रांसपोर्ट: +6°C से +8°C तापमान में परिवहन से ताजगी 48 घंटे तक बरकरार रहती है।</em>`;
+        } else if (isChilli) {
+            reply = `🌶️ <strong>लाइव मिर्च मंडी भाव (Chilli Mandi Benchmark):</strong><br>• <strong>नंदुरबार / ब्याडगी APMC:</strong> सूखी लाल मिर्च: <strong>₹155.00 - ₹190.00 / किग्रा</strong>।<br>• <strong>अमरावती APMC:</strong> ताजी हरी मिर्च (ज्वाला): <strong>₹38.00 - ₹46.00 / किग्रा</strong>।<br>• <strong>किसानसेतु डायरेक्ट भाव:</strong> <strong>₹48.00 / किग्रा</strong> हरी मिर्च, <strong>₹205.00 / किग्रा</strong> लाल मिर्च सीधे मसाला निर्माताओं को।`;
+        } else if (isCotton) {
+            reply = `🌾 <strong>लाइव कपास मंडी भाव (Cotton APMC Rates):</strong><br>• <strong>विदर्भ / खान्देश APMC:</strong> मीडियम-लॉन्ग स्टेपल कपास: <strong>₹7,150 - ₹7,450 / क्विंटल</strong>।<br>• <strong>सरकारी एमएसपी:</strong> ₹7,121 / क्विंटल।<br>• <strong>किसानसेतु डायरेक्ट जिनिंग भाव:</strong> <strong>₹7,650 / क्विंटल</strong>।<br>🔍 <em>सलाह: कपास में नमी 8% से कम और कचरा 2% से कम रखने पर ग्रेड A भाव मिलता है।</em>`;
+        }
+        // Priority 3: General Mandi Prices Overview
+        else if (isGeneralPrice) {
+            reply = `📊 <strong>लाइव सरकारी एगमार्कनेट मंडी भाव सारांश (Live APMC Benchmarks):</strong><br>• 🍅 <strong>टमाटर:</strong> ₹21.50 / किग्रा (अमरावती APMC)<br>• 🧅 <strong>प्याज:</strong> ₹22.00 / किग्रा (लासलगांव APMC)<br>• 🥔 <strong>आलू:</strong> ₹21.00 / किग्रा (पुणे गुलटेकडी)<br>• 🥦 <strong>गोभी:</strong> ₹19.00 / किग्रा (बुलढाणा APMC)<br>• 🌾 <strong>गेहूं:</strong> ₹28.50 / किग्रा (अकोला APMC)<br>• 🌱 <strong>सोयाबीन:</strong> ₹45.50 / किग्रा (लातूर APMC)<br>💡 <em>किसी विशेष फसल की विस्तृत जानकारी के लिए सीधे 'टमाटर भाव' या 'प्याज भाव' लिखकर पूछें।</em>`;
+        }
+        // Priority 4: Greetings
+        else if (isGreeting) {
+            reply = `नमस्ते! 🙏 मैं आपका <strong>किसानसेतु सहायक AI</strong> हूँ।<br>मैं आपकी इन सभी महत्वपूर्ण विषयों पर तुरंत सहायता कर सकता हूँ:<br>• 🍅 <strong>लाइव मंडी भाव:</strong> टमाटर, प्याज, आलू, गेहूं, सोयाबीन आदि<br>• 🌾 <strong>फसल बिक्री:</strong> माल कैसे रजिस्टर करें और बेचें<br>• 🔬 <strong>एगमार्क लैब:</strong> गुणवत्ता जांच व QR सर्टिफिकेट<br>• 🛡️ <strong>एस्क्रो भुगतान:</strong> 24 घंटे में सीधे बैंक खाते में गारंटीड पेमेंट<br>• 🚚 <strong>ट्रांसपोर्ट:</strong> खेत से कोल्ड-चेन पिकअप<br><em>नीचे दिए गए सुझावों पर क्लिक करें या अपना सवाल सीधे लिखें!</em>`;
+        }
+        // Priority 5: Fallback with Interactive Chips
+        else {
+            reply = `🙏 <strong>आपके प्रश्न का स्वागत है!</strong><br>सटीक जानकारी प्राप्त करने के लिए कृपया नीचे दिए गए विकल्पों में से किसी एक पर क्लिक करें या स्पष्ट सवाल लिखें:<br><div style="display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;"><button type="button" onclick="sendSimulatedWhatsAppMsg('आज का टमाटर का मंडी भाव क्या है?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🍅 टमाटर भाव</button><button type="button" onclick="sendSimulatedWhatsAppMsg('किसानसेतु पर अपनी फसल सीधे कैसे बेचें?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🌾 फसल कैसे बेचें?</button><button type="button" onclick="sendSimulatedWhatsAppMsg('एस्क्रो से किसान को 24 घंटे में सुरक्षित भुगतान कैसे मिलता है?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🛡️ एस्क्रो भुगतान</button><button type="button" onclick="sendSimulatedWhatsAppMsg('एगमार्क गुणवत्ता जांच प्रयोगशाला कहां है?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🔬 एगमार्क लैब</button><button type="button" onclick="sendSimulatedWhatsAppMsg('कोल्ड-चेन ट्रांसपोर्ट और खेत से पिकअप कैसे होगा?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🚚 कोल्ड-चेन ट्रांसपोर्ट</button></div>साथ ही 24x7 सरकारी किसान कॉल सेंटर 📞 <strong>1800-180-1551</strong> पर निःशुल्क कॉल कर सकते हैं।`;
+        }
+    }
+    // ==========================================
+    // ENGLISH (अंग्रेजी) INTENT RESPONSES
+    // ==========================================
+    else {
+        // Priority 1: Workflows & Actions (Logistics, Selling, Lab, Escrow, etc.)
+        if (isLogistics) {
+            reply = `🚚 <strong>Smart Cold-Chain Logistics & Farm-Gate Pickup:</strong><br>• <strong>CVRPTW Route Optimization:</strong> Nearby harvest orders are consolidated into temperature-controlled (+4°C to +8°C) refrigerated reefer trucks.<br>• <strong>Up to 34% Freight Savings:</strong> Route bundling dramatically reduces per-kg logistics overhead.<br>• <strong>Live GPS & Alerts:</strong> Driver contact details, arrival ETA, and live tracking are dispatched via SMS 2 hours prior to pickup.`;
+        } else if (isSell) {
+            reply = `🌾 <strong>Simple 4-Step Produce Listing & Direct Selling Guide:</strong><br>1. <strong>Access Dashboard:</strong> Go to the 'Farmer Hub' or click 'My Dashboard' in the top header.<br>2. <strong>Start Listing:</strong> Click the green <strong>'List New Produce'</strong> button (or tap 🎙️ Mic for Voice Listing).<br>3. <strong>Enter Details:</strong> Specify crop, quantity (kg/quintal), expected price per kg, and harvest date.<br>4. <strong>Instant Buyer Reach:</strong> Your listing becomes immediately visible to thousands of retail households and bulk procurement buyers.<br>🛡️ <em>Advantage: Zero commission + 100% DoCA Escrow protected payout within 24 hours of delivery!</em>`;
+        } else if (isLab) {
+            reply = `🔬 <strong>Official AGMARKNET & NABL Accredited Testing Laboratories:</strong><br>• <strong>Nearby Key Centers:</strong><br>  - <strong>Nashik District:</strong> KVK Dindori & Pimpalgaon Baswant Agri Lab (0253-2341290)<br>  - <strong>Amravati APMC:</strong> Vidarbha Quality Assaying Hub (Near Cotton Yard)<br>  - <strong>Buldhana APMC:</strong> Shegaon Road Mandi Assaying Yard<br>• <strong>Turnaround:</strong> <strong>Under 2 hours</strong> for moisture, size grading, and pesticide residues.<br>• <strong>Commercial Value:</strong> AGMARK QR certification commands <strong>18%–25% higher market realization</strong>!<br>👉 <em>Click 'Verify Certificate' in the top header to inspect or scan any lot certificate.</em>`;
+        } else if (isEscrow) {
+            reply = `🛡️ <strong>DoCA Tripartite Escrow Payment Security Guarantee:</strong><br>• <strong>100% Pre-Funded:</strong> Buyer funds are locked into an RBI-regulated escrow account before transit leaves your farm gate.<br>• <strong>24-Hour Direct Settlement:</strong> As soon as the shipment is delivered and verified via digital OTP/QR scan, funds are <strong>transferred directly to your bank account / UPI within 24 hours</strong>.<br>• <strong>Zero Intermediary Commissions:</strong> Farmers retain 100% of the agreed farm-gate realization.<br>⚖️ <em>Dispute Safeguard: If a mismatch occurs, payouts are protected while a DoCA assayer conducts a 6-hour re-check.</em>`;
+        } else if (isRegister) {
+            reply = `📝 <strong>KisanSetu User Registration & Aadhaar eKYC Guide:</strong><br>• <strong>Who Can Join?</strong> Registration is 100% free for Farmers, Household Consumers, FPOs, Bulk Institutional Buyers, and Fleet Drivers.<br>• <strong>Documents Needed:</strong> Aadhaar number (for instant OTP verification) and Bank Account / UPI ID for direct payouts.<br>• <strong>How to Register:</strong> Tap <strong>'Register'</strong> at the top right of the screen or open the Login/Register modal.<br>✅ <em>eKYC Advantage: Verified farmers receive an official green shield badge, boosting buyer confidence and faster order bookings.</em>`;
+        } else if (isWeather) {
+            reply = `🌦️ <strong>Live Weather & Harvest Advisory (Maharashtra Agri Region):</strong><br>• <strong>Current Conditions:</strong> Clear skies, 65%–70% relative humidity, ambient temperature 22°C to 31°C.<br>• <strong>Harvest Readiness:</strong> Optimal conditions for harvesting tomatoes, onions, leafy vegetables, and pulses.<br>💡 <em>AI Advisory: Complete harvesting between 6:00 AM and 9:30 AM to minimize transit dehydration and preserve post-harvest firmness.</em>`;
+        } else if (isBuyerOrder) {
+            reply = `🤝 <strong>Buyer Orders & Interactive Counter-Offer Negotiation:</strong><br>• <strong>Direct Inquiries:</strong> When a buyer bids on your produce lot, an instant SMS alert and dashboard notification are triggered.<br>• <strong>Counter-Offer Option:</strong> If a buyer's offer is below your expectation, click <strong>'Counter Offer'</strong> on your Farmer Dashboard to propose an adjusted price.<br>• <strong>Contract Lock:</strong> Once mutually agreed, funds are pre-locked in escrow and transportation pickup is immediately scheduled.`;
+        } else if (isFpo) {
+            reply = `🌾 <strong>FPO Aggregation & Collective Wholesale Commerce:</strong><br>• <strong>Collective Scale:</strong> Smallholder farmers pool harvests into 5-ton+ bulk lots (e.g. Sahyadri Farmers Producer Co.).<br>• <strong>Institutional Contracts:</strong> Supermarkets, food processors, and hotel chains place bulk wholesale bids directly on FPO lots.<br>• <strong>Direct Distribution:</strong> Escrow disbursements are settled transparently to each individual farmer's bank account based on measured weight and assay grade.`;
+        } else if (isVoice) {
+            reply = `🎙️ <strong>Voice Assistant & Speech Synthesis Support:</strong><br>• <strong>Voice Dictation:</strong> Tap the 🎙️ mic icon on any search box or produce listing modal to dictate in Marathi, Hindi, or English.<br>• <strong>Read Aloud:</strong> Tap the <strong>'🔊 Listen'</strong> button underneath any message bubble to hear it spoken via browser speech synthesis.<br>• <strong>Screen Reader:</strong> Open the floating help drawer to enable full-page voice reading at any time.`;
+        } else if (isDispute) {
+            reply = `📞 <strong>Dispute Escalation & Official Kisan Helpline:</strong><br>• <strong>Escrow Lock Protection:</strong> If a delivery discrepancy is flagged, payout is temporarily paused while an accredited assayer conducts an independent 6-hour check.<br>• <strong>Official Kisan Call Centre:</strong> Dial 24x7 National Toll-Free Helpline 📞 <strong>1800-180-1551</strong> (Govt. of India).<br>• <strong>DoCA Escrow Nodal Officer:</strong> Email: nodal.admin@kisansetu.gov.in`;
+        } else if (isAbout) {
+            reply = `🌾 <strong>About KisanSetu Platform (SIH 2026 Problem Statement 26033):</strong><br>• <strong>Mandate:</strong> Developed under the Ministry of Consumer Affairs (DoCA), Govt. of India, to bridge farmers directly with retail consumers and bulk commercial buyers.<br>• <strong>Core Impact:</strong> Eliminates 3 to 5 layers of exploitative middlemen, increasing farm-gate earnings by <strong>25% to 38%</strong> while lowering retail grocery costs by up to 24%.<br>• <strong>Pillars:</strong> AI benchmark forecasting, 8 NABL testing hubs, DoCA Tripartite Escrow (24h direct settlement), and CVRPTW cold-chain pickup.`;
+        }
+        // Priority 2: Specific Crop Live Mandi Benchmarks
+        else if (isTomato) {
+            reply = `🍅 <strong>Live Tomato Mandi Benchmark & AI Forecast:</strong><br>• <strong>Amravati APMC Terminal:</strong> Hybrid Tomato (Grade A) modal rate: <strong>₹21.50 / kg</strong> (Arrivals: 54 quintals).<br>• <strong>Nashik APMC:</strong> Crate wholesale rate: <strong>₹22.80 / kg</strong>.<br>• <strong>KisanSetu Direct Farm-Gate Realization:</strong> <strong>₹24.00 / kg</strong> (+₹2.50/kg extra net margin with zero commission agents).<br>📈 <em>AI 3-Day Projection: Moderate regional arrivals are expected to keep prices firm (+₹2.00 to +₹3.00/kg).</em><br>💡 <em>Advisory: Pack produce in ventilated food-grade plastic crates to keep transit wastage below 4%.</em>`;
+        } else if (isOnion) {
+            reply = `🧅 <strong>Live Onion Mandi Benchmark & Demand Update:</strong><br>• <strong>Lasalgaon APMC (Asia's Largest Hub):</strong> Nashik Red Onion modal rate: <strong>₹22.00 - ₹24.50 / kg</strong>.<br>• <strong>Pimpalgaon Baswant APMC:</strong> Grade A Summer Onion: <strong>₹25.20 / kg</strong>.<br>• <strong>KisanSetu Direct Farm Realization:</strong> <strong>₹26.00 / kg</strong>.<br>📊 <em>AI Market Alert: Strong institutional demand across Mumbai and South India. Cured onions with moisture <12% qualify for top-tier wholesale pricing.</em>`;
+        } else if (isPotato) {
+            reply = `🥔 <strong>Live Potato Mandi Benchmark & Storage Status:</strong><br>• <strong>Pune Gultekdi Market Yard:</strong> Jyoti Potato modal rate: <strong>₹21.00 / kg</strong>.<br>• <strong>Akola APMC:</strong> Kufri Pukhraj rate: <strong>₹22.50 / kg</strong>.<br>• <strong>KisanSetu Direct Farm Realization:</strong> <strong>₹23.00 / kg</strong>.<br>❄️ <em>Storage Advisory: Condition cold-stored tubers in shaded dry air for 2 hours before loading to prevent sweating and skin rot.</em>`;
+        } else if (isWheat) {
+            reply = `🌾 <strong>Live Wheat Benchmark & MSP Comparison:</strong><br>• <strong>Amravati / Akola APMC:</strong> Sharbati / Lokwan Wheat modal rate: <strong>₹27.50 - ₹31.00 / kg</strong> (₹2,750 - ₹3,100 / quintal).<br>• <strong>Govt MSP Benchmark:</strong> ₹2,275 / quintal.<br>• <strong>KisanSetu Direct Realization:</strong> <strong>₹32.00 / kg</strong> directly to flour mills.<br>🔍 <em>Quality Parameter: Moisture level under 10% qualifies for Grade A certification and premium mill bids.</em>`;
+        } else if (isSoybean) {
+            reply = `🌱 <strong>Live Soybean Mandi Benchmark & Oil Content Bonus:</strong><br>• <strong>Latur APMC Hub:</strong> Yellow Soybean modal rate: <strong>₹44.50 - ₹46.80 / kg</strong> (₹4,450 - ₹4,680 / quintal).<br>• <strong>Akola APMC:</strong> <strong>₹45.20 / kg</strong>.<br>• <strong>KisanSetu Direct Sale:</strong> <strong>₹48.00 / kg</strong> directly to solvent extraction processors.<br>🧪 <em>Assaying Note: Oil content testing >19% earns an extra ₹150–₹200/quintal premium on KisanSetu.</em>`;
+        } else if (isCauliflower) {
+            reply = `🥦 <strong>Live Cauliflower & Cabbage Mandi Benchmark:</strong><br>• <strong>Buldhana APMC:</strong> Snowball Cauliflower modal rate: <strong>₹19.00 / kg</strong>.<br>• <strong>Pune Gultekdi:</strong> Cabbage wholesale: <strong>₹16.50 / kg</strong>.<br>• <strong>KisanSetu Direct Realization:</strong> <strong>₹21.00 / kg</strong>.<br>🚚 <em>Logistics Tip: Transporting at +6°C to +8°C preserves curd firmness and freshness for 48 hours.</em>`;
+        } else if (isChilli) {
+            reply = `🌶️ <strong>Live Chilli Mandi Benchmark:</strong><br>• <strong>Nandurbar / Byadagi APMC:</strong> Dry Red Chilli: <strong>₹155.00 - ₹190.00 / kg</strong>.<br>• <strong>Amravati APMC:</strong> Fresh Green Chilli (Jwalamukhi): <strong>₹38.00 - ₹46.00 / kg</strong>.<br>• <strong>KisanSetu Direct Sale:</strong> <strong>₹48.00 / kg</strong> green, <strong>₹205.00 / kg</strong> dry directly to spice manufacturers.`;
+        } else if (isCotton) {
+            reply = `🌾 <strong>Live Cotton Mandi Benchmark & Ginning Demand:</strong><br>• <strong>Vidarbha / Khandesh APMC:</strong> Medium-Long Staple: <strong>₹7,150 - ₹7,450 / quintal</strong>.<br>• <strong>Govt MSP:</strong> ₹7,121 / quintal.<br>• <strong>KisanSetu Direct Sale:</strong> <strong>₹7,650 / quintal</strong> directly to spinning/ginning mills.<br>🔍 <em>Advisory: Moisture <8% and trash <2% qualify for top-grade procurement.</em>`;
+        }
+        // Priority 3: General Mandi Prices Overview
+        else if (isGeneralPrice) {
+            reply = `📊 <strong>Live Official AGMARKNET Mandi Benchmark Summary:</strong><br>• 🍅 <strong>Tomato:</strong> ₹21.50 / kg (Amravati APMC)<br>• 🧅 <strong>Onion:</strong> ₹22.00 / kg (Lasalgaon APMC)<br>• 🥔 <strong>Potato:</strong> ₹21.00 / kg (Pune Gultekdi)<br>• 🥦 <strong>Cauliflower:</strong> ₹19.00 / kg (Buldhana APMC)<br>• 🌾 <strong>Wheat:</strong> ₹28.50 / kg (Akola APMC)<br>• 🌱 <strong>Soybean:</strong> ₹45.50 / kg (Latur APMC)<br>💡 <em>For in-depth details on any crop, ask specifically (e.g. 'Tomato price' or 'Onion rate').</em>`;
+        }
+        // Priority 4: Greetings
+        else if (isGreeting) {
+            reply = `Hello and welcome! 🙏 I am your <strong>KisanSetu Sahayak AI</strong>.<br>I can provide instant, verified assistance on:<br>• 🍅 <strong>Live Mandi Rates:</strong> Tomato, Onion, Potato, Wheat, Soybean, etc.<br>• 🌾 <strong>Sell Produce:</strong> Step-by-step produce listing and pricing<br>• 🔬 <strong>AGMARK Labs:</strong> Nearest testing centers and QR quality certification<br>• 🛡️ <strong>Escrow Settlement:</strong> 24-hour direct UPI/Bank payout guarantee<br>• 🚚 <strong>Logistics:</strong> Consolidated farm-gate cold chain pickup<br><em>Tap any quick prompt below or type your question directly!</em>`;
+        }
+        // Priority 5: Fallback with Interactive Chips
+        else {
+            reply = `🙏 <strong>Thanks for reaching out!</strong><br>To get instant, accurate guidance, please tap one of the direct topics below or specify your question:<br><div style="display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;"><button type="button" onclick="sendSimulatedWhatsAppMsg('What is today live Tomato mandi rate?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🍅 Tomato Rate</button><button type="button" onclick="sendSimulatedWhatsAppMsg('How do I list and sell produce directly on KisanSetu?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🌾 How to Sell</button><button type="button" onclick="sendSimulatedWhatsAppMsg('How does DoCA Escrow guarantee 24-hour payment to farmers?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🛡️ Escrow Payout</button><button type="button" onclick="sendSimulatedWhatsAppMsg('Where are the official AGMARK & NABL testing labs located?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🔬 Testing Labs</button><button type="button" onclick="sendSimulatedWhatsAppMsg('How does refrigerated transport and farm-gate pickup work?')" style="background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px; padding:3px 8px; font-size:11px; color:#1b5e20; cursor:pointer; font-weight:600;">🚚 Cold Logistics</button></div>You can also reach the 24x7 Government Kisan Call Centre at 📞 <strong>1800-180-1551</strong>.`;
+        }
+    }
+
+    return { reply, lang };
+}
+
 function sendSimulatedWhatsAppMsg(text) {
     if (!text || !text.trim()) return;
     const clean = text.trim();
@@ -4090,73 +4583,22 @@ function sendSimulatedWhatsAppMsg(text) {
 
     // Append user message
     const userMsg = document.createElement('div');
-    userMsg.style.cssText = 'align-self:flex-end; background:#d9fdd3; color:#111b21; padding:8px 12px; border-radius:12px 0 12px 12px; max-width:85%; box-shadow:0 1px 2px rgba(0,0,0,0.1); line-height:1.4;';
+    userMsg.style.cssText = 'align-self:flex-end; background:#d9fdd3; color:#111b21; padding:8px 12px; border-radius:12px 0 12px 12px; max-width:85%; box-shadow:0 1px 2px rgba(0,0,0,0.1); line-height:1.4; word-break:break-word;';
     userMsg.innerHTML = `${escapeHtml(clean)}<div style="font-size:10px; color:#667781; text-align:right; margin-top:2px;">Just now ✓✓</div>`;
     chatBody.appendChild(userMsg);
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    // Simulate smart AI reply after 400ms
+    // Simulate smart AI reply after 350ms
     setTimeout(() => {
-        const lower = clean.toLowerCase();
-
-        // 1. Detect language
-        const isMarathi = /[\u0900-\u097F]/.test(clean) && 
-            (clean.includes('कांदा') || clean.includes('टोमॅटो') || clean.includes('बाजारभाव') || clean.includes('भाव') || clean.includes('दर') || clean.includes('पैसे') || clean.includes('पेमेंट') || clean.includes('लॅब') || clean.includes('तपासणी') || clean.includes('वाहतूक') || clean.includes('कधी') || clean.includes('कसे') || clean.includes('मिळेल') || clean.includes('आहे') || clean.includes('नाही') || clean.includes('शेतकरी') || clean.includes('हमी') || clean.includes('खाते') || clean.includes('चाचणी') || clean.includes('नमस्कार') || clean.includes('किंमत') || currentWaLang === 'mr');
-        
-        const isHindi = !isMarathi && (/[\u0900-\u097F]/.test(clean) &&
-            (clean.includes('टमाटर') || clean.includes('प्याज') || clean.includes('मंडी') || clean.includes('भाव') || clean.includes('दाम') || clean.includes('पैसा') || clean.includes('भुगतान') || clean.includes('जांच') || clean.includes('परिवहन') || clean.includes('गाड़ी') || clean.includes('कब') || clean.includes('कैसे') || clean.includes('मिलेगा') || clean.includes('किसान') || clean.includes('खाता') || clean.includes('सुरक्षा') || clean.includes('नमस्ते') || clean.includes('प्रयोगशाला') || currentWaLang === 'hi'));
-
-        const replyLang = isMarathi ? 'mr' : (isHindi ? 'hi' : (currentWaLang === 'mr' ? 'mr' : (currentWaLang === 'hi' ? 'hi' : 'en')));
-
-        let reply = '';
-
-        if (replyLang === 'mr') {
-            if (lower.includes('price') || lower.includes('mandi') || lower.includes('tomato') || lower.includes('rate') || lower.includes('भाव') || lower.includes('दर') || lower.includes('कांदा') || lower.includes('टोमॅटो') || lower.includes('बाजारभाव')) {
-                reply = `🍅 <strong>थेट ॲगमार्कनेट बाजारभाव अपडेट (Live APMC Mandi):</strong><br>• <strong>अमरावती APMC:</strong> संकरित टोमॅटो (ग्रेड A) सरासरी दर: <strong>₹२१.५० / किलो</strong>.<br>• <strong>लासलगाव APMC:</strong> नाशिक लाल कांदा: <strong>₹२२.०० / किलो</strong>.<br>• <strong>बुलढाणा APMC:</strong> स्नोबॉल कॉलिफ्लॉवर: <strong>₹१९.०० / किलो</strong>.<br>• <strong>पुणे गुलटेकडी:</strong> ज्योती बटाटा: <strong>₹२१.०० / किलो</strong>.<br>📈 <em>AI अंदाज: बाजारात स्थानिक आवक नियंत्रित असल्यामुळे पुढील ३ दिवसांत दर ₹२–₹३ वाढण्याची शक्यता आहे.</em>`;
-            } else if (lower.includes('cert') || lower.includes('agmark') || lower.includes('lab') || lower.includes('test') || lower.includes('गुणवत्ता') || lower.includes('तपासणी') || lower.includes('चाचणी') || lower.includes('लॅब')) {
-                reply = `🔬 <strong>शासकीय ॲगमार्क व NABL गुणवत्ता तपासणी प्रयोगशाळा:</strong><br>आपल्या जवळ दिंडोरी (नाशिक), अमरावती APMC आणि बुलढाणा येथे ८ अधिकृत प्रयोगशाळा कार्यरत आहेत.<br>• तपासणी वेळ: <strong>फक्त २ तास</strong> (ओलावा, साईझ ग्रेडिंग व कीटकनाशक अवशेष चाचणी).<br>• लाभ: डिजिटल QR प्रमाणपत्रामुळे बाजारात <strong>१८% ते २५% अधिक दर</strong> मिळतो!<br>👉 <em>मुख्य मेनूमधील 'Verify Certificate' वरून आपण थेट प्रमाणपत्र तपासू शकता.</em>`;
-            } else if (lower.includes('escrow') || lower.includes('pay') || lower.includes('money') || lower.includes('bank') || lower.includes('पैसे') || lower.includes('पेमेंट') || lower.includes('हमी') || lower.includes('खाते')) {
-                reply = `🛡️ <strong>DoCA ग्राहक व्यवहार मंत्रालय एस्क्रो सुरक्षा:</strong><br>• खरेदीदाराची १००% रक्कम शेतमाल निघण्यापूर्वीच RBI-नियमन केलेल्या एस्क्रो खात्यात सुरक्षित जमा केली जाते.<br>• शेतमाल पोहोचल्यावर QR व डिजिटल OTP पडताळणी होताच <strong>२४ तासांच्या आत थेट तुमच्या बँक खात्यात / UPI वर पैसे जमा होतात</strong>.<br>• कोणतीही दलाली किंवा मध्यस्थ कमिशन कट होत नाही!`;
-            } else if (lower.includes('transport') || lower.includes('logistics') || lower.includes('truck') || lower.includes('pickup') || lower.includes('वाहतूक') || lower.includes('शीतगृह') || lower.includes('पिकअप')) {
-                reply = `🚚 <strong>स्मार्ट वाहतूक व शीतगृह (Cold-Chain) पिकअप:</strong><br>• आमचे CVRPTW अल्गोरिदम एकाच भागातील शेतमालाचे एकत्र संकलन करून शीतगृह (Reefer +४°C ते +८°C) वाहने पाठवते.<br>• वाहतूक खर्च <strong>३४% ने कमी</strong> होतो.<br>• वाहन शेतात पोहोचण्यापूर्वी चालक संपर्क क्रमांक व थेट GPS ट्रॅकिंग SMS द्वारे पाठवले जाते.`;
-            } else {
-                reply = `🙏 <strong>किसानसेतू कृषी सहाय्यता:</strong><br>आपल्या शेतमालाची विक्री, भाव किंवा वाहतुकीच्या अधिक माहितीसाठी आपण कोणत्याही वेळी २४x७ शासकीय टोल-फ्री किसान कॉल सेंटरवर 📞 <strong>१८००-१८०-१५५१</strong> वर मोफत संपर्क साधू शकता.`;
-            }
-        } else if (replyLang === 'hi') {
-            if (lower.includes('price') || lower.includes('mandi') || lower.includes('tomato') || lower.includes('rate') || lower.includes('भाव') || lower.includes('दाम') || lower.includes('टमाटर') || lower.includes('प्याज') || lower.includes('मंडी')) {
-                reply = `🍅 <strong>लाइव एगमार्कनेट मंडी भाव (Live APMC Mandi):</strong><br>• <strong>अमरावती APMC:</strong> हाइब्रिड टमाटर (ग्रेड A) मॉडल भाव: <strong>₹21.50 / किग्रा</strong>.<br>• <strong>लासलगांव APMC:</strong> नासिक लाल प्याज: <strong>₹22.00 / किग्रा</strong>.<br>• <strong>बुलढाणा APMC:</strong> स्नोबॉल गोभी: <strong>₹19.00 / किग्रा</strong>.<br>• <strong>पुणे गुलटेकडी:</strong> ज्योति आलू: <strong>₹21.00 / किग्रा</strong>.<br>📈 <em>AI पूर्वानुमान: आवक नियंत्रित रहने से अगले 3 दिनों में भाव में ₹2–₹3 की मजबूती की उम्मीद है।</em>`;
-            } else if (lower.includes('cert') || lower.includes('agmark') || lower.includes('lab') || lower.includes('test') || lower.includes('गुणवत्ता') || lower.includes('जांच') || lower.includes('लैब') || lower.includes('प्रमाणपत्र')) {
-                reply = `🔬 <strong>सरकारी एगमार्क व NABL गुणवत्ता जांच केंद्र:</strong><br>आपके निकट डिंडोरी (नासिक), अमरावती APMC और बुलढाणा में 8 अधिकृत लैब कार्यरत हैं।<br>• जांच समय: <strong>मात्र 2 घंटे</strong> (नमी, साइज ग्रेडिंग और कीटनाशक अवशेष टेस्ट)।<br>• लाभ: डिजिटल QR प्रमाणपत्र से सीधे <strong>18% से 25% अधिक दाम</strong> मिलते हैं!<br>👉 <em>ऊपर हेडर में 'Verify Certificate' दबाकर किसी भी लॉट का सर्टिफिकेट देखें।</em>`;
-            } else if (lower.includes('escrow') || lower.includes('pay') || lower.includes('money') || lower.includes('bank') || lower.includes('पैसा') || lower.includes('भुगतान') || lower.includes('गारंटी') || lower.includes('खाता')) {
-                reply = `🛡️ <strong>DoCA उपभोक्ता मामले मंत्रालय एस्क्रो सुरक्षा:</strong><br>• खरीदार की 100% राशि खेत से माल निकलने से पहले ही RBI-विनियमित एस्क्रो खाते में जमा करा ली जाती है।<br>• डिलीवरी के समय QR कोड व OTP सत्यापन होते ही <strong>24 घंटे के भीतर सीधे आपके बैंक खाते / UPI में भुगतान ट्रांसफर हो जाता है</strong>।<br>• कोई आढ़तिया या बिचौलिया कमीशन नहीं कटता!`;
-            } else if (lower.includes('transport') || lower.includes('logistics') || lower.includes('truck') || lower.includes('pickup') || lower.includes('परिवहन') || lower.includes('कोल्ड-चेन') || lower.includes('गाड़ी') || lower.includes('पिकअप')) {
-                reply = `🚚 <strong>स्मार्ट ट्रांसपोर्ट और कोल्ड-चेन पिकअप:</strong><br>• हमारा CVRPTW एल्गोरिदम एक ही तहसील के कई किसानों के माल को समेकित करके रेफ्रिजरेटेड (+4°C से +8°C) वाहन भेजता है।<br>• परिवहन लागत में <strong>34% तक की बचत</strong> होती है।<br>• गाड़ी पहुंचने से पहले लाइव GPS ट्रैकिंग और ड्राइवर का नंबर SMS द्वारा भेजा जाता है।`;
-            } else {
-                reply = `🙏 <strong>किसानसेतु कृषि सहायता:</strong><br>फसल की सीधी बिक्री, मंडी भाव या परिवहन संबंधी किसी भी अतिरिक्त जानकारी के लिए आप 24x7 सरकारी टोल-फ्री किसान कॉल सेंटर 📞 <strong>1800-180-1551</strong> पर निःशुल्क संपर्क कर सकते हैं।`;
-            }
-        } else {
-            // English
-            if (lower.includes('price') || lower.includes('mandi') || lower.includes('tomato') || lower.includes('rate') || lower.includes('onion')) {
-                reply = `🍅 <strong>Live AGMARKNET Benchmark Rates (Live APMC Mandi):</strong><br>• <strong>Amravati APMC:</strong> Tomato (Grade A) modal rate: <strong>₹21.50/kg</strong>.<br>• <strong>Lasalgaon APMC:</strong> Nashik Red Onion: <strong>₹22.00/kg</strong>.<br>• <strong>Buldhana APMC:</strong> Snowball Cauliflower: <strong>₹19.00/kg</strong>.<br>• <strong>Pune Gultekdi:</strong> Jyoti Potato: <strong>₹21.00/kg</strong>.<br>📈 <em>AI Forecast: Prices expected to stay firm (+₹2–₹3) over next 3 days due to tight regional arrivals.</em>`;
-            } else if (lower.includes('cert') || lower.includes('agmark') || lower.includes('lab') || lower.includes('test') || lower.includes('quality')) {
-                reply = `🔬 <strong>Official AGMARKNET & NABL Testing Laboratories:</strong><br>8 authorized labs are operational near APMC mandis including Dindori (Nashik), Amravati Terminal, and Buldhana Yard.<br>• Turnaround: <strong>Under 2 hours</strong> (moisture, grading, and chemical residues).<br>• Advantage: Certified Grade A produce commands <strong>18%–25% higher realization</strong>!<br>👉 <em>Tap 'Verify Certificate' in the top header to inspect any certificate.</em>`;
-            } else if (lower.includes('escrow') || lower.includes('pay') || lower.includes('money') || lower.includes('bank') || lower.includes('settlement')) {
-                reply = `🛡️ <strong>DoCA Tripartite Escrow Payment Guarantee:</strong><br>• 100% of buyer funds are pre-locked in an RBI-regulated escrow account before trucks dispatch from your farm gate.<br>• Upon digital OTP and QR delivery inspection, funds are <strong>transferred directly to your bank account / UPI within 24 hours</strong>.<br>• Zero middleman commission deducted!`;
-            } else if (lower.includes('transport') || lower.includes('logistics') || lower.includes('truck') || lower.includes('pickup') || lower.includes('cold')) {
-                reply = `🚚 <strong>Smart Route Optimization & Cold-Chain Logistics:</strong><br>• CVRPTW algorithms bundle nearby farm lots into consolidated reefer trucks (+4°C to +8°C).<br>• Slashes transport costs by up to <strong>34%</strong>.<br>• Driver arrival window and live GPS tracking are sent automatically via SMS.`;
-            } else {
-                reply = `🙏 <strong>KisanSetu Sahayak Guidance:</strong><br>For personalized assistance on produce listing, pricing, or transport, you can also dial the 24x7 Government Kisan Call Centre directly at 📞 <strong>1800-180-1551</strong> (Toll-Free).`;
-            }
-        }
-
-        const listenBtnLabel = (WA_I18N[replyLang] || WA_I18N.mr).listenBtn;
+        const { reply, lang } = generateWhatsAppBotReply(clean, currentWaLang);
+        const listenBtnLabel = (WA_I18N[lang] || WA_I18N.mr).listenBtn;
 
         const botMsg = document.createElement('div');
-        botMsg.style.cssText = 'align-self:flex-start; background:#ffffff; color:#111b21; padding:10px 12px; border-radius:0 12px 12px 12px; max-width:85%; box-shadow:0 1px 2px rgba(0,0,0,0.1); line-height:1.4;';
+        botMsg.style.cssText = 'align-self:flex-start; background:#ffffff; color:#111b21; padding:10px 12px; border-radius:0 12px 12px 12px; max-width:88%; box-shadow:0 1px 2px rgba(0,0,0,0.1); line-height:1.45; word-break:break-word;';
         botMsg.innerHTML = `
             ${reply}
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; padding-top:4px; border-top:1px dashed #e2e8f0;">
-                <button type="button" onclick="speakWhatsAppMessage(this, '${replyLang}')" style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:2px 8px; font-size:10px; color:#065f46; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:6px; border-top:1px dashed #e2e8f0;">
+                <button type="button" onclick="speakWhatsAppMessage(this, '${lang}')" style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:3px 10px; font-size:11px; color:#065f46; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px;" title="Listen aloud in regional language">
                     ${listenBtnLabel}
                 </button>
                 <div style="font-size:10px; color:#667781;">Just now</div>
@@ -4164,7 +4606,7 @@ function sendSimulatedWhatsAppMsg(text) {
         `;
         chatBody.appendChild(botMsg);
         chatBody.scrollTop = chatBody.scrollHeight;
-    }, 450);
+    }, 350);
 }
 
 // =========================================================================
@@ -4349,6 +4791,8 @@ window.triggerVoiceReader = triggerVoiceReader;
 window.openWhatsAppSupportSimulator = openWhatsAppSupportSimulator;
 window.closeWhatsAppSupportModal = closeWhatsAppSupportModal;
 window.sendSimulatedWhatsAppMsg = sendSimulatedWhatsAppMsg;
+window.generateWhatsAppBotReply = generateWhatsAppBotReply;
+window.detectWaQueryLang = detectWaQueryLang;
 window.setWhatsAppChatLang = setWhatsAppChatLang;
 window.speakWhatsAppMessage = speakWhatsAppMessage;
 window.openPlatformTour = openPlatformTour;

@@ -14,7 +14,6 @@
     <!-- TOP GOVERNMENT BAR -->
     <div class="gov-top-bar">
         <div class="gov-emblem">
-            <span class="gov-flag"></span>
             <span>Government of India • Department of Consumer Affairs (DoCA) • <strong>Farmer AI Hub</strong></span>
         </div>
         <div class="top-bar-right">
@@ -737,6 +736,7 @@
             renderFarmerListings();
             renderWalletTable();
             renderDashboardMandiTable();
+            renderAssayingCenters();
 
             const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
             if (typeof applyLanguage === 'function') {
@@ -763,14 +763,18 @@
 
         function handleDashboardLanguageChange(e) {
             const lang = (e && e.detail && (e.detail.lang || e.detail.language)) || (window.kisanStore ? window.kisanStore.getLanguage() : 'en');
+            if (typeof updateFarmerSidebar === 'function') updateFarmerSidebar();
+            if (typeof initForecastChart === 'function') initForecastChart();
+            if (typeof renderFarmerOrders === 'function') renderFarmerOrders();
+            if (typeof renderFarmerListings === 'function') renderFarmerListings();
+            if (typeof renderWalletTable === 'function') renderWalletTable();
+            if (typeof renderDashboardMandiTable === 'function') renderDashboardMandiTable();
+            if (typeof renderAssayingCenters === 'function') renderAssayingCenters();
+
             if (typeof translateDom === 'function') {
-                translateDom(document.querySelector('.dash-sidebar'), lang);
-                translateDom(document.querySelector('.dash-content'), lang);
+                translateDom(document.body, lang);
                 const modal = document.getElementById('newListingModal');
                 if (modal) translateDom(modal, lang);
-            }
-            if (typeof initForecastChart === 'function') {
-                initForecastChart();
             }
         }
         document.addEventListener('kisanLanguageApplied', handleDashboardLanguageChange);
@@ -780,17 +784,21 @@
             if (!window.kisanStore) return;
             const user = window.kisanStore.getCurrentUser();
             const badge = document.querySelector('.user-profile-badge');
+            const curLang = window.kisanStore ? window.kisanStore.getLanguage() : (localStorage.getItem('kisansetu_lang') || 'en');
             if (badge && user) {
+                const kycVerifiedText = curLang === 'hi' ? '✓ आधार ई-केवाईसी सत्यापित' : (curLang === 'mr' ? '✓ आधार ई-केवायसी पडताळलेले' : '✓ Aadhaar eKYC Verified');
+                const registeredText = curLang === 'hi' ? '✓ पंजीकृत हितधारक' : (curLang === 'mr' ? '✓ नोंदणीकृत घटक' : '✓ Registered Stakeholder');
+                const roleLabel = curLang === 'hi' ? 'भूमिका:' : (curLang === 'mr' ? 'भूमिका:' : 'Role:');
                 badge.innerHTML = `
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
                         <div style="font-size: 28px;">${user.roleIcon || '👨‍🌾'}</div>
                         <div>
                             <h4>${user.name}</h4>
-                            <span style="background: #d1fae5; color: #065f46; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">✓ ${user.kycVerified ? 'Aadhaar eKYC Verified' : 'Registered Stakeholder'}</span>
+                            <span style="background: #d1fae5; color: #065f46; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 4px;">${user.kycVerified ? kycVerifiedText : registeredText}</span>
                         </div>
                     </div>
                     <p>📍 ${user.location}</p>
-                    ${user.fpo ? `<p>🌾 ${user.fpo}</p>` : `<p>Role: ${user.roleTitle || user.role}</p>`}
+                    ${user.fpo ? `<p>🌾 ${user.fpo}</p>` : `<p>${roleLabel} ${user.roleTitle || user.role}</p>`}
                     <div style="margin-top: 8px; font-size: 12px; color: #059669; font-weight: 600;">
                         UPI: ${user.upiId || 'farmer@oksbi'}
                     </div>
@@ -1528,6 +1536,7 @@
                 `;
             });
             tbody.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(tbody);
         }
 
         function viewCropForecast(cropKey) {
@@ -1668,6 +1677,7 @@
             });
 
             grid.innerHTML = html;
+            if (typeof translateDom === 'function') translateDom(grid);
         }
 
         function filterAssayingCenters() {

@@ -88,12 +88,7 @@ body {
 }
 
 .gov-flag {
-    display: inline-block;
-    width: 18px;
-    height: 12px;
-    border-radius: 2px;
-    background: linear-gradient(to bottom, #FF9933 33.3%, #ffffff 33.3%, #ffffff 66.6%, #128807 66.6%);
-    border: 1px solid rgba(0,0,0,0.2);
+    display: none !important;
 }
 
 .top-bar-right {
